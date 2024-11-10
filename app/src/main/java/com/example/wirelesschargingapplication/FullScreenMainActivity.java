@@ -1,5 +1,7 @@
 package com.example.wirelesschargingapplication;
 
+import static com.example.wirelesschargingapplication.R.layout.activity_full_screen_main;
+
 import android.annotation.SuppressLint;
 
 import androidx.appcompat.app.ActionBar;
@@ -14,6 +16,7 @@ import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
+import android.widget.Button;
 
 import com.example.wirelesschargingapplication.databinding.ActivityFullScreenMainBinding;
 
@@ -22,6 +25,18 @@ import com.example.wirelesschargingapplication.databinding.ActivityFullScreenMai
  * status bar and navigation/system bar) with user interaction.
  */
 public class FullScreenMainActivity extends AppCompatActivity {
+    @SuppressLint("ResourceType")
+    Button button=findViewById(activity_full_screen_main);
+    public Boolean setonclickListener(Button button){
+        String batteryStatus=Intent.ACTION_BATTERY_CHANGED;
+        Integer status=batteryStatus.replace((BatteryManager.EXTRA_STATUS,-1);
+        boolean isCharging=false;
+        if(status==BatteryManager.BATTERY_STATUS_CHARGING || status==BatteryManager.BATTERY_STATUS_FULL){
+            isCharging=true;
+        }
+        else {isCharging=false;}
+        return isCharging;
+    }
     public String chargingSource(String SetText) {
         SetText=null;
         if (SetText == "WIRELESS") {
@@ -45,9 +60,10 @@ public class FullScreenMainActivity extends AppCompatActivity {
         }
         return Source;
     }
-//    public String BatteryManagement(){
-//
-//    }
+    public String BatteryManagement() {
+
+        return "";
+    }
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
