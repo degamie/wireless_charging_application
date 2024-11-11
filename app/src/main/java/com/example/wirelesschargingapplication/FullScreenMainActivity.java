@@ -35,7 +35,12 @@ public class FullScreenMainActivity extends AppCompatActivity {
             isCharging=true;
         }
         else {isCharging=false;}
+        
         return isCharging;
+        Integer charginPlug=batteryStatus.indent(BatteryManager.EXTRA_PLUGGED,-1);
+        Boolean usbCharing=BatteryManager.BATTERY_PLUGGED_USB;
+        Boolean WirelessCharing=BatteryManager.BATTERY_PLUGGED_WIRELESS;
+        Boolean wifiCharging=WIFI_AWARE_SERVICE.contains(()-> HttpsURLConnection.HTTP_OK,WirelessCharing);
     }
     public String chargingSource(String SetText) {
         SetText=null;
