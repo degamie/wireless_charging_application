@@ -4,6 +4,7 @@ import static com.example.wirelesschargingapplication.R.layout.activity_full_scr
 
 import android.annotation.SuppressLint;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,27 +21,32 @@ import android.widget.Button;
 
 import com.example.wirelesschargingapplication.databinding.ActivityFullScreenMainBinding;
 
+import javax.net.ssl.HttpsURLConnection;
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class FullScreenMainActivity extends AppCompatActivity {
+public class fullScreenMainActivity extends AppCompatActivity {
     @SuppressLint("ResourceType")
     Button button=findViewById(activity_full_screen_main);
+    @RequiresApi(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     public Boolean setonclickListener(Button button){
         String batteryStatus=Intent.ACTION_BATTERY_CHANGED;
-        Integer status=batteryStatus.replace((BatteryManager.EXTRA_STATUS,-1);
+        Integer status=0;
+//        Integer status=batteryStatus.replace((BatteryManager.EXTRA_STATUS,-1);
         boolean isCharging=false;
         if(status==BatteryManager.BATTERY_STATUS_CHARGING || status==BatteryManager.BATTERY_STATUS_FULL){
             isCharging=true;
         }
         else {isCharging=false;}
-        
         return isCharging;
-        Integer charginPlug=batteryStatus.indent(BatteryManager.EXTRA_PLUGGED,-1);
-        Boolean usbCharing=BatteryManager.BATTERY_PLUGGED_USB;
-        Boolean WirelessCharing=BatteryManager.BATTERY_PLUGGED_WIRELESS;
+        Integer charginPlug= Integer.valueOf(batteryStatus.indent(Integer.parseInt(BatteryManager.EXTRA_PLUGGED)));
+        int usbCharing=BatteryManager.BATTERY_PLUGGED_USB;
+        int WirelessCharing=BatteryManager.BATTERY_PLUGGED_WIRELESS;
         Boolean wifiCharging=WIFI_AWARE_SERVICE.contains(()-> HttpsURLConnection.HTTP_OK,WirelessCharing);
+
+        }
     }
     public String chargingSource(String SetText) {
         SetText=null;
@@ -65,10 +71,10 @@ public class FullScreenMainActivity extends AppCompatActivity {
         }
         return Source;
     }
-    public String BatteryManagement() {
-
-        return "";
-    }
+//    public String BatteryManagement() {
+//
+//        return "";
+//    }
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
