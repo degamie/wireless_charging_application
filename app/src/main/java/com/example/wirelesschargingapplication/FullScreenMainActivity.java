@@ -18,6 +18,8 @@ import android.net.wifi.aware.DiscoverySessionCallback;
 import android.net.wifi.aware.PeerHandle;
 import android.net.wifi.aware.PublishConfig;
 import android.net.wifi.aware.PublishDiscoverySession;
+import android.net.wifi.aware.SubscribeConfig;
+import android.net.wifi.aware.SubscribeDiscoverySession;
 import android.net.wifi.aware.WifiAwareManager;
 import android.os.BatteryManager;
 import android.os.Build;
@@ -142,6 +144,17 @@ public class fullScreenMainActivity extends AppCompatActivity {
         else wifiCharging = false;
 
     }
+    SubscibeConfig config =new SubscribeConfig.Builder()
+            .setServiceName("AWARE_FILE_SHARE_SERVICE_NAME")
+            .build();
+    awareSession.subscribe(config,new DiscoverySessionCallback{
+        @Override
+                public void onSubsribeStarted(SubscribeDiscoverySession session){
+
+        }
+        @Override
+                public void onServiceDiscovered(PeerHandle peerhandle,byte[] serviceSpecificInfo,List<byte[]> matchFilter
+    },null);
 
     public void WifiChargingManagement() {
         WifiAwareManager wifiChargingManager = new
