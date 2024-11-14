@@ -2,12 +2,23 @@ package com.example.wirelesschargingapplication;
 
 import static com.example.wirelesschargingapplication.R.layout.activity_full_screen_main;
 
+import static java.net.HttpURLConnection.HTTP_OK;
+
 import android.annotation.SuppressLint;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.wifi.aware.DiscoverySessionCallback;
+import android.net.wifi.aware.PeerHandle;
+import android.net.wifi.aware.PublishConfig;
+import android.net.wifi.aware.PublishDiscoverySession;
+import android.net.wifi.aware.WifiAwareManager;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,69 +31,29 @@ import android.widget.Button;
 
 import com.example.wirelesschargingapplication.databinding.ActivityFullScreenMainBinding;
 
+import javax.net.ssl.HttpsURLConnection;
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class FullScreenMainActivity extends AppCompatActivity {
-    @SuppressLint("ResourceType")
-    Button button=findViewById(activity_full_screen_main);
-    public Boolean setonclickListener(Button button){
-        String batteryStatus=Intent.ACTION_BATTERY_CHANGED;
-        Integer status=batteryStatus.replace((BatteryManager.EXTRA_STATUS,-1);
-        boolean isCharging=false;
-        if(status==BatteryManager.BATTERY_STATUS_CHARGING || status==BatteryManager.BATTERY_STATUS_FULL){
-            isCharging=true;
-        }
-        else {isCharging=false;}
-        return isCharging;
-    }
-    public String chargingSource(String SetText) {
-        SetText=null;
-        if (SetText == "WIRELESS") {
-            SetText ="WIRELESS";
-
-        }
-        else if (SetText == "NULL") {
-            SetText ="NULL";
-        }
-        return SetText;
-    }
-    private int getChargingSource(Intent intent){
-        String SetText=null;
-        int Source=intent.getIntExtra("plugged",-1);
-        switch(Source){
-            case BatteryManager.BATTERY_PLUGGED_WIRELESS:
-                chargingSource("WIRELESS");
-                break;
-            default:
-                chargingSource("NULL");
-        }
-        return Source;
-    }
-    public String BatteryManagement() {
-
-        return "";
-    }
+public class fullScreenMainActivity extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
      */
     private static final boolean AUTO_HIDE = true;
-
     /**
      * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
      * user interaction before hiding the system UI.
      */
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
-
     /**
      * Some older devices needs a small delay between UI widget updates
      * and a change of the status and navigation bar.
      */
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler(Looper.myLooper());
-    private View mContentView;
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -104,7 +75,6 @@ public class FullScreenMainActivity extends AppCompatActivity {
             }
         }
     };
-    private View mControlsView;
     private final Runnable mShowPart2Runnable = new Runnable() {
         @Override
         public void run() {
@@ -116,7 +86,6 @@ public class FullScreenMainActivity extends AppCompatActivity {
             mControlsView.setVisibility(View.VISIBLE);
         }
     };
-    private boolean mVisible;
     private final Runnable mHideRunnable = new Runnable() {
         @Override
         public void run() {
@@ -146,7 +115,73 @@ public class FullScreenMainActivity extends AppCompatActivity {
             return false;
         }
     };
+    @SuppressLint("ResourceType")
+    Button button = findViewById(activity_full_screen_main);
+    private View mContentView;
+    private View mControlsView;
+    private boolean mVisible;
     private ActivityFullScreenMainBinding binding;
+
+    @RequiresApi(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    public Boolean setonclickListener(Button button) {
+        String batteryStatus = Intent.ACTION_BATTERY_CHANGED;
+        Integer status = 0;
+//        Integer status=batteryStatus.replace((BatteryManager.EXTRA_STATUS,-1);
+        boolean isCharging = false;
+        if (status == BatteryManager.BATTERY_STATUS_CHARGING || status == BatteryManager.BATTERY_STATUS_FULL) {
+            isCharging = true;
+        } else {
+            isCharging = false;
+        }
+        return isCharging;
+        Integer charginPlug = Integer.valueOf(batteryStatus.indent(Integer.parseInt(BatteryManager.EXTRA_PLUGGED)));
+        int usbCharing = BatteryManager.BATTERY_PLUGGED_USB;
+        int WirelessCharing = BatteryManager.BATTERY_PLUGGED_WIRELESS;
+        Boolean wifiCharging;
+        if (WIFI_AWARE_SERVICE.contains(wifiCharging, usbCharing)) wifiCharging = true;
+        else wifiCharging = false;
+
+    }
+
+    public void WifiChargingManagement() {
+        WifiAwareManager wifiChargingManager = new
+        (wifiChargingManager) createAttributionContext().getSystemService(createAttributionContext().WIFI_AWARE_SERVICE);
+        IntentFilter intentFilter = new IntentFilter((wifiChargingManager.ACTION_WIFI_AWARE_STATE_CHANGED));
+        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (wifiChargingManager.isAvailable()) {
+                } else {
+                }
+            }
+
+        };
+        Context.registerReceiver(BroadcastReceiver);
+    }
+
+    public String chargingSource(String SetText) {
+        SetText = null;
+        if (SetText == "WIRELESS") {
+            SetText = "WIRELESS";
+
+        } else if (SetText == "NULL") {
+            SetText = "NULL";
+        }
+        return SetText;
+    }
+
+    private String getChargingSource(Intent intent) {
+        String SetText = null;
+        Integer Source = intent.getIntExtra("plugged", -1);
+        switch (Source) {
+            case BatteryManager.BATTERY_PLUGGED_WIRELESS:
+                chargingSource("WIRELESS");
+                break;
+            default:
+                chargingSource("NULL");
+        }
+        return Source;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,59 +209,83 @@ public class FullScreenMainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
+    public void PubLishApp() {
+        PublishConfig appublsh = new PublishConfig.Builder()
+                .setServiceName("Aware_File_Share_Service_Name")
+                .build();
 
-        // Trigger the initial hide() shortly after the activity has been
-        // created, to briefly hint to the user that UI controls
-        // are available.
-        delayedHide(100);
-    }
+//        MEDIA_SESSION_SERVICE(config,new DiscoverySessionCallback(){
+        awareSession.publish(config, new DiscoverySessionCallback() {
+            @Override
 
-    private void toggle() {
-        if (mVisible) {
-            hide();
-        } else {
-            show();
+            public void onPublishStarted(PublishDiscoverySession session) {
+            }
+
+            @Override
+            public void onMessageRecieved(PeerHandle peerHandle, byte[] message,null) {
+            }
+        }, null);
+
+        @Override
+        protected void onPostCreate (Bundle savedInstanceState){
+            super.onPostCreate(savedInstanceState);
+
+            // Trigger the initial hide() shortly after the activity has been
+            // created, to briefly hint to the user that UI controls
+            // are available.
+            delayedHide(100);
         }
-    }
 
-    private void hide() {
-        // Hide UI first
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
+        private void toggle () {
+            if (mVisible) {
+                hide();
+            } else {
+                show();
+            }
         }
-        mControlsView.setVisibility(View.GONE);
-        mVisible = false;
 
-        // Schedule a runnable to remove the status and navigation bar after a delay
-        mHideHandler.removeCallbacks(mShowPart2Runnable);
-        mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
-    }
+        private void hide () {
+            // Hide UI first
+            ActionBar actionBar = getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.hide();
+            }
+            mControlsView.setVisibility(View.GONE);
+            mVisible = false;
 
-    private void show() {
-        // Show the system bar
-        if (Build.VERSION.SDK_INT >= 30) {
-            mContentView.getWindowInsetsController().show(
-                    WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars());
-        } else {
-            mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+            // Schedule a runnable to remove the status and navigation bar after a delay
+            mHideHandler.removeCallbacks(mShowPart2Runnable);
+            mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
         }
-        mVisible = true;
 
-        // Schedule a runnable to display UI elements after a delay
-        mHideHandler.removeCallbacks(mHidePart2Runnable);
-        mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
-    }
+        private void show () {
+            // Show the system bar
+            if (Build.VERSION.SDK_INT >= 30) {
+                mContentView.getWindowInsetsController().show(
+                        WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars());
+            } else {
+                mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+            }
+            mVisible = true;
 
-    /**
-     * Schedules a call to hide() in delay milliseconds, canceling any
-     * previously scheduled calls.
-     */
-    private void delayedHide(int delayMillis) {
-        mHideHandler.removeCallbacks(mHideRunnable);
-        mHideHandler.postDelayed(mHideRunnable, delayMillis);
+            // Schedule a runnable to display UI elements after a delay
+            mHideHandler.removeCallbacks(mHidePart2Runnable);
+            mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
+        }
+
+        /**
+         * Schedules a call to hide() in delay milliseconds, canceling any
+         * previously scheduled calls.
+         */
+        private void delayedHide ( int delayMillis){
+            mHideHandler.removeCallbacks(mHideRunnable);
+            mHideHandler.postDelayed(mHideRunnable, delayMillis);
+        }
     }
 }
+//    public String BatteryManagement() {
+//
+//        return "";
+//    }
+
