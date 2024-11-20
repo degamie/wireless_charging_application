@@ -17,6 +17,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.wirelesschargingapplication.databinding.ActivityFullScreenMainBinding;
 
@@ -27,6 +29,13 @@ import com.example.wirelesschargingapplication.databinding.ActivityFullScreenMai
 public class FullScreenMainActivity extends AppCompatActivity {
     @SuppressLint("ResourceType")
     Button button=findViewById(activity_full_screen_main);
+
+    protected void OnCreate(Bundle savedInstanceState){
+        super.onCreate(activity_full_screen_main);
+        EditText e1=(EditText)findViewById(R.id.editText);
+        TextView t1=(EditText)findViewById(R.id.TextView);
+        String url=dictionaryEntries();
+    }
     public Boolean setonclickListener(Button button){
         String batteryStatus=Intent.ACTION_BATTERY_CHANGED;
         Integer status=batteryStatus.replace((BatteryManager.EXTRA_STATUS,-1);
