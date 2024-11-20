@@ -1,10 +1,8 @@
 package com.example.wirelesschargingapplication;
 
-import static android.os.BatteryManager.BATTERY_PLUGGED_WIRELESS;
-import static android.os.BatteryManager.BATTERY_PROPERTY_STATUS;
 import static com.example.wirelesschargingapplication.R.layout.activity_full_screen_main;
 
-import android.annotation.*;
+import android.annotation.SuppressLint;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,11 +17,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.wirelesschargingapplication.databinding.ActivityFullScreenMainBinding;
-//import com.google.firebase.inappmessaging.model.Button;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -32,32 +27,17 @@ import com.example.wirelesschargingapplication.databinding.ActivityFullScreenMai
 public class FullScreenMainActivity extends AppCompatActivity {
     @SuppressLint("ResourceType")
     Button button=findViewById(activity_full_screen_main);
-    String SetText=null;
-    Object url=new Object();
-
-  //  public BatteryManager batteryManager;
-
-    protected void OnCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(activity_full_screen_main);
-        EditText e1 = (EditText) findViewById(R.id.editText);
-        @SuppressLint("MissingInflatedId")
-        TextView t1= (TextView)findViewById(R.id.TextView);
-        url = dictionaryEntries();
-    }
-    public  Boolean setonclickListener(Button button){
+    public Boolean setonclickListener(Button button){
         String batteryStatus=Intent.ACTION_BATTERY_CHANGED;
-//        String status=batteryStatus.replace(false);
-//        Integer status=0;
-        Integer status=BatteryManager.BATTERY_STATUS_NOT_CHARGING;
+        Integer status=batteryStatus.replace((BatteryManager.EXTRA_STATUS,-1);
         boolean isCharging=false;
-        if(status==BatteryManager.BATTERY_STATUS_CHARGING || status==BatteryManager.BATTERY_STATUS_FULL || status==BatteryManager.BATTERY_PROPERTY_CAPACITY){
+        if(status==BatteryManager.BATTERY_STATUS_CHARGING || status==BatteryManager.BATTERY_STATUS_FULL){
             isCharging=true;
         }
         else {isCharging=false;}
         return isCharging;
     }
-    public static String chargingSource(String SetText) {
+    public String chargingSource(String SetText) {
         SetText=null;
         if (SetText == "WIRELESS") {
             SetText ="WIRELESS";
@@ -68,12 +48,11 @@ public class FullScreenMainActivity extends AppCompatActivity {
         }
         return SetText;
     }
-    public static int getChargingSource(Intent intent){
+    private int getChargingSource(Intent intent){
         String SetText=null;
         int Source=intent.getIntExtra("plugged",-1);
-        int wireless_Charging_Device=BATTERY_PLUGGED_WIRELESS;
         switch(Source){
-            case 1:
+            case BatteryManager.BATTERY_PLUGGED_WIRELESS:
                 chargingSource("WIRELESS");
                 break;
             default:
@@ -81,10 +60,9 @@ public class FullScreenMainActivity extends AppCompatActivity {
         }
         return Source;
     }
-    public static void BatteryManagementMain(String args) {
-        Intent intent =new Intent();
-        String SetText=null;getChargingSource(intent);
-        chargingSource(SetText);
+    public String BatteryManagement() {
+
+        return "";
     }
     /**
      * Whether or not the system UI should be auto-hidden after
