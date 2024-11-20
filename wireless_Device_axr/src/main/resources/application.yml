@@ -1,0 +1,14 @@
+server:
+  port:8761
+
+eureka:
+  client:
+    register-with-eureka:true
+    fetch-registery:true
+
+
+  # wait-time-in-ms-sync-empty:false
+
+spring:
+    application-name:eureka-sever
+

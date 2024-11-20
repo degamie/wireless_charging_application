@@ -1,4 +1,4 @@
-package com.example.wirelesschargingapplication
+package com.example.axr_application
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -16,10 +16,9 @@ import org.junit.Assert.*
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     @Test
-   // @ParameterizedTest
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.wirelesschargingapplication", appContext.packageName)
+        assertEquals("com.example.axr_application", appContext.packageName)
     }
 }

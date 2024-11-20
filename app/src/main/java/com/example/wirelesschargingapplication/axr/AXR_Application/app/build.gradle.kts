@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.wirelesschargingapplication"
+    namespace = "com.example.axr_application"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.wirelesschargingapplication"
+        applicationId = "com.example.axr_application"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -28,19 +28,21 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1.8
+        targetCompatibility = JavaVersion.VERSION_1.8
+//        sourceCompatibility = JavaVersion.VERSION_11
+//        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
         jvmTarget = "11"
     }
     buildFeatures {
         compose = true
-        viewBinding = true
     }
 }
 
 dependencies {
+    implementation:'com.google.ar.sceneform.ux:sceneform-ux:1.15.0'
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -50,9 +52,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.firebase.inappmessaging)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -60,4 +59,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    classpath 'com.android.tools.build.graddle:3.5.2'
+    classpath 'com.google.ar.sceneform:plugin-1.15.0'
+
 }
+apply plugin:"com.google.ar.sceneform.ar"
