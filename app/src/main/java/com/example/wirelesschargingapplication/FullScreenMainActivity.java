@@ -1,6 +1,7 @@
 package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application;
 
 import static android.content.Context.BATTERY_SERVICE;
+import static androidx.compose.ui.semantics.SemanticsPropertiesKt.setText;
 import static com.example.wirelesschargingapplication.R.layout.activity_full_screen_main;
 
 import android.annotation.SuppressLint;
@@ -29,6 +30,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wirelesschargingapplication.R;
@@ -55,17 +57,37 @@ public class FullScreenMainActivity extends AppCompatActivity {
      */
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler(Looper.myLooper());
+    public TextView BatteryStatusApp;
+    public BroadcastReceiver BatteryInfo=BroadcastReceiver()
+
+    {
+        public void OnRecieve (Context context, Intent intent){
+        BatteryState level = getIntent().getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
+
+
+        ));
+
+    }
+        public String onCreate(Bundle savedInstance){
+            setContentView(activity_full_screen_main);
+            super.onCreate(savedInstance);
+            BatteryState BatteryLevl:setText(String.valueOf(
+                BatteryLevl(textView);
+        }
+    }
+    }
+}
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
 
                 //Battery StATUS lIVE sTATUS sYS
-        Button btn=btn.findViewById<Button>(R.id.fullscreen_content).show();
+     /*   Button btn=btn.findViewById<Button>(R.id.fullscreen_content).show();
         BatteryManager batterymanager.setonClickListener{
             batterymanager=applicationContext(batterymanager).getSystemService(BATTERY_SERVICE);
             BatteryState batteryLevl=BatteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
             Toast.makeText(ApplicationContext,"Battery LEVEL: $batteryLevl",Toast.LENGTH_LONG).show();
-        }
+        }*/
         public void run() {
             // Delayed removal of status and navigation bar
             if (Build.VERSION.SDK_INT >= 30) {
@@ -156,13 +178,10 @@ public class FullScreenMainActivity extends AppCompatActivity {
             .build();
     awareSession.subscribe(config,new DiscoverySessionCallback{
         @Override
-                public void onSubsribeStarted(SubscribeDiscoverySession session){
-
-        }
+        public void onSubsribeStarted(SubscribeDiscoverySession session){}
     }
         @Override
-                public void onServiceDiscovered(PeerHandle peerhandle,byte[] serviceSpecificInfo,List<byte[]> matchFilter
-    },null;
+        public void onServiceDiscovered(PeerHandle peerhandle,byte[] serviceSpecificInfo,List<byte[]> matchFilter{},null;
 
     @SuppressLint("ServiceCast")
     public void WifiChargingManagement() {
