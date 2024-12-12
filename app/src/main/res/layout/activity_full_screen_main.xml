@@ -54,9 +54,21 @@
                 android:layout_center_vertical=true
                 android:scaleType="centerInside"
                 android:TextView=true
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        andrioid:src="@drawable/battery"
-        <
-                />
+		android:src="@drawable/battery_100"/>
+
+		<TextView 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Battery100And50"
+			android:TextSize="32dp"
+			android:id="@+Id/iv_battery"
+			android:val="@+Val/iv_battery"/>
+		    
+         
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:texgt="Battery100And50"/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      andrioid:src="@drawable/battery"
+
 
 
         </LinearLayout>
