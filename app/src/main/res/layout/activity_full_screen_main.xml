@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:andrioid="http://schemas.android.com/apk/res-auto"
     android:background="?attr/fullscreenBackgroundColor"
     android:theme="@style/ThemeOverlay.WirelessChargingApplication.FullscreenContainer"
     tools:context=".FullScreenMainActivity">
@@ -24,7 +25,7 @@
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
     <FrameLayout
-        android:layout_width="match_parent"
+        android:layout_width="423dp"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
@@ -42,11 +43,73 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:layout_weight="1"
-		android:layout_centerInParent="true"
                 android:text="Click On!" />
 
+            <ImageView
+                android:id="@+Id/iv_battery"
+                "true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_center_vertical=
+
+                android:TextView=
+                android:scaleType="centerInside"
+                android:src="@drawable/battery_100" /><![CDATA[
+
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:texgt="Battery100And50"/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      andrioid:src="@drawable/battery"
+
+
+
+        ]]>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="179dp"
+            android:layout_height="207dp"
+            android:text="Button"
+            android:textAppearance="center" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainerView"
+            android:name="androidx.appcompat.app.AppCompatDialogFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+Id/iv_battery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:TextSize="32dp"
+            android:text="Battery100And50"
+            android:val="@+Val/iv_battery" />
+
+        <TableLayout
+            android:layout_width="43dp"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </TableLayout>
     </FrameLayout>
 
 </FrameLayout>
