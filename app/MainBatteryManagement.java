@@ -85,6 +85,7 @@ public Intent intent;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_full_screen_main);
         Runnable  runnable= new Runnable() {
             @Override
             public void run(){
