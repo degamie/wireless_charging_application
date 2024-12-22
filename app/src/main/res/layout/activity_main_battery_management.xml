@@ -17,6 +17,29 @@
         android:layout_height="660dp"
         app:srcCompat="Wireless_Battery_Simulation_background"
         />
+    <! Battery Id Input!>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/formTextFieldId"
+        android:hint="@string/Battery_Id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <! Battery Name Input!>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/formTextFieldName"
+        android:hint="@string/Battery_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <! Battery_PercentageStatus Input!>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/formTextFieldNumber"
+        android:hint="@string/Battery_PercentageStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+    <!--        android:layout_width="e"-->
     <TextView
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
@@ -47,7 +70,7 @@
 
             <Button
                 android:id="@+id/dummy_button"
-                style="?android:attr/buttonBarButtonStyle"
+                android:style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
