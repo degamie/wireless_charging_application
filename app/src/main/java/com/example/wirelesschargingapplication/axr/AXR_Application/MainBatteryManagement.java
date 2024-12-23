@@ -1,5 +1,7 @@
 package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application;
 
+import static android.content.Intent.ACTION_BATTERY_CHANGED;
+
 import android.annotation.SuppressLint;
 
 import androidx.appcompat.app.ActionBar;
@@ -23,6 +25,9 @@ import android.widget.TextView;
 
 import com.example.wirelesschargingapplication.databinding.ActivityMainBatteryManagementBinding;
 import com.example.wirelesschargingapplication.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -52,23 +57,39 @@ public class MainBatteryManagement extends AppCompatActivity {
     public TextView view;
     public Handler handler;
     public ImageView imageView;
-    public ImageView iv_View =(ImageView)findViewById(R.id.imageView);
-    public TextView tv_View =(TextView)findViewById(R.id.view);
+    public int layout=R.layout.ic_launcher_background;
+    @SuppressLint("ResourceType")
+    public ImageView iv_View =(ImageView)findViewById(layout);
+    public TextView tv_View =(TextView)findViewById();
+public BatteryManager batteryManager;
+public IntentFilter intentFilter;
+public Intent intent;
+
+public void InitializeComponents(){
+    TextInputEditText inputEditText=findViewById(R.id.form_textFieldName);
+    TextInputEditText inputEditBranch=findViewById(R.id.form_textFieldBranch);
+    TextInputEditText inputEditFindLocation=findViewById(R.id.textFieldLocation);
+    MaterialButton btnSave=findViewById(R.id.form_buttonSave);
+    btnSave.setOnClickListener(view->{
+        String name=inputEditText.getText().toString();
+
+    });
+}
 
 
-
+    Button findViewById;
+//    private Button Button=new Button();
+    Button button=findViewById();
     public BroadcastReceiver batteryLevelReciver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
             battery.setText(String.valueOf(level) + "%");
-            Intent batteryIntent=registerReceiver(null,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+            Intent batteryIntent=registerReceiver(null,new IntentFilter(ACTION_BATTERY_CHANGED));
             level=batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL,-1);
             int scale=batteryIntent.getIntExtra(BatteryManager.EXTRA_SCALE,-1);
-            if(level==-1 || scale==-1){
-                return 50.0f;
-            }
-            return (float)level/(float) scale*100;
+            if(level==-1 || scale==-1){System.out.println(50.0f);}
+            System.out.println((float)level/(float) scale*100);
 
         }
     };
@@ -77,42 +98,40 @@ public class MainBatteryManagement extends AppCompatActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_full_screen_main);
         Runnable  runnable= new Runnable() {
             @Override
             public void run(){
                 int batteryLevel=0;
                 tv_View.setText("BATTERY:"+batteryLevel+"%");
                 if(batteryLevel>=75){
-                    iv_View.setImageResource(R.drawable.ic_launcher_background *100);
+                    iv_View.setImageResource(R.drawable.ic_battery4 *100);
                 }
                 if(batteryLevel>75 && batteryLevel<=75){
-                    iv_View.setImageResource(R.drawable.ic_launcher_background*100);
+                    iv_View.setImageResource(R.drawable.ic_battery3*100);
                 }
                 if(batteryLevel>50 && batteryLevel<=75){
-                    iv_View.setImageResource(R.drawable.ic_launcher_background*100);
+                    iv_View.setImageResource(R.drawable.ic_battery4*100);
                 }
                 if(batteryLevel>25 && batteryLevel<=50){
-                    iv_View.setImageResource(R.drawable.ic_launcher_background*100);
+                    iv_View.setImageResource(R.drawable.ic_battery5*100);
                 }
         }
 
             //        super.onCreate()
 //        super.
-            void setContentView(R.layout.activity_full_screen_main) {
-
-            }
+         public int setContentView(int layout){return layout;}
 
             @SuppressLint("ResourceType")
-        TextView battery=(TextView)findViewById(R.layout.activity_full_screen_main);
-        void registerReciever(BatteryManager, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-        Button findViewById;
-        Button button = findViewById < button > (R.id.dummy_button);
+            TextView battery=(TextView)findViewById();
+           void registerReciever(Intent intent){
+               System.out.println(intent.ACTION_BATTERY_CHANGED);
+           };
+
 
     };
     }
-//        button.setonClickListener{
-//
-//    };
+
 
 
 
@@ -261,5 +280,10 @@ public class MainBatteryManagement extends AppCompatActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    @SuppressLint("ResourceType")
+    public <T extends View> T findViewById() {
+        return super.findViewById(layout);
     }
 }
