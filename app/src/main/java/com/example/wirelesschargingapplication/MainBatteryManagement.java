@@ -16,6 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Editable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
@@ -23,8 +24,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.model.Battery;
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.service.RetroFitService;
 import com.example.wirelesschargingapplication.databinding.ActivityMainBatteryManagementBinding;
 import com.example.wirelesschargingapplication.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+
+import retrofit2.Retrofit;
 
 
 /**
@@ -51,7 +58,7 @@ public class MainBatteryManagement extends AppCompatActivity {
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler(Looper.myLooper());
     private View mContentView;
-    public TextView battery;
+    public Battery battery;
     public TextView view;
     public Handler handler;
     public ImageView imageView;
@@ -62,6 +69,30 @@ public class MainBatteryManagement extends AppCompatActivity {
 public BatteryManager batteryManager;
 public IntentFilter intentFilter;
 public Intent intent;
+
+public void InitializeComponents(){
+    TextInputEditText inputEditText=findViewById(R.id.form_textFieldName);
+    TextInputEditText inputEditBranch=findViewById(R.id.form_textFieldBranch);
+    TextInputEditText inputEditFindLocation=findViewById(R.id.textFieldLocation);
+    MaterialButton btnSave=findViewById(R.id.form_buttonSave);
+    btnSave.setOnClickListener(view->{
+        battery=new Battery();
+
+        Editable batteryId=inputEditText.getText();
+        String batteryName=inputEditText.getText().toString();
+        Integer BatteryPercentage= inputEditText.getText().length();
+        String wifiName=inputEditText.getText().toString();
+        String wifiId=inputEditText.getText().toString();
+
+        RetroFitService retroFitService=new RetroFitService();
+        retroFitService.getRetroFitService();
+
+        battery.setBatteryId(batteryId);
+        battery.setBatteryName(batteryName);
+        battery.setBatteryPercentage(BatteryPercentage);
+        battery.setWifiId(wifiId);
+    });
+}
 
 
     Button findViewById;
@@ -85,6 +116,7 @@ public Intent intent;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_full_screen_main);
         Runnable  runnable= new Runnable() {
             @Override
             public void run(){
@@ -117,9 +149,7 @@ public Intent intent;
 
     };
     }
-//        button.setonClickListener{
-//
-//    };
+
 
 
 
