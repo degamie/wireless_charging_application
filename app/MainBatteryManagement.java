@@ -2,6 +2,8 @@ package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main
 
 import static android.content.Intent.ACTION_BATTERY_CHANGED;
 
+import static androidx.core.content.ContextCompat.registerReceiver;
+
 import android.annotation.SuppressLint;
 
 import androidx.appcompat.app.ActionBar;
@@ -16,15 +18,27 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Editable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.BatteryAPi;
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.model.Battery;
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.service.RetroFitService;
 import com.example.wirelesschargingapplication.databinding.ActivityMainBatteryManagementBinding;
 import com.example.wirelesschargingapplication.R;
+import com.google.android.gms.common.api.Response;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
 
 
 /**
@@ -51,7 +65,7 @@ public class MainBatteryManagement extends AppCompatActivity {
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler(Looper.myLooper());
     private View mContentView;
-    public TextView battery;
+    public Battery battery;
     public TextView view;
     public Handler handler;
     public ImageView imageView;
@@ -63,6 +77,42 @@ public BatteryManager batteryManager;
 public IntentFilter intentFilter;
 public Intent intent;
 
+public void InitializeComponents(){
+    TextInputEditText inputEditText=findViewById(R.id.form_textFieldName);
+    TextInputEditText inputEditBranch=findViewById(R.id.form_textFieldBranch);
+    TextInputEditText inputEditFindLocation=findViewById(R.id.textFieldLocation);
+    MaterialButton btnSave=findViewById(R.id.form_buttonSave);
+    btnSave.setOnClickListener(view->{
+        battery=new Battery();
+
+        Editable batteryId=inputEditText.getText();
+        String batteryName=inputEditText.getText().toString();
+        Integer BatteryPercentage= inputEditText.getText().length();
+        String wifiName=inputEditText.getText().toString();
+        String wifiId=inputEditText.getText().toString();
+
+        RetroFitService retroFitService=new RetroFitService();
+        BatteryAPi batteryApi=retroFitService.getretroFit().create(batteryApi);
+        battery.setBatteryId(batteryId);
+        battery.setBatteryName(batteryName);
+        battery.setBatteryPercentage(BatteryPercentage);
+        battery.setWifiId(wifiId);
+
+
+        batteryApi.save(Battery)
+                .enqueue(new Callback<Battery>()
+                        @Override
+        protected  void onResponse(Call<Battery> battery, Response <Battery>response){
+            Toast.makeText(MainBatteryManagement.this,"saved Successfully",Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        protected  void onFailure(Call<Battery> battery,Response<Battery>response){
+            Toast.makeText(MainBatteryManagement.this,"saved Failure",Toast.LENGTH_SHORT).show();
+
+        }
+    });
+}
+
 
     Button findViewById;
 //    private Button Button=new Button();
@@ -71,7 +121,7 @@ public Intent intent;
         @Override
         public void onReceive(Context context, Intent intent) {
             int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
-            battery.setText(String.valueOf(level) + "%");
+//            battery.setText(String.valueOf(level) + "%");
             Intent batteryIntent=registerReceiver(null,new IntentFilter(ACTION_BATTERY_CHANGED));
             level=batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL,-1);
             int scale=batteryIntent.getIntExtra(BatteryManager.EXTRA_SCALE,-1);
@@ -118,9 +168,7 @@ public Intent intent;
 
     };
     }
-//        button.setonClickListener{
-//
-//    };
+
 
 
 
