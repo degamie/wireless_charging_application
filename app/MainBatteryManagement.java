@@ -33,8 +33,11 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 import com.example.wirelesschargingapplication.databinding.ActivityMainBatteryManagementBinding;
 import com.example.wirelesschargingapplication.R;
 import com.google.android.gms.common.api.Response;
+import com.google.android.gms.common.logging.Logger;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.logging.Level;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -108,6 +111,7 @@ public void InitializeComponents(){
         @Override
         protected  void onFailure(Call<Battery> battery,Response<Battery>response){
             Toast.makeText(MainBatteryManagement.this,"saved Failure",Toast.LENGTH_SHORT).show();
+            Logger.getLogger(MainBatteryManagement.class.name()).Log(Level.SEVERE,"Error Occurred");
 
         }
     });
