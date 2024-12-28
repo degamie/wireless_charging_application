@@ -109,7 +109,7 @@ public void InitializeComponents(){
             Toast.makeText(MainBatteryManagement.this,"saved Successfully",Toast.LENGTH_SHORT).show();
         }
         @Override
-        protected  void onFailure(Call<Battery> battery,Response<Battery>response){
+        protected  void onFailure(Call<Battery> battery,Throwable t){
             Toast.makeText(MainBatteryManagement.this,"saved Failure",Toast.LENGTH_SHORT).show();
             Logger.getLogger(MainBatteryManagement.class.name()).Log(Level.SEVERE,"Error Occurred");
 
