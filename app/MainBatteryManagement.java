@@ -95,7 +95,7 @@ public void InitializeComponents(){
         String wifiId=inputEditText.getText().toString();
 
         RetroFitService retroFitService=new RetroFitService();
-        BatteryAPi batteryApi=retroFitService.getretroFit().create(batteryApi);
+        BatteryAPi batteryApi=retroFitService.getRetroFitService().create(batteryApi);
         battery.setBatteryId(batteryId);
         battery.setBatteryName(batteryName);
         battery.setBatteryPercentage(BatteryPercentage);
