@@ -2,6 +2,10 @@ package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main
 
 import static android.content.Intent.ACTION_BATTERY_CHANGED;
 
+import static androidx.core.content.ContextCompat.registerReceiver;
+
+import static java.util.logging.Level.SEVERE;
+
 import android.annotation.SuppressLint;
 
 import androidx.appcompat.app.ActionBar;
@@ -23,14 +27,22 @@ import android.view.WindowInsets;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.BatteryAPi;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.model.Battery;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.service.RetroFitService;
 import com.example.wirelesschargingapplication.databinding.ActivityMainBatteryManagementBinding;
 import com.example.wirelesschargingapplication.R;
+import com.google.android.gms.common.api.Response;
+import com.google.android.gms.common.logging.Logger;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.logging.Level;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Retrofit;
 
 
@@ -39,6 +51,9 @@ import retrofit2.Retrofit;
  * status bar and navigation/system bar) with user interaction.
  */
 public class MainBatteryManagement extends AppCompatActivity {
+    public BatteryWireless batteryWireless;
+    public final String TAG=MainBatteryManagement.class.getSimpleName();
+    public Logger logger;
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -66,9 +81,9 @@ public class MainBatteryManagement extends AppCompatActivity {
     @SuppressLint("ResourceType")
     public ImageView iv_View =(ImageView)findViewById(layout);
     public TextView tv_View =(TextView)findViewById();
-public BatteryManager batteryManager;
-public IntentFilter intentFilter;
-public Intent intent;
+    public BatteryManager batteryManager;
+    public IntentFilter intentFilter;
+    public Intent intent;
 
 public void InitializeComponents(){
     TextInputEditText inputEditText=findViewById(R.id.form_textFieldName);
@@ -85,12 +100,25 @@ public void InitializeComponents(){
         String wifiId=inputEditText.getText().toString();
 
         RetroFitService retroFitService=new RetroFitService();
-        retroFitService.getRetroFitService();
-
+        BatteryAPi batteryApi=retroFitService.getRetroFitService().create(batteryApi);
         battery.setBatteryId(batteryId);
         battery.setBatteryName(batteryName);
         battery.setBatteryPercentage(BatteryPercentage);
         battery.setWifiId(wifiId);
+
+
+        batteryApi.save(Battery)
+                .enqueue(new Callback<Battery>()
+                        @Override
+        protected  void onResponse(Call<Battery> battery, Response response){
+            Toast.makeText(MainBatteryManagement.this,"saved Successfully",Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        protected  void onFailure(Call<Battery> battery,Throwable t){
+            Toast.makeText(MainBatteryManagement.this,"saved Failure",Toast.LENGTH_SHORT).show();
+            logger.getTag().equals(SEVERE,"Error Occurred");
+
+        }
     });
 }
 
@@ -102,7 +130,7 @@ public void InitializeComponents(){
         @Override
         public void onReceive(Context context, Intent intent) {
             int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
-            battery.setText(String.valueOf(level) + "%");
+//            battery.setText(String.valueOf(level) + "%");
             Intent batteryIntent=registerReceiver(null,new IntentFilter(ACTION_BATTERY_CHANGED));
             level=batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL,-1);
             int scale=batteryIntent.getIntExtra(BatteryManager.EXTRA_SCALE,-1);
@@ -117,6 +145,12 @@ public void InitializeComponents(){
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_screen_main);
+        try{
+            Toast.makeText(getApplicationContext(),"SuccessFully Connected to"+ip,Toast.LENGTH_SHORT().show());
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
         Runnable  runnable= new Runnable() {
             @Override
             public void run(){
@@ -304,4 +338,7 @@ public void InitializeComponents(){
     public <T extends View> T findViewById() {
         return super.findViewById(layout);
     }
+}
+public MainBatteryManagement extends BatteryWireless{
+
 }
