@@ -4,6 +4,8 @@ import static android.content.Intent.ACTION_BATTERY_CHANGED;
 
 import static androidx.core.content.ContextCompat.registerReceiver;
 
+import static java.util.logging.Level.SEVERE;
+
 import android.annotation.SuppressLint;
 
 import androidx.appcompat.app.ActionBar;
@@ -13,11 +15,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.MacAddress;
+import android.net.wifi.WifiNetworkSpecifier;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.PatternMatcher;
 import android.text.Editable;
 import android.view.MotionEvent;
 import android.view.View;
@@ -49,6 +54,9 @@ import retrofit2.Retrofit;
  * status bar and navigation/system bar) with user interaction.
  */
 public class MainBatteryManagement extends AppCompatActivity {
+    public BatteryWireless batteryWireless;
+    public final String TAG=MainBatteryManagement.class.getSimpleName();
+    public Logger logger;
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -76,10 +84,12 @@ public class MainBatteryManagement extends AppCompatActivity {
     @SuppressLint("ResourceType")
     public ImageView iv_View =(ImageView)findViewById(layout);
     public TextView tv_View =(TextView)findViewById();
-public BatteryManager batteryManager;
-public IntentFilter intentFilter;
-public Intent intent;
-
+    public BatteryManager batteryManager;
+    public IntentFilter intentFilter;
+    public Intent intent;
+    Button findViewById;
+    //    private Button Button=new Button();
+    Button button=findViewById();
 public void InitializeComponents(){
     TextInputEditText inputEditText=findViewById(R.id.form_textFieldName);
     TextInputEditText inputEditBranch=findViewById(R.id.form_textFieldBranch);
@@ -105,41 +115,31 @@ public void InitializeComponents(){
         batteryApi.save(Battery)
                 .enqueue(new Callback<Battery>()
                         @Override
-        protected  void onResponse(Call<Battery> battery, Response <Battery>response){
+        protected  void onResponse(Call<Battery> battery, Response response){
             Toast.makeText(MainBatteryManagement.this,"saved Successfully",Toast.LENGTH_SHORT).show();
         }
         @Override
         protected  void onFailure(Call<Battery> battery,Throwable t){
             Toast.makeText(MainBatteryManagement.this,"saved Failure",Toast.LENGTH_SHORT).show();
-            Logger.getLogger(MainBatteryManagement.class.name()).Log(Level.SEVERE,"Error Occurred");
+            logger.getTag().equals(SEVERE,"Error Occurred");
 
         }
     });
 }
-
-
-    Button findViewById;
-//    private Button Button=new Button();
-    Button button=findViewById();
-    public BroadcastReceiver batteryLevelReciver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
-//            battery.setText(String.valueOf(level) + "%");
-            Intent batteryIntent=registerReceiver(null,new IntentFilter(ACTION_BATTERY_CHANGED));
-            level=batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL,-1);
-            int scale=batteryIntent.getIntExtra(BatteryManager.EXTRA_SCALE,-1);
-            if(level==-1 || scale==-1){System.out.println(50.0f);}
-            System.out.println((float)level/(float) scale*100);
-
-        }
-    };
-
-   // Plane_test_1_axr.obj
+public final WifiNetworkSpecifier specifier=new WifiNetworkSpecifier.Builder()
+        .setSsidPattern(new PatternMatcher("Wireless Charging API_Test"))
+        .setBssid(MacAddress.fromString("10::3:23::00:00"),MacAddress.fromString("ff:00:00:00"))
+        .build();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_screen_main);
+        try{
+            Toast.makeText(getApplicationContext(),"SuccessFully Connected to"+ip,Toast.LENGTH_SHORT().show());
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
         Runnable  runnable= new Runnable() {
             @Override
             public void run(){
@@ -157,7 +157,24 @@ public void InitializeComponents(){
                 if(batteryLevel>25 && batteryLevel<=50){
                     iv_View.setImageResource(R.drawable.ic_battery5*100);
                 }
+            }
+
+
+    public BroadcastReceiver batteryLevelReciver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
+//            battery.setText(String.valueOf(level) + "%");
+            Intent batteryIntent=registerReceiver(null,new IntentFilter(ACTION_BATTERY_CHANGED));
+            level=batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL,-1);
+            int scale=batteryIntent.getIntExtra(BatteryManager.EXTRA_SCALE,-1);
+            if(level==-1 || scale==-1){System.out.println(50.0f);}
+            System.out.println((float)level/(float) scale*100);
+
         }
+    };
+
+
 
             //        super.onCreate()
 //        super.
@@ -327,4 +344,7 @@ public void InitializeComponents(){
     public <T extends View> T findViewById() {
         return super.findViewById(layout);
     }
+}
+public MainBatteryManagement extends BatteryWireless{
+
 }
