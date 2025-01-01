@@ -1,9 +1,4 @@
 package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application;
-
-import static android.content.Intent.ACTION_BATTERY_CHANGED;
-
-import static androidx.core.content.ContextCompat.registerReceiver;
-
 import android.annotation.SuppressLint;
 
 import androidx.appcompat.app.ActionBar;
@@ -13,12 +8,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.MacAddress;
+import android.net.wifi.WifiManager;
+import android.net.wifi.WifiNetworkSpecifier;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.PatternMatcher;
 import android.text.Editable;
+import android.text.format.Formatter;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
@@ -27,14 +27,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.BatteryAPi;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.model.Battery;
-import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.service.RetroFitService;
 import com.example.wirelesschargingapplication.databinding.ActivityMainBatteryManagementBinding;
 import com.example.wirelesschargingapplication.R;
+import com.google.android.gms.common.logging.Logger;
+//
 import com.google.android.gms.common.api.Response;
+
+//import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.BatteryAPi;
+//import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.model.Battery;
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.service.RetroFitService;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.logging.Level;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,6 +54,11 @@ import retrofit2.Retrofit;
  * status bar and navigation/system bar) with user interaction.
  */
 public class MainBatteryManagement extends AppCompatActivity {
+    public final String TAG = MainBatteryManagement.class.getSimpleName();
+    public WifiManager wifiManager;
+    //    public BatteryWireless batteryWireless;
+
+    public Logger logger;
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -65,25 +78,42 @@ public class MainBatteryManagement extends AppCompatActivity {
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler(Looper.myLooper());
     private View mContentView;
-    public Battery battery;
+    //    public Battery battery;
     public TextView view;
     public Handler handler;
     public ImageView imageView;
-    public int layout=R.layout.ic_launcher_background;
+    public int layout = R.layout.ic_launcher_background;
     @SuppressLint("ResourceType")
-    public ImageView iv_View =(ImageView)findViewById(layout);
-    public TextView tv_View =(TextView)findViewById();
-public BatteryManager batteryManager;
-public IntentFilter intentFilter;
-public Intent intent;
+    public ImageView iv_View = (ImageView) findViewById(layout);
+    public TextView tv_View = (TextView) findViewById();
+    public BatteryManager batteryManager;
+    public IntentFilter intentFilter;
+    public Intent intent;
+    Button findViewById;
+    @SuppressLint("ServiceCast")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_full_screen_main);
+        wifiManager = (wifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        wifiManager.setWifiEnabled(true);
+        try {
+            String ip = Formatter.formatFileSize(wifiManager.getConnectionInfo().getIpAddress());
+            Toast.makeText(getApplicationContext(), "SuccessFully Conneted" + ip, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private Button Button=new Button();
+    Button button = (Button) this.findViewById();
 
-public void InitializeComponents(){
+    public void InitializeComponents(){
     TextInputEditText inputEditText=findViewById(R.id.form_textFieldName);
     TextInputEditText inputEditBranch=findViewById(R.id.form_textFieldBranch);
     TextInputEditText inputEditFindLocation=findViewById(R.id.textFieldLocation);
     MaterialButton btnSave=findViewById(R.id.form_buttonSave);
     btnSave.setOnClickListener(view->{
-        battery=new Battery();
+        Battery battery=new Battery();
 
         Editable batteryId=inputEditText.getText();
         String batteryName=inputEditText.getText().toString();
@@ -92,7 +122,7 @@ public void InitializeComponents(){
         String wifiId=inputEditText.getText().toString();
 
         RetroFitService retroFitService=new RetroFitService();
-        BatteryAPi batteryApi=retroFitService.getretroFit().create(batteryApi);
+        BatteryAPi batteryApi=retroFitService.getRetroFitService().create(batteryApi);
         battery.setBatteryId(batteryId);
         battery.setBatteryName(batteryName);
         battery.setBatteryPercentage(BatteryPercentage);
@@ -102,40 +132,28 @@ public void InitializeComponents(){
         batteryApi.save(Battery)
                 .enqueue(new Callback<Battery>()
                         @Override
-        protected  void onResponse(Call<Battery> battery, Response <Battery>response){
+        protected  void onResponse(Call<Battery> battery, Response response){
             Toast.makeText(MainBatteryManagement.this,"saved Successfully",Toast.LENGTH_SHORT).show();
         }
         @Override
-        protected  void onFailure(Call<Battery> battery,Response<Battery>response){
+        protected  void onFailure(Call<Battery> battery,Throwable t){
             Toast.makeText(MainBatteryManagement.this,"saved Failure",Toast.LENGTH_SHORT).show();
+            logger.getTag().equals(SEVERE,"Error Occurred");
 
         }
     });
 }
+public final WifiNetworkSpecifier specifier=new WifiNetworkSpecifier.Builder()
+        .setSsidPattern(new PatternMatcher("Wireless Charging API_Test"))
+        .setBssid(MacAddress.fromString("10::3:23::00:00"),MacAddress.fromString("ff:00:00:00"))
+        .build();
 
 
-    Button findViewById;
-//    private Button Button=new Button();
-    Button button=findViewById();
-    public BroadcastReceiver batteryLevelReciver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
-//            battery.setText(String.valueOf(level) + "%");
-            Intent batteryIntent=registerReceiver(null,new IntentFilter(ACTION_BATTERY_CHANGED));
-            level=batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL,-1);
-            int scale=batteryIntent.getIntExtra(BatteryManager.EXTRA_SCALE,-1);
-            if(level==-1 || scale==-1){System.out.println(50.0f);}
-            System.out.println((float)level/(float) scale*100);
 
-        }
-    };
 
-   // Plane_test_1_axr.obj
+} catch (Exception e) {}
+            throw new RuntimeException(e);
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_full_screen_main);
         Runnable  runnable= new Runnable() {
             @Override
             public void run(){
@@ -153,7 +171,24 @@ public void InitializeComponents(){
                 if(batteryLevel>25 && batteryLevel<=50){
                     iv_View.setImageResource(R.drawable.ic_battery5*100);
                 }
+            }
+
+
+    public BroadcastReceiver batteryLevelReciver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
+//            battery.setText(String.valueOf(level) + "%");
+            Intent batteryIntent=registerReceiver(null,new IntentFilter(ACTION_BATTERY_CHANGED));
+            level=batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL,-1);
+            int scale=batteryIntent.getIntExtra(BatteryManager.EXTRA_SCALE,-1);
+            if(level==-1 || scale==-1){System.out.println(50.0f);}
+            System.out.println((float)level/(float) scale*100);
+
         }
+    };
+
+
 
             //        super.onCreate()
 //        super.
@@ -323,4 +358,7 @@ public void InitializeComponents(){
     public <T extends View> T findViewById() {
         return super.findViewById(layout);
     }
-}
+
+//public MainBatteryManagement extends BatteryWireless{
+//
+//}
