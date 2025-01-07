@@ -30,6 +30,15 @@ public class WifiBroadCastReciever extends BroadcastReceiver{
         this.mainActivity=mainActivity;
 
     }
+    public void onResume(){
+        public BroadcastReceiver broadcastReceiver;
+        broadcastReceiver=new WifiBroadCastReciever(broadcastReceiver,channel,this);
+    }
+    public void onPause(IntentFilter intentFilter){
+        super.onPause();
+        unregisterReciever(broadcastReceiver);
+    }
+
     public void onCreate(Bundle savedInstanceState){
         wifiP2pManager=(wifiP2pManager)getSystemSerializable(context.WIFI_SERVICE);
         channel=wifiP2pManager.initialize(this, Looper.getMainLooper(),null);
