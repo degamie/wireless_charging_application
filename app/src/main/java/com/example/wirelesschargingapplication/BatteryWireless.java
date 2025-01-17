@@ -1,5 +1,9 @@
 package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application;
 
+import static android.content.Context.WIFI_SERVICE;
+
+import android.content.Context;
+import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -9,19 +13,52 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.wirelesschargingapplication.MainActivity;
 import com.example.wirelesschargingapplication.R;
 
+//public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 public class BatteryWireless extends AppCompatActivity {
+    public BatteryWireless batteryWireless;
+    public WifiBroadCastReciever wifiBroadCastReciever;
+    public WifiManager wifiManager;
     TextView textWifiInfo;
     Button btnInfo;
-    @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_full_screen_main);
-        textWifiInfo=(textViewInfo) findViewById(R.id.idText);
-        btnInfo=(Button) findViewById(R.id.idBtm);
+}
+    public class BatteryWireless extends WifiDetails{
+        public Boolean iswifiVal=false;
+        public BatteryWireless batteryWireless;
+        public WifiDetails wifiDetails=new WifiDetails();
+
+        @Override
+        public String setWifiDetails() {
+            super.setWifiDetails();
+            if(wifiDetails==wifiDetails.getAllWifiDetails()){
+                iswifiVal=true;
+            }else iswifiVal=false;
+        }return iswifiVal ;
     }
-    public void getWifiInfo(View view){
+
+public class BatteryWireless extends WifiDetails{
+    public Boolean iswifiVal=false;
+    public BatteryWireless batteryWireless;
+    public WifiDetails wifiDetails=new WifiDetails();
+
+    @Override
+    public String setWifiDetails() {
+        super.setWifiDetails();
+        if(wifiDetails==wifiDetails.getAllWifiDetails()){
+            iswifiVal=true;
+        }else iswifiVal=false;
+    }return iswifiVal ;
+}
+public class BatteryWireless extends WifiBroadCastReciever{
+
+}
+
+public class BatteryWireless extends MainActivity{
+    public BatteryWireless batteryWireless=new BatteryWireless();
+    public  View view;
+        public void getWifiInfo(View view){
         WifiManager wifiManager=(WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         WifiInfo wifiInfo=wifiManager.getConnectionInfo();
         int ip=WifiInfo.getIpAddress();
@@ -32,4 +69,10 @@ public class BatteryWireless extends AppCompatActivity {
         int ssid=WifiInfo.getSSID();
         int networkId=WifiInfo.getNetworkId();
     }
+    public void onReponse(Context context, Intent intent){
+
+        System.out.println("Response Connected"+getWifiInfo(view));
+    }
 }
+
+
