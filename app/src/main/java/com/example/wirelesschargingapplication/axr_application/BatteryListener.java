@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pDeviceList;
 import android.net.wifi.p2p.WifiP2pManager;
+import android.os.BatteryManager;
 import android.service.credentials.Action;
 import android.util.Log;
 import android.webkit.WebView;
@@ -16,8 +17,17 @@ import org.json.JSONArray;
 import java.util.List;
 
 public class BatteryListener extends BroadcastReceiver {
+    public Context context;
+    public int status=0;
+    public Boolean isCharging=false;
     public Reciever reciever;
     public WifiP2pManager.PeerListListener =new WifiP2pManager.PeerListListener<>();
+    Intent batteryStatus=context.regisgterReciever(null,ifilter);
+    public void BatteryCharging(){
+        int chargingPlug== status==batteryStatus.get(BatteryManager.EXTRA_STATUS,-1);
+        boolean usbCharging==chargingPlug==BatteryManager.BATTERY_PLUGGED_AC;
+        boolean usbCharging==chargingPlug==BatteryManager.BATTERY_PLUGGED_USB;
+    }
     @Override
     public void onPeersAvailable(WifiP2pDeviceList peersList){
         List<WifiP2pDevice>refreshedPeeers=peersList.getDeviceList();
