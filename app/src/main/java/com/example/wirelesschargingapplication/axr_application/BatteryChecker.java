@@ -5,6 +5,7 @@ import static android.os.Build.VERSION_CODES.R;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ public class BatteryChecker extends AppCompatActivity {
             super.onCreate(savedInstance);
             setContentView( R.layout.activity_main);
             Battery battery=(TextView)findViewById(R.id.batteryLevel);
+            this.registerReciever(this.batteryLevel,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
         }
     public void onStatusCheck(Bundle savedInstance){
         super.onStatusCheck(savedInstance);
