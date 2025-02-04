@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.hardware.BatteryState;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.BatteryManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,7 +24,25 @@ public class BatteryWireless extends MainActivity {
     public Boolean LOCAL_LOGV =false;
     public int BATTERY_SCALE=100;
     public String mCriticalBatteryLevel;
+    public BatteryState mBatteryStatus;
+     public boolean mAcOnLine;
+    public boolean mAcOnUsb;
 
+    public void isPowered(int plugType){
+        if(mBatteryStatus== BatteryManager.BATTERY_STATUS_UNKNOWN){
+            return true;
+        }
+        else if(plugType==0){
+            return false;
+        }int plugTypeBit=0;
+        if(mAcOnLine){
+            plugTypeBit|=BatteryManager.BATTERY_PLUGGED_AC;
+        }
+        if(mAcOnUsb){
+            plugTypeBit|=BatteryManager.BATTERY_PLUGGED_USB;
+        }return (plugType & plugTypeBit)!=0;
+
+    }
     public BatteryWireless(Context context,LightsService lightsService){
         mContext=context;
         mLed=new Led(context,lightsService);
