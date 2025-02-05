@@ -1,5 +1,6 @@
 package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator;
 import static android.content.Context.WIFI_SERVICE;
+import static android.provider.SyncStateContract.Helpers.update;
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +28,16 @@ public class BatteryWireless extends MainActivity {
     public BatteryState mBatteryStatus;
      public boolean mAcOnLine;
     public boolean mAcOnUsb;
+
+    private UeventObserver mInvalidateCharger=new UEventObserver();
+    @Override
+    public void OnEvent(UEventObserver ueventObserver,UEvent event){
+        String invlaidCharger="1".equals(event.get("SWITCH_STATE"))? 1:0;
+        if(mInvalidateCharger!=invlaidCharger){
+            mInvalidateCharger=invlaidCharger;
+            update();
+        }
+    }
 
     public void isPowered(int plugType){
         if(mBatteryStatus== BatteryManager.BATTERY_STATUS_UNKNOWN){
