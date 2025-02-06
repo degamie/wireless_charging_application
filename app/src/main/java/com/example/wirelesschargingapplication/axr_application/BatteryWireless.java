@@ -2,12 +2,14 @@ package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main
 import static android.content.Context.WIFI_SERVICE;
 import static android.provider.SyncStateContract.Helpers.update;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.BatteryState;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,6 +32,11 @@ public class BatteryWireless extends MainActivity {
     public boolean mAcOnUsb;
 
     private UeventObserver mInvalidateCharger=new UEventObserver();
+    public static void LogOutLinear(String duration){
+    ContentResolver contentResolver=mContent.getContentResolver();
+    String dischargeThreshold= Settings.Secure.getString(contentResolver,Settings.Secure.BATTERY_DISCHARGE_THRESHOLD);
+    String dischargeDurationThreshold= Settings.Secure.getString(contentResolver,Settings.Secure.BATTERY_DURATION_DISCHARGE_THRESHOLD);
+    }
     @Override
     public void OnEvent(UEventObserver ueventObserver,UEvent event){
         String invlaidCharger="1".equals(event.get("SWITCH_STATE"))? 1:0;
