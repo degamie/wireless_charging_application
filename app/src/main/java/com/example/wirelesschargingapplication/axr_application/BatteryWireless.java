@@ -2,6 +2,7 @@ package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main
 import static android.content.Context.WIFI_SERVICE;
 import static android.provider.SyncStateContract.Helpers.update;
 
+import android.app.ApplicationErrorReport;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.hardware.BatteryState;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
+import android.os.DropBoxManager;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +23,9 @@ import com.example.wirelesschargingapplication.R;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.wifi.WifiBroadCastReciever;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.wifi.WifiDetails;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 public class BatteryWireless extends MainActivity {
     public static final String TAG=BatteryWireless.class.getSimpleName();
@@ -32,6 +37,17 @@ public class BatteryWireless extends MainActivity {
     public boolean mAcOnUsb;
 
     private UeventObserver mInvalidateCharger=new UEventObserver();
+    public static  final void logBatteryStats(){
+        if(ApplicationErrorReport.BatteryInfo.service==null)return ;
+        DropBoxManager dropBoxManager=(DropBoxManager)mContext.getSystemService(Context.DROPBOX_SERVICE);
+        if(dropBoxManager==null || !dropBoxManager.isTagEnabled("Battery_DiSCHARGE_INFO"))return;
+        File dumpFile=null;
+        FileOutputStream fileOutputStream=null;
+        try{
+            dumpFile=new File(DUMPSYS_DATA_PATH+BATTERY_STATS_SERVICE_NAME+"./dump");
+            fileOutputStream=new FileOutputStream(dumpFile);
+        }
+    }
     public static void LogOutLinear(String duration){
     ContentResolver contentResolver=mContent.getContentResolver();
     String dischargeThreshold= Settings.Secure.getString(contentResolver,Settings.Secure.BATTERY_DISCHARGE_THRESHOLD);
