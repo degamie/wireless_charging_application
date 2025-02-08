@@ -3,9 +3,12 @@ package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main
 import static android.content.Context.WIFI_SERVICE;
 import static android.os.Build.VERSION_CODES.R;
 
+import static androidx.core.content.res.TypedArrayUtils.getText;
+
 import com.example.axr_application.MainActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -72,6 +75,9 @@ private void setSeekerBarListener() {
 }
 
 private void StartService() {
+    Intent intent =new Intent(this,ForegroundService.class);
+    intent.putExtra("input",getText(R.string.app_running_details));
+    Context.startForegroundService(this,intent);
 
 }
 
