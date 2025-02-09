@@ -1,5 +1,6 @@
 package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application;
 
+import static android.content.Context.BATTERY_SERVICE;
 import static android.content.Context.WIFI_SERVICE;
 import static android.os.Build.VERSION_CODES.R;
 
@@ -9,6 +10,7 @@ import com.example.axr_application.MainActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -80,6 +82,15 @@ private void StartService() {
     Context.startForegroundService(this,intent);
 
 }
+public void initiateBatteryService(){
+    BatteryReciever batteryReciever=new BatteryReciever();
+    @Override
+            public void onRecieverDo(){
+                onRecieverDo();
+            }
+            registerReciever(BatteryReciever,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+}
+    //BATTERY_SERVICE
 
 public static final String TAG = MainActivity.class.getSimpleName();
     private WifiManager wifiManager;
