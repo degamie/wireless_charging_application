@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.ComponentActivity;
 
@@ -30,6 +31,11 @@ import com.example.wirelesschargingapplication.R;
 import org.apache.tools.ant.Main;
 
 public MainActivity extends AppCompatActivity{
+    //Variables decalre
+    Boolean isCharging=null;
+    public Integer goalPercent =0;
+    public Integer batteryPercent=0;
+    //Object Declare
     TextView setContentView;
     TextView batteryLvlText;
     TextView tmpVolText;
@@ -39,49 +45,74 @@ public MainActivity extends AppCompatActivity{
     ImageView moduleStatusimage;
     ImageView chargerStatusImage;
     SharedPreferences.Editor editor;
+    BatteryReciever batteryReciever;
+    private void StartService() {
+        Intent intent =new Intent(this,ForegroundService.class);
+        intent.putExtra("input",getText(R.string.app_running_details));
+        Context.startForegroundService(this,intent);
 
-    public static void onCreate(Bundle savedInstancesState){
+    }
+//OnCreate Method Declare
+    public void onCreate(Bundle savedInstancesState){
         super.onCreate(savedInstancesState);
-        setContentView= android.R.layout.activity_main;
-        setContentView= android.R.layout.activity_main;
+        setContentView= android.R.layout.activity_main;//Setting the Content View
         batteryLvlText= findViewById(R.id.batteryLevelText);
 
-        tmpVolText= findViewById(R.id.tmpVolText);
-        aimText= findViewById(R.id.aimText);
-        seekBar= findViewById(R.id.seekBar);
-        moduleStatusimage= findViewById(R.id.moduleStatusimage);
-        chargerStatusImage= findViewById(R.id.chargerStatusImage);
-        editor= sharedPreferences.edit();
-        sharedPreferences=getSharedPreferences("ir.geraked.batterysimulator.PREFERENCES_FILE_KEY",Content.MODE_PRIVATE);
-        set_goalPercent(sharedPreferences.getInt("GOAL_PERCENT_80"));
-        setModuleStatusView(false);
-        setChargerStatusView(false);
+        tmpVolText= findViewById(R.id.tmpVolText);//Text Volume declare
+        aimText= findViewById(R.id.aimText);//AImimg the TExt
+        seekBar= findViewById(R.id.seekBar);//SeekBar Declare
+        moduleStatusimage= findViewById(R.id.moduleStatusimage);//ModuleStatus Image Declare
+        chargerStatusImage= findViewById(R.id.chargerStatusImage);//ChargerStatus Image Declare
+        editor= sharedPreferences.edit();//Editor Method declare
+        sharedPreferences=getSharedPreferences("ir.geraked.batterysimulator.PREFERENCES_FILE_KEY",Content.MODE_PRIVATE);//SharedPreferences Method Declare
+        set_goalPercent=(sharedPreferences.getInt("GOAL_PERCENT_80"));//Setting the GoalPercent Declare
+        setModuleStatusView(false);//Initializing the setModuleStatusView
+        setChargerStatusView(false);//Initializing the setChargerStatusView
 
-        BatteryReciever();
-        setSeekerBarListener();
-        StartService();
+        BatteryReciever();//Calling the BatteryReciever Mehtod
+        setSeekerBarListener();//Seeking the Method 's Implmentation g
+        StartService();//Startign the StartService Method
     }
+    public void message(String text){// BatteryMessage Funct decalre
+        Toast.makeText(getApplicationContext,text);//Printing the Text Declare
+        Toast.LENGTH_SHORT.show();//Printing the Short Text
 
-//
+    }
+    public void sendOn(View v){usbReciever.sendOnSignal();  }////Sending Input Message
+
+
+    public void SendOff(View v){ usbReciever.sendOffSignal();}////Sending Input Message
+
+
+    public void OnBatteryReciever(){//BatteryReciever Method Declare
+        setBatteryLevel();//Calling the SetBattery Level
+
+    SetChargerStatusView(BatteryReciever.isCharging());//Calling the Charging's StatusView Method
+
+     TempVolText.setText(BatteryReciever.class.temperature+Character.toString(char),>6)+"C"+batteryReciever.voltage+"V";//battery's Level Text Decalre
+    }
+    public void setBatteryLevel(){//Setting the Battery Level
+        batteryPercent=batteryReciever.batteryPercent;//BatteryPercentage Method Declare
+        isCharging=batteryReciever.isCharging;//Battery' Charging Limit Declare
+        BatteryLevelTxt.setText(batteryPercent+" ");//Setting the Battery Level's text
+        else if(batteryPercent>=goalPercent && chargerStatusImage){       // checking the Battery  with its GoalPercent
+            usbReciever.sendOnSignal();////Sending Input Message
+        }
+        if(batteryPercent<=goalPercent && chargerStatusImage){
+            usbReciever.sendOffSignal();//Sending usbReciever's Method OffSignal
+        }
+    }
 }
+//Method's To Be Implemented
+private void setBatteryLevel() {}
 
-private void setChargerStatusView(boolean b) {
-}
+private void setChargerStatusView(boolean b) {}
 
-private void setModuleStatusView(boolean b) {
+private void setModuleStatusView(boolean b) {}
 
-}
+private void setSeekerBarListener() {}
 
-private void setSeekerBarListener() {
 
-}
-
-private void StartService() {
-    Intent intent =new Intent(this,ForegroundService.class);
-    intent.putExtra("input",getText(R.string.app_running_details));
-    Context.startForegroundService(this,intent);
-
-}
 public void initiateBatteryService(){
     BatteryReciever batteryReciever=new BatteryReciever();
     @Override
