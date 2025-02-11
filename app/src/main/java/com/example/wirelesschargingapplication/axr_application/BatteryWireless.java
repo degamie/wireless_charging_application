@@ -7,6 +7,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.BatteryState;
+import android.hardware.usb.UsbManager;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
@@ -29,12 +30,26 @@ import java.io.FileOutputStream;
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 public class BatteryWireless extends MainActivity {
     public static final String TAG=BatteryWireless.class.getSimpleName();
-    public Boolean LOCAL_LOGV =false;
     public int BATTERY_SCALE=100;
     public String mCriticalBatteryLevel;
     public BatteryState mBatteryStatus;
-     public boolean mAcOnLine;
+    public boolean mAcOnLine;
     public boolean mAcOnUsb;
+    public  UsbManager UsbManager;
+    public  UsbReciever usbReciever;
+    public Boolean LOCAL_LOGV =false;
+    boolean status=false;
+
+
+
+    public void setModuleStatusView(Boolean status);
+    public void setModuleStatus(Boolean status);
+    public void initiateUsbreciver(Boolean status){
+        usbReciever=new UsbReciever();
+        setModuleStatus();
+        setModuleStatusView(status);
+    }
+
 
     private UeventObserver mInvalidateCharger=new UEventObserver();
     public static  final void logBatteryStats(){
