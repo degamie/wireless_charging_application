@@ -4,6 +4,7 @@ import static android.content.Context.BATTERY_SERVICE;
 import static android.content.Context.WIFI_SERVICE;
 import static android.os.Build.VERSION_CODES.R;
 
+import static androidx.appcompat.graphics.drawable.DrawableContainerCompat.Api21Impl.getResources;
 import static androidx.core.content.res.TypedArrayUtils.getText;
 
 import com.example.axr_application.MainActivity;
@@ -29,11 +30,15 @@ import com.example.wirelesschargingapplication.R;
 //import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.textViewInfo;
 
 import org.apache.tools.ant.Main;
+import org.w3c.dom.Text;
 
 public MainActivity extends AppCompatActivity{
     //Variables decalre
+     public int goalPercent;
     Boolean isCharging=null;
+    public Text goaltxt =null;
     public Integer goalPercent =0;
+
     public Integer batteryPercent=0;
     //Object Declare
     TextView setContentView;
@@ -46,6 +51,16 @@ public MainActivity extends AppCompatActivity{
     ImageView chargerStatusImage;
     SharedPreferences.Editor editor;
     BatteryReciever batteryReciever;
+
+    public void set_goalPercent(int x){
+        if(x>=100)goalPercent=100;
+        else if(x<=0)goalPercent=0;
+        else goalPercent=x;
+        goaltxt=x;
+        goaltxt.setTextContent(getResources().getString(R.String.goal)+" "+goalPercent);
+        seekBar.setProgress(goalPercent);
+        startGoalPercentTimer();
+    }
     private void StartService() {
         Intent intent =new Intent(this,ForegroundService.class);
         intent.putExtra("input",getText(R.string.app_running_details));
