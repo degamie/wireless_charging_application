@@ -1,11 +1,16 @@
 package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator;
+import static android.content.Context.USB_SERVICE;
 import static android.content.Context.WIFI_SERVICE;
 import static android.provider.SyncStateContract.Helpers.update;
+
+import static androidx.core.content.ContextCompat.getSystemService;
+import static androidx.core.content.ContextCompat.registerReceiver;
 
 import android.app.ApplicationErrorReport;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.hardware.BatteryState;
 import android.hardware.usb.UsbManager;
 import android.net.wifi.WifiInfo;
@@ -40,6 +45,18 @@ public class BatteryWireless extends MainActivity {
     public Boolean LOCAL_LOGV =false;
     boolean status=false;
 
+    public void initiateusbReciever(Boolean b){
+        usbReciever={
+                @Override
+                        public void setModuleStatus(){}
+        }
+        usbReciever.context=this.usbReciever.usbManager=(usbReciever.usbManager)getSystemService(this,USB_SERVICE);
+        IntentFilter intentFilter=new IntentFilter();
+        intentFilter.addAction(usbReciever.ACTION_USB_PERMISSION);
+        intentFilter.addAction(usbReciever.ACTION_USB_DETACHED);
+        intentFilter.addAction(usbReciever.ACTION_USB_ATTACHED);
+        registerReceiver(usbReciever,intentFilter);
+    }
 
 
     public void setModuleStatusView(Boolean status);
