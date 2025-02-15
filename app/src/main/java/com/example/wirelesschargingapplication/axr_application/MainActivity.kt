@@ -1,4 +1,4 @@
-package com.example.axr_application
+package com.example.axremulator2
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,14 +11,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.axr_application.ui.theme.AXR_ApplicationTheme
+import com.example.axremulator2.ui.theme.AXREmulator2Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            AXR_ApplicationTheme {
+            AXREmulator2Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
@@ -41,7 +41,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    AXR_ApplicationTheme {
+    AXREmulator2Theme {
         Greeting("Android")
     }
 }
