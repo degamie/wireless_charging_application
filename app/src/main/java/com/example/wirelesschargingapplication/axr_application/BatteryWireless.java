@@ -34,6 +34,8 @@ import java.io.FileOutputStream;
 
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 public class BatteryWireless extends MainActivity {
+    public int BATTERY_PLUGGED_NONE=0;
+    public int mPlugType=0;
     public static final String TAG=BatteryWireless.class.getSimpleName();
     public int BATTERY_SCALE=100;
     public String mCriticalBatteryLevel;
@@ -44,6 +46,22 @@ public class BatteryWireless extends MainActivity {
     public  UsbReciever usbReciever;
     public Boolean LOCAL_LOGV =false;
     boolean status=false;
+    public synchronized final void Update(){//Updating The Values
+        native_update();processValues();//Calling native_update() and Prcessing Values funct
+    }
+    public void processValues() {//pROCESSING Values
+        Boolean logOutliner=false;//Iniitialing logOutliner
+        int dischargeDuration=0;//Iniitialing dischargeDuration
+        mCriticalBatteryLevel=mBatteryStatus<=mCriticalBatteryLevel;//Assigining batterylevel's Critical Value
+        if(mAcOnLine)mPlugType=BatteryManager.BATTERY_PLUGGED_AC;//Wireless BatteryState
+        else if(mAcOnUsb)mPlugType=BatteryManager.BATTERY_PLUGGED_USB;//WiredBattery State
+        else mPlugType=BatteryManager.BATTERY_PLUGGED_NONE;//Plugged Null Battery State
+    }
+
+    //to be implmented
+    public  String native_update() {
+        return 1;
+    }
 
     public void initiateusbReciever(Boolean b){
         usbReciever={
