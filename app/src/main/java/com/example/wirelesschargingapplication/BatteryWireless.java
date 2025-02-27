@@ -8,6 +8,7 @@ import static androidx.core.content.ContextCompat.registerReceiver;
 import android.app.ApplicationErrorReport;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.hardware.BatteryState;
 import android.hardware.usb.UsbManager;
@@ -15,10 +16,10 @@ import android.os.BatteryManager;
 import android.os.DropBoxManager;
 import android.provider.Settings;
 
-import androidx.appcompat.app.AppCompatActivity;
+//import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.wirelesschargingapplication.MainActivity;
-import com.example.wirelesschargingapplication.R;
+//import com.example.wirelesschargingapplication.R;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.UEventObserver.UeventObserver;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.UsbReciever.UsbReciever;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.wifi.WifiBroadCastReciever;
@@ -29,6 +30,7 @@ import java.io.FileOutputStream;
 
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 public class BatteryWireless extends MainActivity {
+    public BatteryState mBatteryLevel;
     //V
     public int BATTERY_PLUGGED_NONE=0;
     public int mPlugType=0;
@@ -51,7 +53,7 @@ public class BatteryWireless extends MainActivity {
         mCriticalBatteryLevel=mBatteryStatus<=mCriticalBatteryLevel;//Assigining batterylevel's Critical Value
         if(mAcOnLine)mPlugType=BatteryManager.BATTERY_PLUGGED_AC;//Wireless BatteryState
         else if(mAcOnUsb)mPlugType=BatteryManager.BATTERY_PLUGGED_USB;//WiredBattery State
-        else mPlugType=BatteryManager.BATTERY_PLUGGED_NONE;//Plugged Null Battery State
+        else mPlugType=BatteryManager.BATTERY_PLUGGED_DOCK;//Plugged Null Battery State
     }
 
     public  String native_update() {
@@ -75,10 +77,17 @@ public class BatteryWireless extends MainActivity {
     public void setModuleStatusView(Boolean status);//SetModule status View method Declare
     public void setModuleStatus(Boolean status);//SetModule status  method Declare
     public void initiateUsbreciver(Boolean status){//Initializing UsbReciever Method
-        usbReciever=new UsbReciever();//UsbReciever Object Declare
+        usbReciever=new UsbReciever();//UsmbReciever Object Declare
         setModuleStatus(status);setModuleStatusView(status);//Calling Method
     }
+    public static void sendIntent(Intent intent){
+        intent=new Intent();
+        intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY | Intent.FLAG_RECEIVER_REPLACE_PENDING);
 
+        int icon=getIcon(mBatteryLevel);
+    }
+
+    private static int getIcon(BatteryState mBatteryLevel) {}
 
     private UeventObserver mInvalidateCharger=new UEventObserver();
     public static  final void logBatteryStats(){
