@@ -30,6 +30,10 @@ import java.io.FileOutputStream;
 
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 public class BatteryWireless extends MainActivity {
+    public Boolean mSentHighBatteryBroadCast=false;
+    public Boolean mHighBatteryClostWarning =false;
+
+    public final int START_SUCCESS;
     public BatteryState mBatteryLevel;
     //V
     public int BATTERY_PLUGGED_NONE=0;
@@ -44,6 +48,15 @@ public class BatteryWireless extends MainActivity {
     public UsbReciever usbReciever;
     public Boolean LOCAL_LOGV =false;
     boolean status=false;
+    public String batteryStatus(Boolean sendHigHBattery,Boolean mSendHighBatteryConnector,Intent statusIntent,Context mContext,int mLastBatteryLevel){
+        if(sendHigHBattery)mSendHighBatteryConnector=true;
+        statusIntent.setAction(Intent.ACTION_BATTERY_CHANGED)+=mBatteryStatus;
+
+        else if(mSentHighBatteryBroadCast && mLastBatteryLevel>=mHighBatteryClostWarning){
+        mSentHighBatteryBroadCast=false;
+        statusIntent.setAction(Intent.ACTION_BATTERY_CHANGED)+=mBatteryStatus;
+    }
+
     public synchronized final void Update(){//Updating The Values
         native_update();processValues();//Calling native_update() and Prcessing Values funct
     }
@@ -79,6 +92,11 @@ public class BatteryWireless extends MainActivity {
     public void initiateUsbreciver(Boolean status){//Initializing UsbReciever Method
         usbReciever=new UsbReciever();//UsmbReciever Object Declare
         setModuleStatus(status);setModuleStatusView(status);//Calling Method
+    }
+    public int WifiConnect(int START_SUCCESS){
+        if(START_SUCCESS)return 0;
+        else if(START_SUCCESS>0)START_SUCCESS++;return("Opertation Successfull");
+        else return "Wifi UnConnected ";
     }
     public static void sendIntent(Intent intent){
         intent=new Intent();
