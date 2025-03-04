@@ -33,6 +33,7 @@ import org.apache.tools.ant.Main;
 import org.w3c.dom.Text;
 
 public MainActivity extends AppCompatActivity{
+    public BatteryReciever batteryReciever;
     //Variables decalre
      public int goalPercent;
     Boolean isCharging=null;
@@ -52,6 +53,23 @@ public MainActivity extends AppCompatActivity{
     SharedPreferences.Editor editor;
     BatteryReciever batteryReciever;
 
+    public void startGoalPercent(){
+        if(goalPercent!=null)goalPercent.cancel();
+        goalPercent.purge();
+        GoalPercentTimer goalPercentTimer=new GoalPercentTimer();
+        GoalPercentTimerTask goalPercentTimerTask=new GoalPercentTimerTask();
+        @Override
+        public void run(){
+            runOnUiThrowable runOnUiThrowable=new runOnUiThrowable();
+            run();
+            }
+        Integer _goalPercent;
+        goalPercent=_goalPercent;
+        editor.putInt("GOAL_PERCENT",goalPercent);
+        editor.apply();
+        GoalPercentTimer.schedule(goalPercentTimer.task());
+        }
+    }
     public void set_goalPercent(int x){
         if(x>=100)goalPercent=100;
         else if(x<=0)goalPercent=0;
