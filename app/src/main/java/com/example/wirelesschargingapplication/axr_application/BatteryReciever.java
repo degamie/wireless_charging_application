@@ -3,14 +3,24 @@ package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.BatteryState;
+import android.net.ConnectivityManager;
 import android.widget.TextView;
 
 public class BatteryReciever  extends BroadCastReciever{
+    public String  networkInfo=null;
+    public ConnectivityManager connectivityManager = null;
+    public Context context;
         public Integer mBatteryLevel;
         public TextView textView;
+    public String networkReciever(Context context){
+        connectivityManager=context.getSystemService(context.CONNECTIVITY_SERVICE);
+        networkInfo=connectivityManager.getActiveNetwork();
+        return networkInfo!=null && networkInfo.isConnected();
+    }
         public BatteryReciever(TextView textView){
             this.textView=textView;
         }
+
 
     @Override
     public String onReciever(Context context, Intent intent) {
