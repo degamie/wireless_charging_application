@@ -30,8 +30,17 @@ import java.io.FileOutputStream;
 
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 public class BatteryWireless extends MainActivity {
+    public LED led;
+
+    public Integer mBatteryLevel;
+
+    public Boolean mSentHighBatteryBroadCast=false;
+    public Boolean mHighBatteryClostWarning =false;
+
     public final int START_SUCCESS;
-    public BatteryState mBatteryLevel;
+    public int level=0;
+    public int scale=0;
+
     //V
     public int BATTERY_PLUGGED_NONE=0;
     public int mPlugType=0;
@@ -45,6 +54,21 @@ public class BatteryWireless extends MainActivity {
     public UsbReciever usbReciever;
     public Boolean LOCAL_LOGV =false;
     boolean status=false;
+//    BatteryStatus
+public String batteryStatus(Boolean sendHigHBattery,Boolean mSendHighBatteryConnector,Intent statusIntent,Context mContext,int mLastBatteryLevel){
+    if(sendHigHBattery)mSendHighBatteryConnector=true;
+    statusIntent.setAction(Intent.ACTION_BATTERY_CHANGED)+=mBatteryStatus;
+
+        else if(mSentHighBatteryBroadCast && mLastBatteryLevel>=mHighBatteryClostWarning){
+        mSentHighBatteryBroadCast=false;
+        statusIntent.setAction(Intent.ACTION_BATTERY_CHANGED)+=mBatteryStatus;
+    }
+    public Integer BatteryLvlINdicator(level,scale){//BatteryLvlINdicator declare
+            level=batteryStatus(sendHigHBattery,mSendHighBatteryConnector,statusIntent,mContext,mLastBatteryLevel).getIntExtra(BatteryManager.EXTRA_LEVEL,+1);//level declare
+            scale=batteryStatus(sendHigHBattery,mSendHighBatteryConnector,statusIntent,mContext,mLastBatteryLevel).getIntExtra(BatteryManager.EXTRA_LEVEL,+1);//scale declare
+    }
+
+
     public synchronized final void Update(){//Updating The Values
         native_update();processValues();//Calling native_update() and Prcessing Values funct
     }
@@ -90,7 +114,7 @@ public class BatteryWireless extends MainActivity {
         intent=new Intent();
         intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY | Intent.FLAG_RECEIVER_REPLACE_PENDING);
 
-        int icon=getIcon(mBatteryLevel);
+        int icon=intent.getIcon(mBatteryLevel);
     }
 
     private static int getIcon(BatteryState mBatteryLevel) {}
@@ -121,7 +145,7 @@ public class BatteryWireless extends MainActivity {
         }
     }
 
-    public void isPowered(int plugType){
+    public Integer isPowered(int plugType){
         if(mBatteryStatus== BatteryManager.BATTERY_STATUS_UNKNOWN){
             return true;
         }
@@ -141,6 +165,7 @@ public class BatteryWireless extends MainActivity {
         mLed=new Led(context,lightsService);
         mCriticalBatteryLevel=BatteryState.service.getService();
     }
+}
 }
 
 //    public BatteryState batteryState;
