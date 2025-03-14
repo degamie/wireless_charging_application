@@ -54,12 +54,22 @@ public class BatteryWireless extends MainActivity {
     public UsbReciever usbReciever;
     public Boolean LOCAL_LOGV =false;
     boolean status=false;
+
 //    BatteryStatus
     public Integer batteryStart(Integer mBatteryLevel,int level,int scale){
         if(mBatteryLevel==0)return 0;
         while(level!=0){
             else if(mBatteryLevel>0)scale+=mBatteryLevel;
         }return mBatteryLevel;
+    }
+    public String BatteryChange(mCriticalBatteryLevel,level,scale){
+        if(mBatteryLevel>0)mBatteryLevel;
+        while(mBatteryLevel!=0){
+            else if(mBatteryLevel==level){
+                level+=scale;
+                else level=scale
+            }return mBatteryLevel;
+        }
     }
 public String batteryStatus(Boolean sendHigHBattery,Boolean mSendHighBatteryConnector,Intent statusIntent,Context mContext,int mLastBatteryLevel){
     if(sendHigHBattery)mSendHighBatteryConnector=true;
