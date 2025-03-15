@@ -37,7 +37,7 @@ public class BatteryWireless extends MainActivity {
     public Boolean mSentHighBatteryBroadCast=false;
     public Boolean mHighBatteryClostWarning =false;
 
-    public final int START_SUCCESS;
+    public int START_SUCCESS=0;
     public int level=0;
     public int scale=0;
 
@@ -54,7 +54,22 @@ public class BatteryWireless extends MainActivity {
     public UsbReciever usbReciever;
     public Boolean LOCAL_LOGV =false;
     boolean status=false;
+
 //    BatteryStatus
+    public Integer batteryStart(Integer mBatteryLevel,int level,int scale){
+        if(mBatteryLevel==0)return 0;
+        while(level!=0){
+            else if(mBatteryLevel>0)scale+=mBatteryLevel;
+        }return mBatteryLevel;
+    }
+    public Integer BatteryChange(mBatteryLevel, level, scale){
+        if(mBatteryLevel>0)mBatteryLevel;
+        while(mBatteryLevel!=0){
+            else if(mBatteryLevel==level){level+=scale;}
+                else level=scale;
+           return mBatteryLevel;
+        }
+    }
 public String batteryStatus(Boolean sendHigHBattery,Boolean mSendHighBatteryConnector,Intent statusIntent,Context mContext,int mLastBatteryLevel){
     if(sendHigHBattery)mSendHighBatteryConnector=true;
     statusIntent.setAction(Intent.ACTION_BATTERY_CHANGED)+=mBatteryStatus;
@@ -131,7 +146,7 @@ public String batteryStatus(Boolean sendHigHBattery,Boolean mSendHighBatteryConn
             fileOutputStream=new FileOutputStream(dumpFile);
         }
     }
-    public static void LogOutLinear(String duration){
+    public static void LogOutLinear(Integer duration){
     ContentResolver contentResolver=mContent.getContentResolver();
     String dischargeThreshold= Settings.Secure.getString(contentResolver,Settings.Secure.BATTERY_DISCHARGE_THRESHOLD);
     String dischargeDurationThreshold= Settings.Secure.getString(contentResolver,Settings.Secure.BATTERY_DURATION_DISCHARGE_THRESHOLD);
