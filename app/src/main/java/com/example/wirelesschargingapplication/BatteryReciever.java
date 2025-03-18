@@ -6,6 +6,8 @@ import android.hardware.BatteryState;
 import android.net.ConnectivityManager;
 import android.widget.TextView;
 
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryWireless;
+
 public class BatteryReciever  extends BroadCastReciever{
     public Context context;
     public Integer mBatteryLevel;
@@ -23,7 +25,8 @@ public class BatteryReciever  extends BroadCastReciever{
             else networkInfo=connectivityManager.unregisterNetworkCallback();
         }return networkInfo;
     }
-
+}
+    public class BatteryReciever extends BatteryWireless{//Inheriting BatteryWireless Class
     public BatteryReciever(TextView textView){
         this.textView=textView;
     }
@@ -50,5 +53,5 @@ public class BatteryReciever  extends BroadCastReciever{
         textView.setText(BatteryPercentage+"%");
 
     }
+    }
 
-}
