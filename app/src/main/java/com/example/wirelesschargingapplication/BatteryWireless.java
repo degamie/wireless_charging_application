@@ -30,6 +30,7 @@ import java.io.FileOutputStream;
 
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 public class BatteryWireless extends MainActivity {
+    public BatteryState batterystate;
     public LED led;
 
     public Integer mBatteryLevel;
@@ -37,7 +38,7 @@ public class BatteryWireless extends MainActivity {
     public Boolean mSentHighBatteryBroadCast=false;
     public Boolean mHighBatteryClostWarning =false;
 
-    public final int START_SUCCESS;
+    public int START_SUCCESS=0;
     public int level=0;
     public int scale=0;
 
@@ -62,13 +63,12 @@ public class BatteryWireless extends MainActivity {
             else if(mBatteryLevel>0)scale+=mBatteryLevel;
         }return mBatteryLevel;
     }
-    public String BatteryChange(mCriticalBatteryLevel,level,scale){
+    public Integer BatteryChange(mBatteryLevel, level, scale){
         if(mBatteryLevel>0)mBatteryLevel;
         while(mBatteryLevel!=0){
-            else if(mBatteryLevel==level){
-                level+=scale;
-                else level=scale
-            }return mBatteryLevel;
+            else if(mBatteryLevel==level){level+=scale;}
+                else level=scale;
+           return mBatteryLevel;
         }
     }
 public String batteryStatus(Boolean sendHigHBattery,Boolean mSendHighBatteryConnector,Intent statusIntent,Context mContext,int mLastBatteryLevel){
@@ -133,7 +133,14 @@ public String batteryStatus(Boolean sendHigHBattery,Boolean mSendHighBatteryConn
         int icon=intent.getIcon(mBatteryLevel);
     }
 
-    private static int getIcon(BatteryState mBatteryLevel) {}
+    private static int getBatteryLevel(BatteryState batterystate,int  mBatteryLevel) {//GetBatteryLevel State Declare
+        if(mBatteryLevel==0 && BatteryState ==null)return null;//iniitilizing mBatteryLevel Cond
+        while(mBatteryLevel!=null){
+        else if(mBatteryLevel==BatteryState)mBatteryLevel++;//Incrementing mBatteryLevel
+        else  mBatteryLevel=batterystate//Printing mBatteryLevel
+        }
+        return mBatteryLevel;
+    }
 
     private UeventObserver mInvalidateCharger=new UEventObserver();
     public static  final void logBatteryStats(){
@@ -147,7 +154,7 @@ public String batteryStatus(Boolean sendHigHBattery,Boolean mSendHighBatteryConn
             fileOutputStream=new FileOutputStream(dumpFile);
         }
     }
-    public static void LogOutLinear(String duration){
+    public static void LogOutLinear(Integer duration){
     ContentResolver contentResolver=mContent.getContentResolver();
     String dischargeThreshold= Settings.Secure.getString(contentResolver,Settings.Secure.BATTERY_DISCHARGE_THRESHOLD);
     String dischargeDurationThreshold= Settings.Secure.getString(contentResolver,Settings.Secure.BATTERY_DURATION_DISCHARGE_THRESHOLD);
