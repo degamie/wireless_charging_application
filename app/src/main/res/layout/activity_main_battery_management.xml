@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/fullscreenBackgroundColor"
+    android:theme="@style/ThemeOverlay.WirelessChargingApplication.FullscreenContainer"
+    tools:context=".axr.AXR_Application.app.src.main.java.com.example.axr_application.MainBatteryManagement">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+    <ImageView
+        android:id="@id/fullscreen_content"
+        android:layout_width="660dp"
+        android:layout_height="660dp"
+        app:srcCompat="Wireless_Battery_Simulation_background"
+        />
+    <! Battery Id Input!>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/formTextFieldId"
+        android:hint="@string/Battery_Id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <! Battery Name Input!>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/formTextFieldName"
+        android:hint="@string/Battery_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <! Battery_PercentageStatus Input!>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/formTextFieldNumber"
+        android:hint="@string/Battery_PercentageStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+    <!--        android:layout_width="e"-->
+    <TextView
+        android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:keepScreenOn="true"
+        android:text="Wireless Battery Simulator"
+        android:textColor="?attr/fullscreenTextColor"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="@style/Widget.Theme.WirelessChargingApplication.ButtonBar.Fullscreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <Button
+                android:id="@+id/dummy_button"
+                android:style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/dummy_button" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="30dp"
+            android:layout_height="660dp"
+            app:srcCompat="@drawable/Battery_live_status_100"
+            />
+<!--            tools:ignore="DuplicateIds" />-->
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            app:srcCompat="Battery_live_status_75"
+            tools:ignore="DuplicateIds" />
+        <ImageView
+            android:id="@id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            app:srcCompat="Battery_live_status_50" />
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+
+            app:srcCompat="Battery_live_status_25.jpeg"
+            tools:ignore="DuplicateIds" />
+        <ImageView
+            android:id="@+id/iv_battery"
+            android:layout_width="match_parent"
+            android:layout_height="660dp"
+            app:srcCompat="Battery_live_status_0" />
+
+        <FrameLayout
+            android:layout_width="132dp"
+            android:layout_height="679dp" />
+
+        <TableLayout
+            android:layout_width="@dimen/material_emphasis_high_type"
+            android:layout_height="663dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </TableLayout>
+
+    </FrameLayout>
+
+</FrameLayout>
