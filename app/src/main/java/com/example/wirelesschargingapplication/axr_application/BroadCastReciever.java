@@ -6,6 +6,8 @@ import android.content.Intent;
 import java.util.Objects;
 
 import javax.inject.Inject;
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatteryReciever;
+import com.example.wirelesschargingapplication.axr_application.DataRepository;
 
 public class BroadCastReciever extends BatteryReciever {//BroadCastReciever  Declare inherits BatteryReciever class
     public BroadCastReciever broadCastReciever;//Obj Declare
