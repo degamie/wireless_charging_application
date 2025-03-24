@@ -6,9 +6,10 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.WifiBroadCastReciever;
  import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.wifiChangeBroadCastLister;
 public interface DataRepository  extends BatteryReciever implements  wifiChangeBroadCastLister{//inheriting BatteryReciever class and wifiChangeBroadCastLister
+    public int mBatteryLevel=0;
     //Obj declare
     public wifiChangeBroadCastLister wifiChangeBroadCastLister;
-    public DataRepository dataRepository;
+    public DataRepository dataRepository = null;
     //Method Declare
     public String networkReciever(Context context);
 

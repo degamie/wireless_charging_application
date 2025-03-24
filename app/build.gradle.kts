@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.wirelesschargingapplication"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.wirelesschargingapplication"
@@ -38,6 +38,14 @@ android {
         compose = true
         viewBinding = true
     }
+    viewBinding {
+        isEnabled = true
+    }
+    dependenciesInfo {
+        includeInApk = true
+        includeInBundle = true
+    }
+    buildToolsVersion = "36.0.0"
 }
 
 dependencies {

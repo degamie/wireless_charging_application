@@ -12,9 +12,11 @@ import android.os.Looper;
 import android.service.credentials.Action;
 
 //import com.example.axr_application.MainActivity;
+import com.example.wirelesschargingapplication.DeviceListFragment;
 import com.example.wirelesschargingapplication.R;
 
 import java.nio.channels.Channel;
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.MainBatteryManagement;
 public interface wifiChangeBroadCastLister{
     void onWifiChangeBroadcastListener(Context context,Intent intent);
 }

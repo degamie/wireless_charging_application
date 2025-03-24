@@ -1,8 +1,9 @@
 package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application;
 
 import android.net.wifi.WifiInfo;
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryWireless;
 
-public class WifiDetails extends  BatteryWireless{
+public class WifiDetails extends BatteryWireless {
     public WifiInfo wifiInfo;
     public int ip=0;
     public int ssid=0;

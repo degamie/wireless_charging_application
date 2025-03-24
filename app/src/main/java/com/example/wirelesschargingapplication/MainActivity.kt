@@ -28,6 +28,10 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    fun onReciever(context: Context, intent: Intent): String {
+
+    }
 }
 
 @Composable
