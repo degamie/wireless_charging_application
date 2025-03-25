@@ -14,6 +14,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.wirelesschargingapplication.ui.theme.WirelessChargingApplicationTheme
 
 class MainActivity : ComponentActivity() {
+    @kotlin.jvm.JvmField
+    var textView: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

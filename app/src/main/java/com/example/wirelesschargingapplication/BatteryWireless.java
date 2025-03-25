@@ -27,7 +27,7 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 
 import java.io.File;
 import java.io.FileOutputStream;
-
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.LED;
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 public class BatteryWireless extends MainActivity {
     public BatteryState batterystate;
@@ -183,12 +183,17 @@ public String batteryStatus(Boolean sendHigHBattery,Boolean mSendHighBatteryConn
         }return (plugType & plugTypeBit)!=0;
 
     }
-    public BatteryWireless(Context context,LightsService lightsService){
+    public Object LightsService;
+    BatteryWireless(Context context,LightsService lightsService){
         mContext=context;
         mLed=new Led(context,lightsService);
         mCriticalBatteryLevel=BatteryState.service.getService();
     }
 }
+
+    private void native_update() {
+
+    }
 }
 
 //    public BatteryState batteryState;
