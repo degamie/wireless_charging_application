@@ -9,8 +9,10 @@ import android.hardware.usb.UsbManager;
 import android.util.Log;
 
 import java.io.IOException;
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.UsbReciever.UsbReciever;
 
-public class UsbRecieverImpl extends UsbReciever{
+public class UsbRecieverImpl extends UsbReciever {
+    public UsbReciever usbReciever;
     public  UsbRecieverImpl usbRecieverImpl;
     public  int usbLength  = usbRecieverImpl.Length;
     //Variables Decalre

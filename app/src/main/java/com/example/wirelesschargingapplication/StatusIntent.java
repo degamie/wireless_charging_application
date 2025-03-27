@@ -1,0 +1,8 @@
+package com.example.wirelesschargingapplication;
+
+import android.content.Intent;
+
+public class StatusIntent  extends Intent {
+    public StatusIntent statusIntent;
+
+}

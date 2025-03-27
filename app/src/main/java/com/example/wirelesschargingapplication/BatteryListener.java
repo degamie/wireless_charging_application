@@ -16,12 +16,14 @@ import android.util.Log;
 import android.webkit.WebView;
 
 import com.example.wirelesschargingapplication.Reciever;
+import com.example.wirelesschargingapplication.StatusIntent;
 
 import org.json.JSONArray;
 
 import java.util.List;
 
 public class BatteryListener extends BroadcastReceiver {
+    public StatusIntent statusIntent;
     public void startCamera(Camera camera,Context mContext){
         mContext.startActivity();
     }
