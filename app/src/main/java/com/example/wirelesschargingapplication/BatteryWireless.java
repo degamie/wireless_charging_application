@@ -56,8 +56,9 @@ public class BatteryWireless extends MainActivity {
     public UsbReciever usbReciever;
     public Boolean LOCAL_LOGV =false;
     boolean status=false;
+    private Object UEventObserver;
 
-//    BatteryStatus
+    //    BatteryStatus
     public Integer batteryStart(Integer mBatteryLevel,int level,int scale){
         if(mBatteryLevel==0)return 0;
         while(level!=0){
