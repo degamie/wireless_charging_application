@@ -60,10 +60,10 @@ public class UsbRecieverImpl extends UsbReciever {
             }
         }
     }
-    @Override
-    public void findSerialPortDevice() {
-        super.findSerialPortDevice();
-    }
+//    @Override
+//    public void findSerialPortDevice() {
+//        super.findSerialPortDevice();
+//    }
     @Override
     public String onReciever(Context context, Intent intent) {return super.onReciever(context, intent)}
 
