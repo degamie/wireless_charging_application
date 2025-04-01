@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UsbReciever extends BroadCastReciever {//UsbReciever Class Declare
+    public Context context;
+    public Intent intent;
     public boolean hold=false;//initializing Hold
     public String vendorID=null;//initializing Variables
     public String ProductId=null;
