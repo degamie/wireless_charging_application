@@ -1,8 +1,9 @@
 package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application;
 
 import android.net.wifi.WifiInfo;
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryWireless;
 
-public class WifiDetails extends  BatteryWireless{
+public class WifiDetails extends BatteryWireless {
     public WifiInfo wifiInfo;
     public int ip=0;
     public int ssid=0;
@@ -10,6 +11,12 @@ public class WifiDetails extends  BatteryWireless{
     public String macAddress=null;
     public String linkSpeed=null;
     public WifiDetails wifiDetails;
+    public WifiDetails(int ip,int networkId,String macAddress,String linkSpeed){//Parameterized Constr
+        this.ip=ip;//binding up the Var
+        this.networkId=networkId;
+        this.linkSpeed=linkSpeed;
+        this.macAddress=macAddress;
+    }
     public void setWifiDetails(){
 
     int ip= WifiInfo.getIpAddress();
