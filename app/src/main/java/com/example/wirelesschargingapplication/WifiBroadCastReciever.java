@@ -58,6 +58,11 @@ public class WifiBroadCastReciever extends BroadcastReceiver implements wifiChan
         intentFilter.addAction(WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION);
 
     }
+
+    private Object getSystemSerializable(String wifiService) {
+        return null;
+    }
+
     @Override
     public void onRecieve(Context context,Intent intent){
         Action action=intent.getAction();

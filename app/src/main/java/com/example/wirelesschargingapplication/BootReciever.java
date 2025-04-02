@@ -4,9 +4,10 @@ import android.annotation.SuppressLint;
 import android.os.StrictMode;
 
 import java.io.File;
-
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BroadCastReciever;
 //public class BootReciever extends BroadCastReciever{//BootReciever  Declare Inheriting Broadpublic class BootReciever extends BroadCastReciever{//BootReciever  Declare Inheriting BroadCastReciever  ClassCastReciever  Class
-public class BootReciever {
+public class BootReciever extends BroadCastReciever  {
+    public BroadCastReciever broadCastReciever;
     public BootReciever bootReciever;//Obj Declare
 //    public static final String TAG="Boot Reciever";//Tag Declare
 public String TAG=null;//Tag Declare
