@@ -6,7 +6,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.usb.UsbDevice;
-import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.util.Log;
 
@@ -15,18 +14,26 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 import java.util.HashMap;
 import java.util.Map;
 
-public class UsbReciever extends BroadCastReciever {//UsbReciever Class Declare
+public class UsbReciever extends BroadCastReciever {
+    public String ACTION_USB_ATTACHED;//Usb Cable Attachment
+    public static final String ACTION_USB_PERMISSION = null;
+    public static final String ACTION_USB_DETACHED = null;//UsbReciever Class Declare
+
     public boolean hold=false;//initializing Hold
     public String vendorID=null;//initializing Variables
-    public String ProductId=null;
-    public UsbDevice device=new UsbDevice();
-    public String CAMERA_VID=null;
-    public String CAMERA_PID=null;
+    public String ProductId=null;//initializing ProductId
+    public UsbDevice device=new UsbDevice();//Object Declare
+    public String CAMERA_VID=null;//initializing  Camera Vendor Id
+    public String CAMERA_PID=null;//initializing  Camera ProductId
+    public String getProductId(String productId) {
+        return ProductId;
+    }
     //UsbManager Obect Declare
-    public UsbManager usbManager;
-    public UsbDeviceConnection usbDeviceConnection;
+    public UsbManager usbManager;//Object delcare
     @SuppressLint("LogNotTimber")
     public static final String TAG="UsbReciever";//TAG Declare
+
+
     public void findSerialPortDevice() {//FindSerialPort Device Declare
         HashMap<String, UsbDevice> usbDeviceHashMap = usbManager.getDeviceList();//HahsMapDeclare
         if (!usbDeviceHashMap.isEmpty()) hold = true;//Checking Device's maps
@@ -34,14 +41,9 @@ public class UsbReciever extends BroadCastReciever {//UsbReciever Class Declare
             device = hold;//device's value declare
             int devicePID = device.getProductId();//product Id Declare
             int deviceVID = device.getVendorId();//VendorId Declare
-            UsbDeviceConnection usbFileDescriptor=usbDeviceConnection.getFileDescriptor();
-            if(devicePID==0)return 0;
-            while(devicePID!=0){
-                else if(devicePID>=deviceVID)devicePID+=usbFileDescriptor;
-                else devicePID=deviceVID;
-        }return devicePID;
+        }
     }
-    public void onReciever(Context context, Intent intent){//ONReciever Mehtod Declare
+    public String onReciever(Context context, Intent intent){//ONReciever Mehtod Declare
         Log.d(TAG,"IntentFilter");//IntentFilter Declare
         if(ACTION_USB_DEVICE_ATTACHED)intent.setAction(ACTION_USB_DEVICE_ATTACHED);return "Usb Attached!";//Connecting Wired Usb Cable to Device
         else if(device.getVendorId()vendorID== CAMERA_VID && device.getProductId(ProductId)==CAMERA_PID)Log.("Usb Detached",TAG);//Disconnecting The Wired Cable
