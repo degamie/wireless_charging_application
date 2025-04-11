@@ -25,6 +25,9 @@ public class UsbReciever extends BroadCastReciever {
     public UsbDevice device=new UsbDevice();//Object Declare
     public String CAMERA_VID=null;//initializing  Camera Vendor Id
     public String CAMERA_PID=null;//initializing  Camera ProductId
+    public String getProductId(String productId) {
+        return ProductId;
+    }
     //UsbManager Obect Declare
     public UsbManager usbManager;//Object delcare
     @SuppressLint("LogNotTimber")
