@@ -25,6 +25,15 @@ public class UsbReciever extends BroadCastReciever {
     public UsbDevice device=new UsbDevice();//Object Declare
     public String CAMERA_VID=null;//initializing  Camera Vendor Id
     public String CAMERA_PID=null;//initializing  Camera ProductId
+    public String getDevice(UsbDevice device) {//Device Fetch Method
+        return device;
+    }
+    public String getCAMERA_VID(String CAMERA_VID) {//CameraVID Fetch Method
+        return CAMERA_VID;
+    }
+    public String getCAMERA_PID(String CAMERA_PID) {//CameraPID Fetch Method
+        return CAMERA_PID;
+    }
     public String getProductId(String productId) {
         return ProductId;
     }
