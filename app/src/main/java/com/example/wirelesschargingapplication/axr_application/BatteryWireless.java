@@ -27,12 +27,23 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 
 import java.io.File;
 import java.io.FileOutputStream;
-
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.LED;
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 public class BatteryWireless extends MainActivity {
+    public Intent intent;
+    public BatteryState batterystate;
     public LED led;
 
     public Integer mBatteryLevel;
+    public String getBatteryState(BatteryState batterystate){//Fetching batterystate
+        return batterystate;
+    }
+    public String getBatteryLevel(Integer mBatteryLevel){//Fetching BatteryLevel
+        return mBatteryLevel;
+    }
+    public String getBatteryIntent(Intent intent){//Fetching intent
+        return mBatteryLevel;
+    }
 
     public Boolean mSentHighBatteryBroadCast=false;
     public Boolean mHighBatteryClostWarning =false;
@@ -54,8 +65,9 @@ public class BatteryWireless extends MainActivity {
     public UsbReciever usbReciever;
     public Boolean LOCAL_LOGV =false;
     boolean status=false;
+    private Object UEventObserver;
 
-//    BatteryStatus
+    //    BatteryStatus
     public Integer batteryStart(Integer mBatteryLevel,int level,int scale){
         if(mBatteryLevel==0)return 0;
         while(level!=0){
@@ -132,7 +144,14 @@ public String batteryStatus(Boolean sendHigHBattery,Boolean mSendHighBatteryConn
         int icon=intent.getIcon(mBatteryLevel);
     }
 
-    private static int getIcon(BatteryState mBatteryLevel) {}
+    private static int getBatteryLevel(BatteryState batterystate,int  mBatteryLevel) {//GetBatteryLevel State Declare
+        if(mBatteryLevel==0 && BatteryState ==null)return null;//iniitilizing mBatteryLevel Cond
+        while(mBatteryLevel!=null){
+        else if(mBatteryLevel==BatteryState)mBatteryLevel++;//Incrementing mBatteryLevel
+        else  mBatteryLevel=batterystate//Printing mBatteryLevel
+        }
+        return mBatteryLevel;
+    }
 
     private UeventObserver mInvalidateCharger=new UEventObserver();
     public static  final void logBatteryStats(){
@@ -175,12 +194,17 @@ public String batteryStatus(Boolean sendHigHBattery,Boolean mSendHighBatteryConn
         }return (plugType & plugTypeBit)!=0;
 
     }
-    public BatteryWireless(Context context,LightsService lightsService){
+    public Object LightsService;
+    BatteryWireless(Context context,LightsService lightsService){
         mContext=context;
         mLed=new Led(context,lightsService);
         mCriticalBatteryLevel=BatteryState.service.getService();
     }
 }
+
+    private void native_update() {
+
+    }
 }
 
 //    public BatteryState batteryState;
