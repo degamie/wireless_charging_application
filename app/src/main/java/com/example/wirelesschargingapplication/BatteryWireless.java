@@ -35,6 +35,15 @@ public class BatteryWireless extends MainActivity {
     public LED led;
 
     public Integer mBatteryLevel;
+    public String getBatteryState(BatteryState batterystate){//Fetching batterystate
+        return batterystate;
+    }
+    public String getBatteryLevel(Integer mBatteryLevel){//Fetching BatteryLevel
+        return mBatteryLevel;
+    }
+    public String getBatteryIntent(Intent intent){//Fetching intent
+        return mBatteryLevel;
+    }
 
     public Boolean mSentHighBatteryBroadCast=false;
     public Boolean mHighBatteryClostWarning =false;

@@ -22,6 +22,7 @@ public interface wifiChangeBroadCastLister{
 }
 
 public class WifiBroadCastReciever extends BroadcastReceiver implements wifiChangeBroadCastLister{
+    public DeviceListFragment deviceListFragment=null;
 
     public BroadcastReceiver broadcastReceiver;
     public WifiP2pManager wifiP2pManager;
@@ -70,7 +71,8 @@ public class WifiBroadCastReciever extends BroadcastReceiver implements wifiChan
         else if(wifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)){}
         else if(wifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION.equals(action)){
             DeviceListFragment deviceListFragment=(deviceListFragment) actvity.getFragmentManager();
-            deviceListFragment.findFragmentById(R.id.frag_list);
+//            deviceListFragment.findFragmentById(R.id.frag_list);
+            deviceListFragment.finalize(R.id.frag_list);
             deviceListFragement.updateThisDevice((wifiP2pManager)intent.getParcelableExtra(WifiP2pManager.EXTRA_WIFI_P2P_DEVICE));
         }
 
