@@ -22,6 +22,9 @@ public class UsbReciever extends BroadCastReciever {
     public boolean hold=false;//initializing Hold
     public String vendorID=null;//initializing Variables
     public String ProductId=null;//initializing ProductId
+    public void  setProductId(String ProductId) {
+        this.ProductId = ProductId;
+    }
     public UsbDevice device=new UsbDevice();//Object Declare
     public String CAMERA_VID=null;//initializing  Camera Vendor Id
     public String CAMERA_PID=null;//initializing  Camera ProductId
