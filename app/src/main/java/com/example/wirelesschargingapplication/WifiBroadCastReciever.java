@@ -32,6 +32,9 @@ public class WifiBroadCastReciever extends BroadcastReceiver implements wifiChan
     public Context context;
 
     public final WifiBroadCastReciever listener;
+    public String getWifiBroadCastReciever(WifiBroadCastReciever listener){
+        return listener;
+    }
     private void onWifiChangeBroadcastListener(Context context, Intent intent){
         super();
         this.wifiP2pManager=wifiP2pManager;
@@ -77,6 +80,7 @@ public class WifiBroadCastReciever extends BroadcastReceiver implements wifiChan
         }
 
     }
+
     public void wifiBroadCastReciever(WifiBroadCastReciever listener){
         this.listener=listener;
     }
