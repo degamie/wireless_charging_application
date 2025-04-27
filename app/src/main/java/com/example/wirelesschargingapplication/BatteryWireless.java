@@ -50,6 +50,8 @@ public class BatteryWireless extends MainActivity {
 
     public int START_SUCCESS=0;
     public int level=0;
+    public void setlevel(int level){return level;}//Binding Level
+
     public int scale=0;
 
     //V
