@@ -12,6 +12,7 @@ import android.os.Looper;
 import android.service.credentials.Action;
 
 //import com.example.axr_application.MainActivity;
+import com.example.axr_application.MainActivity;
 import com.example.wirelesschargingapplication.R;
 
 import java.nio.channels.Channel;
@@ -24,16 +25,23 @@ public class WifiBroadCastReciever extends BroadcastReceiver implements wifiChan
     public BroadcastReceiver broadcastReceiver;
     public WifiP2pManager wifiP2pManager;
     public Channel channel;
-    public MainBatteryManagement mainActivity;
+    public MainActivity mainActivity;
     public IntentFilter intentFilter;
     public Context context;
+    public WifiManager wifiManager=new WifiManager();
 
     public final WifiBroadCastReciever listener;
-    private void onWifiChangeBroadcastListener(Context context, Intent intent){
+    public String getChannel(Channel channel){return channel;}//Fetching Channel
+    private void onWifiChangeBroadcastReciever(Context context, Intent intent){
         super();
         this.wifiP2pManager=wifiP2pManager;
         this.channel=channel;
         this.mainActivity=mainActivity;
+        WifiManager wifiManager=new WifiManager();
+        wifiManager.setWifiEnabled(true);
+        if(wifiManager==null)return null;
+        else if(wifiManager!=null)return wifiManager.getWifiState(channel);
+        else return wifiManager;
 
     }
     public void onResume(){
@@ -62,11 +70,10 @@ public class WifiBroadCastReciever extends BroadcastReceiver implements wifiChan
         if(wifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)){}
         else if(wifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)){}
         else if(wifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION.equals(action)){
-            DeviceListFragment deviceListFragment=(deviceListFragment) actvity.getFragmentManager();
+            DeviceListFragment deviceListFragment=(deviceListFragment) MainActvity.getFragmentManager();
             deviceListFragment.findFragmentById(R.id.frag_list);
             deviceListFragement.updateThisDevice((wifiP2pManager)intent.getParcelableExtra(WifiP2pManager.EXTRA_WIFI_P2P_DEVICE));
         }
-
     }
     public void wifiBroadCastReciever(WifiBroadCastReciever listener){
         this.listener=listener;
@@ -78,7 +85,4 @@ public class WifiBroadCastReciever extends BroadcastReceiver implements wifiChan
             return;
         }
     }
-
-
-
 }
