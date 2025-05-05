@@ -22,6 +22,9 @@ public class BatteryReciever  extends BroadCastReciever {
     public BatteryReciever(){
         return;
     }
+    public String getBatterylevel(int Batterylevel){//Fetchinh Batterylevel
+        return Batterylevel;
+    }
     public String onInit(connectivityManager,networkInfo){
         if(networkInfo==null)return null;
         while(networkInfo!=null){
