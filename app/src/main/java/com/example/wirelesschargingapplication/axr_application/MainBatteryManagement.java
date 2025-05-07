@@ -1,4 +1,7 @@
 package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application;
+import static android.content.Intent.ACTION_BATTERY_CHANGED;
+import static java.util.logging.Level.SEVERE;
+
 import android.annotation.SuppressLint;
 
 import androidx.appcompat.app.ActionBar;
@@ -149,10 +152,10 @@ public final WifiNetworkSpecifier specifier=new WifiNetworkSpecifier.Builder()
         .build();
 
 
+try{}
 
+catch (Exception e) { return throw new RuntimeException(e);}
 
-} catch (Exception e) {}
-            throw new RuntimeException(e);
 
         Runnable  runnable= new Runnable() {
             @Override
@@ -172,7 +175,7 @@ public final WifiNetworkSpecifier specifier=new WifiNetworkSpecifier.Builder()
                     iv_View.setImageResource(R.drawable.ic_battery5*100);
                 }
             }
-
+        }
 
     public BroadcastReceiver batteryLevelReciver = new BroadcastReceiver() {
         @Override
@@ -197,7 +200,7 @@ public final WifiNetworkSpecifier specifier=new WifiNetworkSpecifier.Builder()
             @SuppressLint("ResourceType")
             TextView battery=(TextView)findViewById();
            void registerReciever(Intent intent){
-               System.out.println(intent.ACTION_BATTERY_CHANGED);
+               System.out.println(ACTION_BATTERY_CHANGED);
            };
 
 
