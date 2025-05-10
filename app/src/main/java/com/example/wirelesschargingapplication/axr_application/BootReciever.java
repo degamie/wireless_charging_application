@@ -11,6 +11,8 @@ public class BootReciever {
 //    public static final String TAG="Boot Reciever";//Tag Declare
 public String TAG=null;//Tag Declare
     public int LOG_SIZE=0;//Log Size Declare
+    public String getLog_Size(int LOG_SIZE){return  LOG_SIZE;}//fetching Log_Size
+
     public static final File TOMBSTONE_DIR=new File("/data/tombStones");//TOMBSTONE_DIR declare
     public BootReciever(){//Default Constructor Declare
         return;
