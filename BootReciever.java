@@ -9,10 +9,21 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 public class BootReciever extends BroadCastReciever  {
     public BroadCastReciever broadCastReciever;
     public BootReciever bootReciever;//Obj Declare
+    public String getBootReciever(BootReciever bootReciever){//Fethcing BootReciever
+        return  bootReciever;
+    }
 //    public static final String TAG="Boot Reciever";//Tag Declare
 public String TAG=null;//Tag Declare
     public int LOG_SIZE=0;//Log Size Declare
-    public static final File TOMBSTONE_DIR=new File("/data/tombStones");//TOMBSTONE_DIR declare
+    public static final File TOMBSTONE_DIR=new File("/data/tombStones");//TOMBSTONE_DIR declare;
+    public String getFileSize(int LOG_SIZE,String TAG){
+        return LOG_SIZE+TAG;
+    }
+    public void setFilesize(TOMBSTONE_DIR,LOG_SIZE,TAG){//File Size Set Declare
+        this.TOMBSTONE_DIR=TOMBSTONE_DIR;//Binding Up the Var
+        this.LOG_SIZE=LOG_SIZE;
+        this.TAG=TAG;
+    }
     public BootReciever(){//Default Constructor Declare
         return;
     }
