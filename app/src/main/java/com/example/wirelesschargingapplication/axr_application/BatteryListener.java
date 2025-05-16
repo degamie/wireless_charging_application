@@ -15,19 +15,27 @@ import android.os.BatteryManager;
 import android.util.Log;
 import android.webkit.WebView;
 
+import com.example.wirelesschargingapplication.Reciever;
+import com.example.wirelesschargingapplication.StatusIntent;
+
 import org.json.JSONArray;
 
 import java.util.List;
 
 public class BatteryListener extends BroadcastReceiver {
+    public StatusIntent statusIntent;
     public void startCamera(Camera camera,Context mContext){
         mContext.startActivity();
     }
     public void BatteryConnected(Context mContext){//Live Status Connected
+        int mPlugType;
         if(mPlugType!=0 && mLastPlugType==0){
             StatusIntent statusIntent.setAction(Intent.ACTION_POWER_CONNECTED);
             mContext.sendBroadcast(statusIntent);
         }
+    }
+    public String getStatusIntent(StatusIntent statusIntent){
+        return statusIntent;
     }
     public void BatteryDisCOnnected(Intent intent,BatteryLevel mBatteryLevel){
             if(mBatteryLevel==0 && !isPowered() && ActivityManager.isSystemReady()){
@@ -41,11 +49,11 @@ public class BatteryListener extends BroadcastReceiver {
 
     public Context context;
     public int status=0;
+    public String getStatus(int status){
+        return status;
+    }
     public Boolean isCharging=false;
     public Reciever reciever;
-    public String getReciever(Reciever reciever ){
-        return reciever;
-    }
     public WifiP2pManager.PeerListListener =new WifiP2pManager.PeerListListener<>();
     Intent batteryStatus=context.regisgterReciever(null,ifilter);
     public void BatteryCharging(){
