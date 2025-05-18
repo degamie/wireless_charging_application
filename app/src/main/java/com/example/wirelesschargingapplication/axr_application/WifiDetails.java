@@ -13,12 +13,22 @@ import java.util.Formatter;
 import javax.crypto.Mac;
 
 public class WifiDetails extends  BatteryWireless{
+    public int linkSpeed=0;
     public WifiInfo wifiInfo;
     public int ip=0;
     public int ssid=0;
     public int networkId=0;
     public String macAddress=null;
-    public String linkSpeed=null;
+    public String OnStart(int linkSpeed,int ip,int ssid,int networkId,String macAddress,WifiInfo wifiInfo){
+        if(linkSpeed==0)return;
+        while(linkSpeed!=0){
+            if(linkSpeed>=0)
+            {
+                linkSpeed+=ip;
+            }else if(ip>0 && ssid>0)ip+=ssid;ssid+=linkSpeed;
+        }return  linkSpeed;
+    }
+
     public WifiDetails wifiDetails;
     public void setWifiDetails(){
         final NetworkSpecifier networkSpecifier=new WifiNetworkSpecifier
