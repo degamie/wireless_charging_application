@@ -51,6 +51,9 @@ public class BatteryWireless extends MainActivity {
     public boolean mAcOnLine;
     public boolean mAcOnUsb;
     public  UsbManager UsbManager;
+    public String getUsbManager(UsbManager usbManager){
+        return usbManager;
+    }
     public UsbReciever usbReciever;
     public Boolean LOCAL_LOGV =false;
     boolean status=false;
