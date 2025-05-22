@@ -16,6 +16,7 @@ public class WifiDetails extends  BatteryWireless{
     public int linkSpeed=0;
     public WifiInfo wifiInfo;
     public int ip=0;
+    public String getip(Integer ip){return ip;}//Fetching Ip Addr
     public int ssid=0;
     public int networkId=0;
     public String macAddress=null;
