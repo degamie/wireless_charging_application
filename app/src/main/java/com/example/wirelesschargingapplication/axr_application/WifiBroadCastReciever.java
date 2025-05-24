@@ -27,10 +27,13 @@ public class WifiBroadCastReciever extends BroadcastReceiver implements wifiChan
     public Channel channel;
     public MainActivity mainActivity;
     public IntentFilter intentFilter;
+    public String getIntentFilter(IntentFilter intentFilter){return  intentFilter; }//Fetching IntentFilter
+
     public Context context;
     public WifiManager wifiManager=new WifiManager();
 
     public final WifiBroadCastReciever listener;
+    public String getChannel(Channel channel){return channel;}//Fetching Channel
     private void onWifiChangeBroadcastReciever(Context context, Intent intent){
         super();
         this.wifiP2pManager=wifiP2pManager;
