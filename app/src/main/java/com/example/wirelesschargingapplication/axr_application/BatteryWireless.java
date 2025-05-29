@@ -48,6 +48,10 @@ public class BatteryWireless extends MainActivity {
     public int BATTERY_SCALE=100;
     public String mCriticalBatteryLevel;
     public BatteryState mBatteryStatus;
+
+    public String getBatteryStatus(BatteryState mBatteryStatus){
+        return mBatteryStatus;
+    }
     public boolean mAcOnLine;
     public boolean mAcOnUsb;
     public  UsbManager UsbManager;
