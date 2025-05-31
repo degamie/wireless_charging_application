@@ -45,6 +45,9 @@ public class BatteryListener extends BroadcastReceiver {
     public int status=0;
     public Boolean isCharging=false;
     public Reciever reciever;
+    public String getReciver(Reciever reciever){
+        return reciever;
+    }
     public String getReciever(Reciever reciever ){
         return reciever;
     }
