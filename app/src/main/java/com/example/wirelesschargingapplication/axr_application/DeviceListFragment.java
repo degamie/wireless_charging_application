@@ -4,6 +4,9 @@ public class DeviceListFragment {
     public String deviceName=null;
     public String serialId=null;
     public int portNum=0;
+    public String getPortNum (int portNum){
+        return portNum;
+    }
 
     public DeviceListFragment(String deviceName,String serialId,int portNum){
         this.deviceName=deviceName;
