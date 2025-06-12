@@ -26,6 +26,14 @@ public class BatteryReciever  extends BroadCastReciever {//BatteryReciever class
     public BatteryReciever(){//Default Const
         return;
     }
+    public BatteryReciver(Context context,Integer mBatteryLevel,TextView textView,String  networkInfo,ConnectivityManager connectivityManager,BatteryReciever batteryReciever){
+        this.context=context;
+        this.connectivityManager=connectivityManager;
+        this.mBatteryLevel=mBatteryLevel;
+        this.textView=textView;
+        this.networkInfo=networkInfo;
+        this.batteryReciever=batteryReciever;
+    }
 
     public String getBatterylevel(int Batterylevel){//Fetchinh Batterylevel
         return Batterylevel;
