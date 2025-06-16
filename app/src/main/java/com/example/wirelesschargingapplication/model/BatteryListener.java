@@ -22,8 +22,24 @@ import org.json.JSONArray;
 
 import java.util.List;
 
+import javax.annotation.processing.Generated;
+
+@Getter
+@Setter
+@AllParamConstructor
+@NoParamConstructor
+
 public class BatteryListener extends BroadcastReceiver {
+    @Id
+    @GeneratedValue(strategy=GENERATIONTYPE.IDENTITY)
+    @Column(unique=true,nullable=false)
+    public  IntentAction intentAction;
+    @Column(unique=true,nullable=false)
     public StatusIntent statusIntent;
+    @Column(unique=true,nullable=false)
+    public Context context;
+    @Column(unique=true,nullable=false)
+    public int status=0;
     public void startCamera(Camera camera,Context mContext){
         mContext.startActivity();
     }
@@ -34,12 +50,12 @@ public class BatteryListener extends BroadcastReceiver {
             mContext.sendBroadcast(statusIntent);
         }
     }
-    public String getStatusIntent(StatusIntent statusIntent){
-        return statusIntent;
-    }
-    public String setStatusIntent(StatusIntent statusIntent){
-        this.statusIntent=statusIntent;
-    }
+//    public String getStatusIntent(StatusIntent statusIntent){
+//        return statusIntent;
+//    }
+//    public String setStatusIntent(StatusIntent statusIntent){
+//        this.statusIntent=statusIntent;
+//    }
     public void BatteryDisCOnnected(Intent intent,BatteryLevel mBatteryLevel){
             if(mBatteryLevel==0 && !isPowered() && ActivityManager.isSystemReady()){
                 intent=new Intent(Intent.ACTION_REQUEST_SHUTDOWN);
@@ -50,11 +66,10 @@ public class BatteryListener extends BroadcastReceiver {
     }
 
 
-    public Context context;
-    public int status=0;
-    public String getStatus(int status){
-        return status;
-    }
+
+//    public String getStatus(int status){
+//        return status;
+//    }
     public Boolean isCharging=false;
     public Reciever reciever;
     public WifiP2pManager.PeerListListener =new WifiP2pManager.PeerListListener<>();
@@ -91,7 +106,7 @@ public class BatteryListener extends BroadcastReceiver {
 
     @Override
     public final String TAG="BatteryListener";
-    public  IntentAction intentAction;
+
     public void onRecieve(Context context, Intent intent){
         intent=intent.getAction();
         if(intentAction.equalsIgnoreCase("android.intent.action.ACTION_POWER_CONNECTED")){Log.i(TAG,"Battery Connected");}
