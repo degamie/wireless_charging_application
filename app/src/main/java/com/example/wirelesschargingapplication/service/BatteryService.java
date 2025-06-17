@@ -1,8 +1,9 @@
+import javax.naming.Context;
+
 @Service
 public class BatteryService{
     @Autowired
-    public BatteryRepository batteryRepository;
-    public String getAllBatteryById(String BatteryId){
-        return batteryRepository.saveAllBatteryById(BatteryId);
-    }
+    public BatteryRepository batteryListnerRepository;
+
+
 }
