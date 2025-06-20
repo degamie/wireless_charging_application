@@ -29,48 +29,70 @@ import java.io.File;
 import java.io.FileOutputStream;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.LED;
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
+@Getter
+@Setter
+@AllParamsConstructor
+@NoParamsConstructor
 public class BatteryWireless extends MainActivity {
+    @Id
+    @GeneratedValue(strategy=GENERATIONTYPE.IDENTITY)
+    @Column(unique=true,nullable=false)
     public Intent intent;
+    @Column(unique=true,nullable=false)
     public BatteryState batterystate;
+    @Column(unique=true,nullable=false)
     public LED led;
-
+    @Column(unique=true,nullable=false)
     public Integer mBatteryLevel;
-    public String getBatteryState(BatteryState batterystate){//Fetching batterystate
-        return batterystate;
-    }
-    public String getBatteryLevel(Integer mBatteryLevel){//Fetching BatteryLevel
-        return mBatteryLevel;
-    }
-    public String getBatteryIntent(Intent intent){//Fetching intent
-        return mBatteryLevel;
-    }
+    @Column(unique=true,nullable=false)
 
     public Boolean mSentHighBatteryBroadCast=false;
     public Boolean mHighBatteryClostWarning =false;
-
+    @Column(unique=true,nullable=false)
     public int START_SUCCESS=0;
+    @Column(unique=true,nullable=false)
     public int level=0;
-    public void setlevel(int level){return level;}//Binding Level
-
+    @Column(unique=true,nullable=false)
     public int scale=0;
 
     //V
+    @Column(unique=true,nullable=false)
     public int BATTERY_PLUGGED_NONE=0;
+    @Column(unique=true,nullable=false)
     public int mPlugType=0;
+//    public void setlevel(int level){return level;}//Binding Level
+@Column(unique=true,nullable=false)
     public static final String TAG=BatteryWireless.class.getSimpleName();
+    @Column(unique=true,nullable=false)
     public int BATTERY_SCALE=100;
+    @Column(unique=true,nullable=false)
     public String mCriticalBatteryLevel;
     public BatteryState mBatteryStatus;
+    @Column(unique=true,nullable=false)
     public boolean mAcOnLine;
     public boolean mAcOnUsb;
-    public String getUsbConnect(boolean mAcOnUsb){
-        return mAcOnUsb;
-    }
+    @Column(unique=true,nullable=false)
+//    public String getUsbConnect(boolean mAcOnUsb){
+//        return mAcOnUsb;
+//    }
     public  UsbManager UsbManager;
+    @Column(unique=true,nullable=false)
     public UsbReciever usbReciever;
+    @Column(unique=true,nullable=false)
     public Boolean LOCAL_LOGV =false;
+    @Column(unique=true,nullable=false)
     boolean status=false;
+    @Column(unique=true,nullable=false)
     private Object UEventObserver;
+//    public String getBatteryState(BatteryState batterystate){//Fetching batterystate
+////        return batterystate;
+////    }
+//    public String getBatteryLevel(Integer mBatteryLevel){//Fetching BatteryLevel
+//        return mBatteryLevel;
+//    }
+//    public String getBatteryIntent(Intent intent){//Fetching intent
+//        return mBatteryLevel;
+//    }
 
     //    BatteryStatus
     public Integer batteryStart(Integer mBatteryLevel,int level,int scale){
