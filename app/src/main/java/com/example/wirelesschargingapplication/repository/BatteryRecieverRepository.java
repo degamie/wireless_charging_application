@@ -14,6 +14,7 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 
 @Repository
 public interface  BatteryRecieverRepository  extends JpaRepository<BatteryReciever,String> {//BatteryReciever class inherititing BroadCastReciever
+        public List<BatteryReciever>saveAll();
      @Autowired
      public com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatteryReciever BatteryReciver;
      public String saveAllByBatteryLevel(Integer mBatteryLevel);
