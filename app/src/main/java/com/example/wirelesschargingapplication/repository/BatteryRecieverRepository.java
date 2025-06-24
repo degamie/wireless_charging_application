@@ -11,10 +11,15 @@ import android.widget.TextView;
 
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryWireless;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BroadCastReciever;
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatteryReciever;
+
+import java.util.List;
 
 @Repository
 public interface  BatteryRecieverRepository  extends JpaRepository<BatteryReciever,String> {//BatteryReciever class inherititing BroadCastReciever
-        public List<BatteryReciever>saveAll();
+    public List<BatteryReciever> findAll();//FindingAll The BatteryReciever
+    public List<BatteryReciever>saveAll();
+
      @Autowired
      public com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatteryReciever BatteryReciver;
      public String saveAllByBatteryLevel(Integer mBatteryLevel);
