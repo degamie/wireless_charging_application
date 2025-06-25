@@ -3,4 +3,5 @@ public interface BatteryListenerRepository extends JpaRepository<batterylistner,
     @Autowired
     public BatteryListener batterylistner;
     public  List<BatteryListener> saveAll(String BatteryId);
+    public  List<BatteryListener> saveAllById(String BatteryId);
 }
