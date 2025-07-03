@@ -15,4 +15,7 @@ public class BootRecieverService {
 public BootRecieverRepository bootRecieverRepository;
  public String getAllByLogSize(Integer LogSize){
  return bootRecieverRepository.saveAllByLogSize(LogSize);}
+ public String getAllByTag(String Tag){
+  return bootRecieverRepository.saveAllByTagSize(Tag);
+ }
 }
