@@ -18,4 +18,8 @@ public class BootRecieverController {
     public String getAllByLogSize(Integer LOG_SIZE){
         return bootRecieverService.getAllByLogSize(LOG_SIZE);
     }
+    @GetMapping("/save/{Tag}")//Fetching Tag size
+    public String getAllByTag(String Tag){
+        return bootRecieverRepository.saveAllByTagSize(Tag);
+    }
 }
