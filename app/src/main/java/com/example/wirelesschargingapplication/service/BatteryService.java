@@ -8,5 +8,7 @@ public class BatteryService{
         return batteryRepository.saveAllByWifiId(WifiId);
     }
 
-
+    public String setAllByWifiyId(long  WifiId){
+        return batteryRepository.findAllByWifiId(WifiId);
+    }
 }
