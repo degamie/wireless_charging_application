@@ -14,8 +14,12 @@ public class BatteryController{//BatteryController Class Declare
     @GetMapping("/save/{batteryName}")//Getting BatterName's Data
     public String getAllByBatteryName(String BatteryName){
         return batteryService.getAllByBatteryName(BatteryName);
-
     }
+    @PostMapping("/find/{WifiId}")//Posting WifiId in Server
+    public String setAllByWifiyId(long  WifiId){
+        return batteryService.setAllByWifiyId(WifiId);
+    }
+
 
 
 }
