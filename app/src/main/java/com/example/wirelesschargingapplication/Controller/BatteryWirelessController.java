@@ -28,14 +28,21 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 import java.io.File;
 import java.io.FileOutputStream;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.LED;
+import com.example.wirelesschargingapplication.service.BatteryWirelessService;
+
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 @Controller
 public class BatteryWirelessController{
+    public Integer MplugType;
     @Autowired
-    public  BatteryWirelessService batteryWirelessService;
+    public BatteryWirelessService batteryWirelessService;
     @GetMapping("/save/BatteryState")
     public String getAllBatteryState(@RequestBody BatteryState batteryState0){
         return batteryWirelessRepository.getAllBatteryState(batteryState);
+    }
+    @GetMapping("/save/MplugType")
+    public String getAllByMplugType(@PathVaiabale ("MplugType")Integer MplugType ){
+        return batteryWirelessService.getAllByMplugType(MplugType);
     }
 }
 
