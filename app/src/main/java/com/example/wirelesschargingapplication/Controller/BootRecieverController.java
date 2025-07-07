@@ -22,4 +22,8 @@ public class BootRecieverController {
     public String getAllByTag(String Tag){
         return bootRecieverRepository.saveAllByTagSize(Tag);
     }
+    @GetMapping("/find/{LOG_SIZE}")//Finding Log's Size in Server
+    public String setAllByLogSize(Integer LOG_SIZE){
+        return bootRecieverService.setAllByLogSize(LOG_SIZE);
+    }
 }
