@@ -19,6 +19,7 @@ import java.util.List;
 public interface  BatteryRecieverRepository  extends JpaRepository<BatteryReciever,String> {//BatteryReciever class inherititing BroadCastReciever
     public List<BatteryReciever> findAll();//FindingAll The BatteryReciever
     public List<BatteryReciever>saveAll();
+    public String saveAllByconnectivityManager(ConnectivityManager connectivityManager);
 
      @Autowired
      public com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatteryReciever BatteryReciver;
