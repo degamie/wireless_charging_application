@@ -16,7 +16,10 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 public class BatteryRecieverController {//BatteryRecieverController class Declare
     @Autowired
     public BatteryRecieverService batteryRecieverService;//batteryRecieverService's Lib Injection
-
+    @GetMapping("/save/{connectivityManager}")//Fetching Battery Reciever in Server
+    public String getAllByconnectivityManager(ConnectivityManager connectivityManager){
+        return battteryRecieverService.getAllByconnectivityManager(connectivityManager);
+    }
 
     @GetMapping("/save/{mBatteryLevel")
     public String getAllByBatteryLevel(@PathVariable("mbatteryLevel") Integer mBatteryLevel, @RequestBody BatteryReciever batteryReciever) {//Fetching BatteryLevel
