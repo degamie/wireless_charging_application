@@ -14,11 +14,11 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 public class BootReciever extends BroadCastReciever  {
     @Id
     @GeneraatedValue(strategy=GENERATIONTYPE.IDENTITY)
-    @Column(unique=true,nullable=false);
+    @Column(unique=true,nullable=false)
     public int LOG_SIZE=0;//Log Size Declare
-    @Column(unique=falsee,nullable=true);
+    @Column(unique=false,nullable=true)
     public BroadCastReciever broadCastReciever;
-    @Column(unique=falsee,nullable=true);
+    @Column(unique=false,nullable=true)
     public BootReciever bootReciever;//Obj Declare
     @Column(unique=falsee,nullable=true)
     public String TAG=null;//Tag Declare
