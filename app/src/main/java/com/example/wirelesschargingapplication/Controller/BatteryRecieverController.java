@@ -26,4 +26,9 @@ public class BatteryRecieverController {//BatteryRecieverController class Declar
 
         return batteryRecieverService.getAllByBatteryLevel(mBatteryLevel);
     }
+    @PostMapping("findAll/{mBatteryLevel}")//Binding All batteryLevel
+    public String setAllByBatteryLevel(Integer mBatteryLevel){
+        return  battteryRecieverRepository.findAllByBatteryLevel(mBatteryLevel);
+    }
+
 }
