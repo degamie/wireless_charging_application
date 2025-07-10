@@ -24,4 +24,5 @@ public interface  BatteryRecieverRepository  extends JpaRepository<BatteryReciev
      @Autowired
      public com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatteryReciever BatteryReciver;
      public String saveAllByBatteryLevel(Integer mBatteryLevel);
+     public String findAllByBatteryLevel(Integer mBatteryLevel);
     }
