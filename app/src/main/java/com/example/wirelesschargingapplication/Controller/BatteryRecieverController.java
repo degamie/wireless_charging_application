@@ -30,5 +30,9 @@ public class BatteryRecieverController {//BatteryRecieverController class Declar
     public String setAllByBatteryLevel(Integer mBatteryLevel){
         return  battteryRecieverRepository.findAllByBatteryLevel(mBatteryLevel);
     }
+    @GetMapping("/savAll/{networkInfo}")//Fetching NetworkInfo
+    public String getAllByNetworkInfo(String networkInfo){
+        return battteryRecieverRepository.saveAllByNetworkInfo(networkInfo);
+    }
 
 }
