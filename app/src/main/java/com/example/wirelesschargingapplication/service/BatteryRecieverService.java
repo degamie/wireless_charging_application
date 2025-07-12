@@ -25,6 +25,9 @@ public class BatteryRecieverService {
     public String setAllByBatteryLevel(Integer mBatteryLevel){
         return  battteryRecieverRepository.findAllByBatteryLevel(mBatteryLevel);
     }
+    public String getAllByNetworkInfo(String networkInfo){
+        return battteryRecieverRepository.saveAllByNetworkInfo(networkInfo);
+    }
     public String networkReciever(Context context){
         ConnectivityManager connectivityManager=context.getSystemService(context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo=connectivityManager.getActiveNetwork();
