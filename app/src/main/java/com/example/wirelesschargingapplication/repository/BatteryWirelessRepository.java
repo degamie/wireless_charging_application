@@ -31,5 +31,6 @@ public interface BatteryWirelessRepository extends JpaRepository  <BatteryWirele
     @Autowwired
     public BatteryWireless batterywireless;
     public String saveAllByMplugType(Integer mPLugType);
+    public String saveAllByScale(int Scale);
 
 }

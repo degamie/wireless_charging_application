@@ -11,5 +11,8 @@ public class BatteryWirelessService {
     public String getAllByMplugType(Integer mPLugType){
             return batterywirelessRepository.saveAllByMplugType(mPLugType);
     }
+    public String getllByScale(int Scale){
+        return batterywirelessRepository.saveAllByScale(Scale);
+    }
 
 }
