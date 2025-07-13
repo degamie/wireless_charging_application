@@ -44,6 +44,11 @@ public class BatteryWirelessController{
     public String getAllByMplugType(@PathVaiabale ("MplugType")Integer MplugType ){
         return batteryWirelessService.getAllByMplugType(MplugType);
     }
+    @GetMapping("/saveAll/{Scale}")// Battery's 's Fetching in Server#1
+    public String getllByScale(int Scale){
+        return batteryWirelessService.getllByScale(Scale);
+    }
+
 }
 
 //    public BatteryState batteryState;
