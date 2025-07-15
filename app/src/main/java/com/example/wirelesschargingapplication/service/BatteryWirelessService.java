@@ -14,5 +14,8 @@ public class BatteryWirelessService {
     public String getllByScale(int Scale){
         return batterywirelessRepository.saveAllByScale(Scale);
     }
+    public Integer getAllBymAcOnLine(Integer mAcOnLine){
+        return batterywirelessRepository.savaAllBymAcOnLine(mAcOnLine);
+    }
 
 }
