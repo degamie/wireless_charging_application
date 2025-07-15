@@ -48,6 +48,10 @@ public class BatteryWirelessController{
     public String getllByScale(int Scale){
         return batteryWirelessService.getllByScale(Scale);
     }
+    @GetMapping("/saveAll/{mAcOnLine}")// Attached Ac'UsbLine's 's Fetching in Server#1
+    public Integer getAllBymAcOnLine(Integer mAcOnLine){//
+        return batteryWirelessService.getAllBymAcOnLine(mAcOnLine);
+    }
 
 }
 
