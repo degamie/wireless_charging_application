@@ -33,12 +33,13 @@ import com.example.wirelesschargingapplication.service.BatteryWirelessService;
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 @Controller
 public class BatteryWirelessController{
+    public UsbReciever usbReciever;
     public Integer MplugType;
     @Autowired
     public BatteryWirelessService batteryWirelessService;
     @GetMapping("/save/BatteryState")
-    public String getAllBatteryState(@RequestBody BatteryState batteryState0){
-        return batteryWirelessRepository.getAllBatteryState(batteryState);
+    public String getAllBatteryState(@RequestBody BatteryState batteryState){
+        return batteryWirelessService.getAllBatteryState(batteryState);
     }
     @GetMapping("/save/MplugType")
     public String getAllByMplugType(@PathVaiabale ("MplugType")Integer MplugType ){
@@ -52,6 +53,11 @@ public class BatteryWirelessController{
     public Integer getAllBymAcOnLine(Integer mAcOnLine){//
         return batteryWirelessService.getAllBymAcOnLine(mAcOnLine);
     }
+    @PostMapping("findAll/usbReciver")//Binding Usb Receiever in Server
+    public String setAllByUsbReciever(UsbReciever usbReciever){
+        return batteryWirelessService.setAllByUsbReciever(usbReciever);
+    }
+
 
 }
 
