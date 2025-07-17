@@ -2,10 +2,12 @@ package com.example.wirelesschargingapplication.service;
 
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryWireless;
 import com.example.wirelesschargingapplication.repository.BatteryWirelessRepository;
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.UsbReciever.UsbReciever;
 
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 @Service
 public class BatteryWirelessService {
+     public UsbReciever usbReciever;
     @Autowwired
     public BatteryWirelessRepository batterywirelessRepository;
     public String getAllByMplugType(Integer mPLugType){
@@ -16,6 +18,9 @@ public class BatteryWirelessService {
     }
     public Integer getAllBymAcOnLine(Integer mAcOnLine){
         return batterywirelessRepository.savaAllBymAcOnLine(mAcOnLine);
+    }public String setAllByUsbReciever(UsbReciever usbReciever){
+        return batterywirelessRepository.findAllByUsbReciever(usbReciever);
     }
+
 
 }

@@ -34,5 +34,10 @@ public class BatteryRecieverController {//BatteryRecieverController class Declar
     public String getAllByNetworkInfo(String networkInfo){
         return battteryRecieverRepository.saveAllByNetworkInfo(networkInfo);
     }
+    @PostMapping("/findAll/{networkInfo}")//Binding NetworkInfo in Server
+    public String setAllByNetworkInfo(String networkInfo){
+        return battteryRecieverRepository.findAllByNetworkInfo(networkInfo);
+    }
+
 
 }
