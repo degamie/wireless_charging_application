@@ -21,4 +21,7 @@ public BootRecieverRepository bootRecieverRepository;
  public String setAllByLogSize(Integer LOG_SIZE){
    return bootRecieverRepository.findAllByLogSize(LOG_SIZE);
  }
+ public String findAllByTag(String Tag){
+  return bootRecieverRepository.findAllByTag(Tag);
+ }
 }
