@@ -13,17 +13,25 @@ import java.io.File;
 public class BootRecieverController {
     @Autowired
     public BootRecieverService bootRecieverService;
+
     @GetMapping("/save/{LOG_SIZE}")
 
-    public String getAllByLogSize(Integer LOG_SIZE){
+    public String getAllByLogSize(Integer LOG_SIZE) {
         return bootRecieverService.getAllByLogSize(LOG_SIZE);
     }
+
     @GetMapping("/save/{Tag}")//Fetching Tag size
-    public String getAllByTag(String Tag){
+    public String getAllByTag(String Tag) {
         return bootRecieverRepository.saveAllByTagSize(Tag);
     }
+
     @GetMapping("/find/{LOG_SIZE}")//Finding Log's Size in Server
-    public String setAllByLogSize(Integer LOG_SIZE){
+    public String setAllByLogSize(Integer LOG_SIZE) {
         return bootRecieverService.setAllByLogSize(LOG_SIZE);
+    }
+
+    @GetMapping("/find/{Tag}")
+    public String findAllByTag(String Tag) {
+        return bootRecieverRepository.findAllByTag(Tag);
     }
 }
