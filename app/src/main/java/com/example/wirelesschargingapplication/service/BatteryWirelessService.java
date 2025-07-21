@@ -21,6 +21,9 @@ public class BatteryWirelessService {
     }public String setAllByUsbReciever(UsbReciever usbReciever){
         return batterywirelessRepository.findAllByUsbReciever(usbReciever);
     }
+    public String geteAllBymAcOnUsb(Integer mAcOnUsb){
+        return batterywirelessRepository.saveAllBymAcOnUsb(mAcOnUsb)
+    }
 
 
 }
