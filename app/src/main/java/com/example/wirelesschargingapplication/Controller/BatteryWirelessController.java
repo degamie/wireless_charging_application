@@ -57,6 +57,10 @@ public class BatteryWirelessController{
     public String setAllByUsbReciever(UsbReciever usbReciever){
         return batteryWirelessService.setAllByUsbReciever(usbReciever);
     }
+    @GetMapping("/saveAll/{mAcOnUsb}")//Fetching mAcOnUsb in Server
+    public String geteAllBymAcOnUsb(Integer mAcOnUsb){
+        return batteryWirelessService.geteAllBymAcOnUsb(mAcOnUsb);
+    }
 
 
 }
