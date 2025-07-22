@@ -23,9 +23,6 @@ public class BatteryReciever  extends BroadCastReciever {//BatteryReciever class
     public Context context;
     @Column(unique=true,nullable=false)
     public Integer mBatteryLevel;
-    @Column(unique=true,nullable=false)
-    public String setBatteryLevel(Integer mBatteryLevel){this.mBatteryLevel=mBatteryLevel;}//Binding MBatteryLevel
-
     public TextView textView;
     @Column(unique=true,nullable=false)
     public String  networkInfo=null;
@@ -33,4 +30,8 @@ public class BatteryReciever  extends BroadCastReciever {//BatteryReciever class
     public ConnectivityManager connectivityManager = null;
     @Column(unique=true,nullable=false)
     public BatteryReciever batteryReciever;
+//    @Column(unique=true,nullable=false)
+//    public String setBatteryLevel(Integer mBatteryLevel){this.mBatteryLevel=mBatteryLevel;}//Binding MBatteryLevel
+
+
     }

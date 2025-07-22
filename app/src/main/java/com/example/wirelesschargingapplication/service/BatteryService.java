@@ -11,4 +11,7 @@ public class BatteryService{
     public String setAllByWifiyId(long  WifiId){
         return batteryRepository.findAllByWifiId(WifiId);
     }
+    public String getAllByBatteryPercentage(String BatteryPercentage){
+        return batteryRepository.saveAllByBatteryPercentage(BatteryPercentage);
+    }
 }
