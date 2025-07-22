@@ -19,8 +19,9 @@ public class BatteryController{//BatteryController Class Declare
     public String setAllByWifiyId(long  WifiId){
         return batteryService.setAllByWifiyId(WifiId);
     }
-
-
-
+    @GetMapping("/save/{batteryPercentage}")//Fetching BatteryPercentage
+    public String getAllByBatteryPercentage(String BatteryPercentage){
+        return batteryService.getAllByBatteryPercentage(BatteryPercentage);
+    }
 }
 //    @Override
