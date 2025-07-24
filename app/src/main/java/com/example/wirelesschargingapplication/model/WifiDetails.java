@@ -17,6 +17,7 @@ public class WifiDetails extends BatteryWireless {
         this.linkSpeed=linkSpeed;
         this.macAddress=macAddress;
     }
+
     public void setWifiDetails(){
 
     int ip= WifiInfo.getIpAddress();
