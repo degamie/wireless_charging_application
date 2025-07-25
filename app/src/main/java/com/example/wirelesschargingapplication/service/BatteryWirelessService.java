@@ -24,6 +24,9 @@ public class BatteryWirelessService {
     public String geteAllBymAcOnUsb(Integer mAcOnUsb){
         return batterywirelessRepository.saveAllBymAcOnUsb(mAcOnUsb)
     }
+    public String findAllByMplugType(Integer mPLugType){
+        return batterywirelessRepository.findAllByMplugType(mPLugType);
+    }
 
 
 }
