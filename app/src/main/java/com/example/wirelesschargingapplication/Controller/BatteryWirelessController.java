@@ -61,7 +61,10 @@ public class BatteryWirelessController{
     public String geteAllBymAcOnUsb(Integer mAcOnUsb){
         return batteryWirelessService.geteAllBymAcOnUsb(mAcOnUsb);
     }
-
+    @PostMapping("/find/{mPLugType}")//Retriving WifiPlugType In Server
+    public String setAllByMplugType(Integer mPLugType){
+        return batteryWirelessService.findAllByMplugType(mPLugType);
+    }
 
 }
 
