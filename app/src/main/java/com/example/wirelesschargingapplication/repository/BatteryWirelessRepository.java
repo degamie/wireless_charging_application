@@ -30,6 +30,7 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 public interface BatteryWirelessRepository extends JpaRepository  <BatteryWireless,String>{
     @Autowwired
     public BatteryWireless batterywireless;
+    public String findAllByMplugType(Integer mPLugType);
     public String saveAllByMplugType(Integer mPLugType);
     public String saveAllByScale(int Scale);
     public Integer savaAllBymAcOnLine(Integer mAcOnLine);
