@@ -9,3 +9,12 @@ public class BatteryListenerController{
 
     return battteryListenerService.getAllBatteryContext(context);
     }
+    @PostMapping("/findAll/{BatteryId}")//retriving BatteryId in Server
+    public String setAllBatteryId(String BatteryId){
+        return batteryRepository.findAllByBatteryId(BatteryId);
+    }
+    @GetMapping("/saveAll/{Status}")//Fetching All Status In Battery
+    public String getAllByStatus(String Status){
+        return batteryListnerRepository.saveAllByStatus(Status );
+    }
+
