@@ -9,5 +9,6 @@ public  interface  BootRecieverRepository extends JpaRepsoitory<BootReciever,Str
  public String saveAllByTag(String Tag);
  public String findAllByTag(String Tag);
  public String saveAllByBatteryLevel(Integer mBatteryLevel);
+ public String saveAllRecieverLine(String RecieverLine);
 
 }
