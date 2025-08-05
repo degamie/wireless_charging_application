@@ -34,4 +34,8 @@ public class BootRecieverController {
     public String findAllByTag(String Tag) {
         return bootRecieverRepository.findAllByTag(Tag);
     }
+    @GetMappinng("/save/{RecieverLine}")
+    public String getAllRecieverLine(String RecieverLine){//Fethcing RecieverLine in Server     
+        return BootRecieverService.getAllRecieverLine(RecieverLine);
+    }
 }
