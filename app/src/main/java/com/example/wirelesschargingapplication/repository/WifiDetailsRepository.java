@@ -7,5 +7,5 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 @Repository
 public interface WifiDetailsRepository extends jpaRepository <WifiDetailsRepository,String>{
     public String saveAllByWifiId(String WifiId);
-
+    public String findAllByWifiId(String WifiId);
 }
