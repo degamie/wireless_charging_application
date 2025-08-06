@@ -14,6 +14,9 @@ public class WifiDetailsService {
     public String getAllByWifiId(String WifiId){
         return wifiDetailsService.getAllByWifiId(WifiId);
     }
-
+    @GetMapping("/saveAll/{WifiId}")
+    public String  setAllByWifiId(String WifiId){
+        return wifiDetailsRepository.findAllByWifiId(WifiId);
+    }
 
 }
