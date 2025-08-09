@@ -9,5 +9,9 @@ public interface BatteryRepository extends JpaRepository<Battery,String>{
     public String saveAllByBatteryName(String BatteryName);
     public String saveAllByBatteryPercentage(String BatteryPercentage);
 
+//dev by Sarthak Mittal(S
+Degamiesign)("10/08/2025")
+public String findAllByBatteryId(String Battery id);
+
 
 }
