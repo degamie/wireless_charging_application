@@ -28,5 +28,5 @@ public interface  BatteryRecieverRepository  extends JpaRepository<BatteryReciev
      public String saveAllByNetworkInfo(String networkInfo);
      public String findAllByNetworkInfo(String networkInfo);
      public String findAllByTextInfo(String textInfo);
-     public String saveAllByBatteryId(String BatteryId);
+     public String saveAllByTextInfo(String textInfo);
     }
