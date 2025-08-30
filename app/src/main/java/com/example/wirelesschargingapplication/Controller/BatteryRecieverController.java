@@ -34,5 +34,19 @@ public class BatteryRecieverController {//BatteryRecieverController class Declar
     public String getAllByNetworkInfo(String networkInfo){
         return battteryRecieverRepository.saveAllByNetworkInfo(networkInfo);
     }
+    @PostMapping("/findAll/{networkInfo}")//Binding NetworkInfo in Server
+    public String setAllByNetworkInfo(String networkInfo){
+        return battteryRecieverRepository.findAllByNetworkInfo(networkInfo);
+    }
+    @PostMapping("/findAll/{mAcOnUsb}")
+    public String setAllBymAcOnUsb(Integer mAcOnUsb){
+        return battteryRecieverRepository.findAllBymAcOnUsb(mAcOnUsb);//Retrival All Ac Type's Usb's Connect in Server
+    }
+    @PutMapping("/updateAll/{networkInfo}")//Updating All NetworkInfo in Service Layer
+    public String upateAllBynetworkInfo(String networkInfo){
+        return batteryRecieverService.upateAllBynetworkInfo()
+    }
+
+
 
 }
