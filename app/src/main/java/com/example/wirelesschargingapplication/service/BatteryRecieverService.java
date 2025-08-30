@@ -28,11 +28,15 @@ public class BatteryRecieverService {
     public String getAllByNetworkInfo(String networkInfo){
         return battteryRecieverRepository.saveAllByNetworkInfo(networkInfo);
     }
+    public String setAllByNetworkInfo(String networkInfo){
+        return battteryRecieverRepository.findAllByNetworkInfo(networkInfo);
+    }
+//    public String findAllByTextInfo(String textInfo)
     public String networkReciever(Context context){
         ConnectivityManager connectivityManager=context.getSystemService(context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo=connectivityManager.getActiveNetwork();
         return networkInfo!=null && networkInfo.isConnected();
-    }public Integer batteryChanged(mBatteryLevel){
+    }public Integer batteryChanged(Integer mBatteryLevel){
         if(mBatteryLevel==0)return 0;
         while(mBatteryLevel!=0){
                 else if(mBatteryLevel>0)mBatteryLevel++;
@@ -45,5 +49,13 @@ public class BatteryRecieverService {
         int BatteryPercentage=intent.getIntExtra("level",0);
         TextView textView.setText(BatteryPercentage+"%");
 
+    }
+    public String setAllBymAcOnUsb(Integer mAcOnUsb){
+        return battteryRecieverRepository.findAllBymAcOnUsb(mAcOnUsb);//Binding All Ac Type's Usb's Connect
+}
+    public String upateAllBynetworkInfo(String networkInfo,Integer mBatteryLevel){
+        batteryRecieverRepository= battteryRecieverRepository.findAllBynetworkInfo(networkInfo);
+        networkInfo.contains(mBatteryLevel);
+        battteryRecieverRepository.saveAllbyNetworkInfo(networkInfo);
     }
     }
