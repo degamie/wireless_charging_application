@@ -8,4 +8,7 @@ public class UsbRecieverService{
     public String setAllByProductId(String ProductId){
         return usbRecieverRepository.findAllByProductId(ProductId);
     }
+    public String getAllVendorID(String VendorID){
+        return  usbRecieverRepository.saveAll(VendorID);
+    }
 }
