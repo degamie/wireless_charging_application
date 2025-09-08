@@ -4,6 +4,7 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 public interface BatteryListenerRepository extends JpaRepository<batterylistner,String>{
     @Autowired
     public BatteryListener batterylistner;
+    public String findAllByContext(Context context);
     public  List<BatteryListener> saveAllByContext(String BatteryId);
     public List<BatteryListener> saveAll(String BatteryId);
     public  List<BatteryListener> saveAllById(String BatteryId);
