@@ -27,6 +27,9 @@ public class BatteryWirelessService {
     public String findAllByMplugType(Integer mPLugType){
         return batterywirelessRepository.findAllByMplugType(mPLugType);
     }
+    public String setAllBYScale(int Scale){
+         return batterywirelessRepository.findAllBYScale(Scale);
+    }
 
 
 }
