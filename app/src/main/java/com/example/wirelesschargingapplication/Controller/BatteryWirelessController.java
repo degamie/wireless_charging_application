@@ -31,11 +31,8 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 import com.example.wirelesschargingapplication.service.BatteryWirelessService;
 
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
-@Controller//Controller's  Declare #1
+@Controller
 public class BatteryWirelessController{
-    public BatteryWirelessController batteryWirelessController=new BatteryWirelessController(); //Controller's Obj Declare
-
-
     public UsbReciever usbReciever;
     public Integer MplugType;
     @Autowired
@@ -54,7 +51,7 @@ public class BatteryWirelessController{
     }
     @GetMapping("/saveAll/{mAcOnLine}")// Attached Ac'UsbLine's 's Fetching in Server#1
     public Integer getAllBymAcOnLine(Integer mAcOnLine){//
-        return batteryWirelessService.saveAllBymAcOnUsb(mAcOnLine);
+        return batteryWirelessService.getAllBymAcOnLine(mAcOnLine);
     }
     @PostMapping("findAll/usbReciver")//Binding Usb Receiever in Server
     public String setAllByUsbReciever(UsbReciever usbReciever){
@@ -68,11 +65,10 @@ public class BatteryWirelessController{
     public String setAllByMplugType(Integer mPLugType){
         return batteryWirelessService.findAllByMplugType(mPLugType);
     }
-//    @GetMapping()
-//    public String getAllBymAcOnUsb(Integer mAcOnUsb){
-//        return batterywirelessRepository.saveAllBymAcOnUsb(mAcOnUsb);
-//    }
-
+    @PostMapping("/findAll/{Scale}")//Finding All Scale in Server
+    public String setAllBYScale(int Scale){
+        return batterywirelessRepository.findAllBYScale(Scale);
+    }
 
 }
 
