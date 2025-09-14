@@ -12,8 +12,8 @@ public class WifiDetailsService {
     public String getAllByWifiId(String WifiId){
         return wifiDetailsRepository.saveAllByWifiId(WifiId);
     }
-    public String  setAllByWifiId(String WifiId){
-        return wifiDetailsRepository.findAllByWifiId(WifiId);
+    public String setAllByWifiID(String WifiID){
+        return wifiDetailsRepository.findAllByWifiID(WifiID);
     }
 
 }
