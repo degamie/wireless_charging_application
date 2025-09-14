@@ -8,7 +8,6 @@ public  interface  BootRecieverRepository extends JpaRepsoitory<BootReciever,Str
  public String saveAllByLogSize(Integer LOG_SIZE);
  public String saveAllByTag(String Tag);
  public String findAllByTag(String Tag);
- public String saveAllByBatteryLevel(Integer mBatteryLevel);
- public String saveAllRecieverLine(String RecieverLine);
+ public Strign saveAllByFIle(String File);
 
 }
