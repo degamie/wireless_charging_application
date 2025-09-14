@@ -24,7 +24,7 @@ public BootRecieverRepository bootRecieverRepository;
  public String findAllByTag(String Tag){
   return bootRecieverRepository.findAllByTag(Tag);
  }
- public String getAllRecieverLine(String RecieverLine){
-  return BootRecieverRepository.saveAllRecieverLine(RecieverLine);
+ public Strign getAllByFIle(String File){
+  return bootRecieverRepository.saveAllByFile(File);
  }
 }
