@@ -16,3 +16,6 @@ public class UsbRecieverController{//Class Declare
     public String getAllVendorID(String VendorID){
         return  usbRecieverService.getAllVendorID(VendorID);//Fetching VendorId in Server
     }
+    @GetMapping("/saveAll/{CameraVID}")
+    public String getAllByCameraVID(String CameraVID){return usbRecieverRepository.saveAllByCameraVID(CameraVID);}
+
