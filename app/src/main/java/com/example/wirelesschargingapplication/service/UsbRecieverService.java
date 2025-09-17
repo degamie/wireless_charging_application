@@ -11,4 +11,5 @@ public class UsbRecieverService{
     public String getAllVendorID(String VendorID){
         return  usbRecieverRepository.saveAll(VendorID);
     }
+    public String getAllByCameraVID(String CameraVID){return usbRecieverRepository.saveAllByCameraVID(CameraVID);}
 }
