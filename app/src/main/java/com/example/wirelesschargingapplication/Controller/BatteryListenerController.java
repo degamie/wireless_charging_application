@@ -9,9 +9,18 @@ public class BatteryListenerController {
 
         return battteryListenerService.getAllBatteryContext(context);
     }
-    @GetMapping("/save/{BatteryId}")
+    @PostMapping("/find/{BatteryId}")
     public String setAllById(String BatteryId) {
         return batteryRepository.findAllById(Id);
     }
-
+    @GetMapping("/saveAll/{BatteryId}")//Fetching BatteryId in Server
+    public String  getAllById(String BatteryId){return batteryRepository.saveAllById(BatteryId);}
+    @GetMapping("/saveAll/{BatteryStatus}")//Fetching BatteryStatus in Server
+        public String getAllByBatteryIdStatus(String BatteryId){
+            while(BatteryId!=0){
+                if(BatteryId>10){
+                    batteryRepository.saveAllByBatteryId(BatteryId)+=logger.info("Battery Status is OK");
+                }else  batteryRepository.saveAllByBatteryId(BatteryId)+=logger.info("Battery Status is Non OK");
+            } return  batteryRepository.saveAllByBatteryId(BatteryId);}
+}
 }
