@@ -17,4 +17,7 @@ public class ModelSelectorService{
     public String getAllCameraSelector(Camera arcam){
         return modelSelectorRepository.saveALlCameraSelector(arcam);
     }
+    public String setAllCameraSelector(Camera arcam){
+        return findAllCameraSelector(arcam);
+    }
 }
