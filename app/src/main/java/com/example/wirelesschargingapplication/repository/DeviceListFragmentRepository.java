@@ -6,5 +6,6 @@ import java.util.List;
 public interface DeviceListRepsitory extends JpaRepository<DeviceListFragment,String> {  //Fetching and Retrieving All DeviceListFragment's Params
     public List<DeviceListFragment> saveAll();
     public String findAll();
+    public String findAlldserialById(String serialId);
 
 }
