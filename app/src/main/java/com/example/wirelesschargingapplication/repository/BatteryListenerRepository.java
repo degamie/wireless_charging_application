@@ -11,4 +11,5 @@ public interface BatteryListenerRepository extends JpaRepository<batterylistner,
     public  List<BatteryListener> saveAllById(String BatteryId);
     public String findAllById(String BatteryId);
     public String saveAllByBatteryStatus(String BatteryId);
+    public String findAllByBatteryStatus(Sting Status);
 }
