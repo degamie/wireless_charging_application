@@ -20,5 +20,7 @@ public class BatteryListenerService {//BatteryListenerService class declare
                    batteryRepository.saveAllByBatteryId(BatteryId)+=logger.info("Battery Status is OK");
                }else  batteryRepository.saveAllByBatteryId(BatteryId)+=logger.info("Battery Status is Non OK");
            } return  batteryRepository.saveAllByBatteryId(BatteryId);}
-
+    public String setAllByBatteryStatus(Sting Status){
+          return batteryRepository.findAllByBatteryStatus(Status);
+    }
 }
