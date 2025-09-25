@@ -6,5 +6,8 @@ public class DeviceListController{
     public String setAlldserialById(String serialId){
         return  deviceListService.findAlldserialById(serialId);
     }
-
+    @GetMapping("/saveAll/{serialId}")
+    public String getAlldserialById(String serialId){//Fetching All SerialIds
+        return deviceListService.saveAlldserialById(serialId);
+    }
 }
