@@ -9,5 +9,6 @@ public interface WifiDetailsRepository extends jpaRepository <WifiDetailsReposit
     public String saveAllByWifiId(String WifiId);
     public String findAllByWifiID(String WifiID);
     public String saveAllByWifiName(String WifiName);
-
+    public String findAllByWIfiName(String WifiName);
+public String saveAllBymaAddress(String mAcAddress);
 }
