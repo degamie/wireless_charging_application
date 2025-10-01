@@ -12,4 +12,7 @@ public class UsbRecieverService{
         return  usbRecieverRepository.saveAll(VendorID);
     }
     public String getAllByCameraVID(String CameraVID){return usbRecieverRepository.saveAllByCameraVID(CameraVID);}
+    public String getAllByDevice(Device device){
+        return usbRecieverRepository.saveAllByDevice(device);
+    }
 }
