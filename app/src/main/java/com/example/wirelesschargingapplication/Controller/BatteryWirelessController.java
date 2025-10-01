@@ -67,8 +67,10 @@ public class BatteryWirelessController{
     }
     @PostMapping("/findAll/{Scale}")//Finding All Scale in Server
     public String setAllBYScale(int Scale){
-        return batterywirelessRepository.findAllBYScale(Scale);
+        return batteryWirelessService.findAllBYScale(Scale);
     }
+    @GetMapping("/saveAll/{Scale}")
+    public String saveAllByScale(Integer Scale){return batteryWirelessService.saveAllByScale(Scale);}
 
 }
 
