@@ -30,6 +30,5 @@ public class BatteryWirelessService {
     public String setAllBYScale(int Scale){
          return batterywirelessRepository.findAllBYScale(Scale);
     }
-
-
+    public String saveAllByScale(Integer Scale){return batterywirelessRepository.saveAllByScale(Scale);}
 }
