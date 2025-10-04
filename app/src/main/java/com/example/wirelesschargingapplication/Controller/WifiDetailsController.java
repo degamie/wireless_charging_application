@@ -6,7 +6,7 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 import com.example.wirelesschargingapplication.repository.WifiDetailsRepository;
 
 @Controller
-public class WifiDetailsService {
+public class WifiDetailsController {
     WifiDetailsController wifiDetailsController=new WifiDetailsController();
     @AutoWired
     public WifiDetailsService wifiDetailsService;
@@ -14,9 +14,14 @@ public class WifiDetailsService {
     public String getAllByWifiId(String WifiId){
         return wifiDetailsService.getAllByWifiId(WifiId);
     }
-    @GetMapping("/saveAll/{WifiId}")
-    public String  setAllByWifiId(String WifiId){
-        return wifiDetailsRepository.findAllByWifiId(WifiId);
+    @PostMapping("/findAll/{WifiID}")
+    public String setAllByWifiID(String WifiID){//Retriving WifiID in Server
+        return wifiDetailsService.findAllByWifiID(WifiID);
     }
+    @GetMapping("/saveAll/{WifiID}save")
+    public String getAllByipv6Address(String mAcAddress){
+        return wifiDetailsRepository.saveAllByipv6Address get
+    }
+
 
 }
