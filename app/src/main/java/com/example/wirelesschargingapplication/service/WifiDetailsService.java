@@ -15,5 +15,7 @@ public class WifiDetailsService {
     public String setAllByWifiID(String WifiID){
         return wifiDetailsRepository.findAllByWifiID(WifiID);
     }
-
+    public String getAllByipv6Address(String mAcAddress){
+        return wifiDetailsRepository.saveAllByipv6Address get
+    }
 }
