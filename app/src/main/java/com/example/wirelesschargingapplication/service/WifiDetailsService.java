@@ -16,6 +16,12 @@ public class WifiDetailsService {
         return wifiDetailsRepository.findAllByWifiID(WifiID);
     }
     public String getAllByipv6Address(String mAcAddress){
-        return wifiDetailsRepository.saveAllByipv6Address get
+        return wifiDetailsRepository.saveAllByipv6Address
+    }
+    public String  setAllByipv6Address(String ipv6Address){
+        return  wifiDetailsRepository.findAllipv6Address(ipv6Address);
+    }
+    public String setAllBymAcAddress(String mAcAddress){
+        return  wifiDetailsRepository.findAllBymAcAddress(mAcAddress);
     }
 }
