@@ -6,11 +6,13 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 
 @Repository
 public interface WifiDetailsRepository extends jpaRepository <WifiDetailsRepository,String>{
+    public String findAllBymAcAddress(String mAcAddress);//Finding  macAddress in WifiDetails
     public String saveAllByWifiId(String WifiId);
     public String findAllByWifiID(String WifiID);
     public String saveAllByWifiName(String WifiName);
     public String findAllByWIfiName(String WifiName);
 public String saveAllBymaAddress(String mAcAddress);
-public String saveAllByipv6Address(String mAcAddress);
-public String findAllByipv6Address(String mAcAddress);
+public String saveAllByipv6Address(String ipv6Address);
+public String findAllByipv6Address(String ipv6Address);
+
 }
