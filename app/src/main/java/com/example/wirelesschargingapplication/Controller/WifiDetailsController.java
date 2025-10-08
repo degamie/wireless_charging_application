@@ -22,10 +22,15 @@ public class WifiDetailsController {
     public String getAllByipv6Address(String mAcAddress){
         return wifiDetailsService.saveAllByipv6Address get
     }
-    @PostMapping("/findAll/{WifiID}save")
+    @PostMapping("/findAll/{WifiID}")
     public String  setAllByipv6Address(String ipv6Address){
         return  wifiDetailsService.setfindAllByipv6Address(ipv6Address);//Retriving ipv6Address in Server
     }
+    @PostMapping("/findAll/{mAcAddress}")
+    public String setAllBymAcAddress(String mAcAddress){
+        return  wifiDetailsRepository.findAllBymAcAddress(mAcAddress);//Binding mAcAddress in Server
+    }
+
 
 
 }
