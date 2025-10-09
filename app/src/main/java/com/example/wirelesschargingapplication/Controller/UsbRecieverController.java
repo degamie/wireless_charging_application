@@ -1,3 +1,5 @@
+import android.health.connect.datatypes.Device;
+
 @Component
 @Controller
 
@@ -27,6 +29,10 @@ public class UsbRecieverController {//Class Declare
     @GetMapping("/saveAll/{device}")
     public String getAllByDevice(Device device) {
         return usbRecieverRepository.saveAllByDevice(device);
+    }
+    @GetMapping("")
+    public String getAllByCameraPID(String CameraPID){
+        return usbRecieverRepository.saveAllByCameraPID(CameraPID);
     }
 }
 
