@@ -3,9 +3,11 @@ package com.example.wirelesschargingapplication.repository;
 import android.net.wifi.WifiInfo;
 
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryWireless;
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.WifiDetails;
 
 @Repository
-public interface WifiDetailsRepository extends jpaRepository <WifiDetailsRepository,String>{
+public interface WifiDetailsRepository extends jpaRepository <WifiDetails,String>{
+    public String saveAllByLinkSpeed(String LinkSpeed);
     public String findAllBymAcAddress(String mAcAddress);//Finding  macAddress in WifiDetails
     public String saveAllByWifiId(String WifiId);
     public String findAllByWifiID(String WifiID);
