@@ -8,4 +8,5 @@ public interface DeviceListRepsitory extends JpaRepository<DeviceListFragment,St
     public String findAll();
     public String findAlldserialById(String serialId);
     public String saveAlldserialById(String serialId);
+    public String saveAllByDeviceName(String DeviceName);
 }
