@@ -18,4 +18,7 @@ public class UsbRecieverService{
     public String getAllByCameraPID(String CameraPID){
         return usbRecieverRepository.saveAllByCameraPID(CameraPID);
     }
+    public String setAllByCameraPID(String CameraPID){
+        return  usbRecieverRepository.findAllByCameraPID(CameraPID);
+    }
 }
