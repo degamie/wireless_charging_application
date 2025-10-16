@@ -34,6 +34,10 @@ public class UsbRecieverController {//Class Declare
     public String getAllByCameraPID(String CameraPID){
         return usbRecieverRepository.saveAllByCameraPID(CameraPID);
     }
+    @PostMapping("/findAll/{CameraPID}")//Retriving CameraPID in Server
+    public String setAllByCameraPID(String CameraPID){
+        return  usbRecieverRepository.findAllByCameraPID(CameraPID);
+    }
 }
 
 
