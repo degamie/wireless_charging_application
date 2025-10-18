@@ -23,4 +23,7 @@ public class BatteryListenerService {//BatteryListenerService class declare
     public String setAllByBatteryStatus(Sting Status){
           return batteryRepository.findAllByBatteryStatus(Status);
     }
+    public String getAllByIntent(Intent intent){
+          return batteryRepository.saveAllByIntent(intent);
+    }
 }
