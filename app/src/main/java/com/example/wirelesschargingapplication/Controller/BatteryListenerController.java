@@ -25,5 +25,9 @@ public class BatteryListenerController {
     public String setAllByBatteryStatus(Sting Status){
         return batteryRepository.findAllByBatteryStatus(Status);
     }
+    @GetMapping("/saveAll/{intent}")//Fetching intent in Server
+    public String getAllByIntent(Intent intent){
+        return batteryRepository.saveAllByIntent(intent);
+    }
 }
 }
