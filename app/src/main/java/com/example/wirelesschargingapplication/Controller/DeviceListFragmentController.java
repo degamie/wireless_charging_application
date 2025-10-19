@@ -10,4 +10,9 @@ public class DeviceListController{
     public String getAlldserialById(String serialId){//Fetching All SerialIds
         return deviceListService.saveAlldserialById(serialId);
     }
+    @GetMapping("/saveAll/{Port}")
+    public String getAllByPort(String Port){
+        return deviceListService.getAllByPort   (Port);
+    }
+
 }
