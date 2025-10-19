@@ -3,6 +3,7 @@ public  class DeviceListFragmentService{
     public String getAlldserialById(String serialId){
         return deviceListFragementRepository.saveAlldserialById(serialId);
     }
-
-
+    public String getAllByPort(String Port){
+        return deviceListFragementRepository.saveAllByPort(Port);
+    }
     }
