@@ -1,21 +1,5 @@
-package com.example.wirelesschargingapplication.repository;
-
-import android.net.wifi.WifiInfo;
-
-import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryWireless;
-import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.WifiDetails;
-
 @Repository
-public interface WifiDetailsRepository extends jpaRepository <WifiDetails,String>{
-    public String saveAllByLinkSpeed(String LinkSpeed);
-    public String findAllBymAcAddress(String mAcAddress);//Finding  macAddress in WifiDetails
-    public String saveAllByWifiId(String WifiId);
-    public String findAllByWifiID(String WifiID);
-    public String saveAllByWifiName(String WifiName);
-    public String findAllByWIfiName(String WifiName);
-public String saveAllBymaAddress(String mAcAddress);
-public String saveAllByipv6Address(String ipv6Address);
-public String findAllByipv6Address(String ipv6Address);
-public String saveAllBySSID(String SSID);
+public interface WifiDetailsRepository extends JpaRepository<WifiDetails,String>{
+public double saveAllByNetworkSpeed(double networkSpeed);
 
 }
