@@ -37,6 +37,7 @@ public interface BatteryWirelessRepository extends JpaRepository  <BatteryWirele
     public String saveAllByScale(int Scale);
     public Integer savaAllBymAcOnLine(Integer mAcOnLine);
     public String findAllByUsbReciever(UsbReciever usbReciever);
+    public String saveAllBYUsbReciever(UsbReciever usbReciever);
     public String saveAllBymAcOnUsb(Integer mAcOnUsb);
     public String findAllBymAcOnUsb(Integer mAcOnUsb);
     public String saveAllByScale(Integer scale);
