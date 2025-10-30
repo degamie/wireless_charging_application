@@ -5,6 +5,7 @@ import android.net.wifi.WifiInfo;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryWireless;
 import com.example.wirelesschargingapplication.repository.WifiDetailsRepository;
 
+//WID(30/10/2025)
 @Controller
 public class WifiDetailsController {
     WifiDetailsController wifiDetailsController=new WifiDetailsController();
@@ -29,8 +30,11 @@ public class WifiDetailsController {
     @PostMapping("/findAll/{mAcAddress}")
     public String setAllBymAcAddress(String mAcAddress){
         return  wifiDetailsRepository.findAllBymAcAddress(mAcAddress);//Binding mAcAddress in Server
+
+    }    @PostMapping("/findAll/{networkId}")
+
+    public void setAllByNetworkId(long networkId){//Retriving  networkId in Server
+        return wifiDetailsRepository.findAllByNetworkId(networkId);
     }
-
-
 
 }
