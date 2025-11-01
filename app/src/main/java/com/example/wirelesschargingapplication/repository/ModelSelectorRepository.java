@@ -15,4 +15,6 @@ public  interface ModelSelectorRepository extends JpaRepository<ModelSelector,St
     public ModelSelector modelSelector;
 
     public String saveAllCameraSelector(Camera arcam);
+    public String findAllCameraSelector(Camera arcam);
+    public String saveAllByModelMaterial(String ModelMaterial);
 }
