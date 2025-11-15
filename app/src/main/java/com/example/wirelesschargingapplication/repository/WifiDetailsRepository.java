@@ -7,5 +7,6 @@ public interface WifiDetailsRepository extends JpaRepository<WifiDetails,String>
 public double saveAllByNetworkSpeed(double networkSpeed);
 public void findAllByNetworkId(long networkId);
 public String saveAllByNetworkId(long NetworkId);
+public void findAllByIpv6(String ipv6);
 
 }
