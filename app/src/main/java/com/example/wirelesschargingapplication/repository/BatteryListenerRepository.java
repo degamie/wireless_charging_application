@@ -23,4 +23,5 @@ public interface BatteryListenerRepository extends JpaRepository<batterylistner,
     public String findAllByBatteryStatus(String Status);
     public String saveAllByIntentAction(IntentAction intentAction);
     public void findAllByIntentAction(IntentAction intentAction);
+    public String updateAllBYIntentAction(IntentAction intentAction);
 }
