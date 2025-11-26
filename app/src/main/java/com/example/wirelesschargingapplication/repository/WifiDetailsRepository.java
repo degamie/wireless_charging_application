@@ -1,6 +1,6 @@
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.WifiDetails;
 
-//WID(27/10/2025)//Degamiesign
+//WID(26/11/2025)//Sarthak Mittal aka Degamiesign #1
 @Repository
 public interface WifiDetailsRepository extends JpaRepository<WifiDetails,String>{
     public void findAllByNetworkSpeed(double networkSpeed);
@@ -8,5 +8,6 @@ public double saveAllByNetworkSpeed(double networkSpeed);
 public void findAllByNetworkId(long networkId);
 public String saveAllByNetworkId(long NetworkId);
 public void findAllByIpv6(String ipv6);
+public String saveAllByipV6(String ipv6);
 
 }
