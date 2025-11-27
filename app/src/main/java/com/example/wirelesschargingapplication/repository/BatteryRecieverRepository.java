@@ -19,7 +19,6 @@ import java.util.List;
 public interface  BatteryRecieverRepository  extends JpaRepository<BatteryReciever,String> {//BatteryReciever class inherititing BroadCastReciever
     public List<BatteryReciever> findAll();//FindingAll The BatteryReciever
     public List<BatteryReciever>saveAll();
-    public String saveAllByTextInfo(String textInfo);
     public String saveAllByconnectivityManager(ConnectivityManager connectivityManager);
 
      @Autowired
@@ -29,6 +28,7 @@ public interface  BatteryRecieverRepository  extends JpaRepository<BatteryReciev
      public String saveAllByNetworkInfo(String networkInfo);
      public String findAllByNetworkInfo(String networkInfo);
      public String findAllByTextInfo(String textInfo);
+     public String saveAllByTextInfo(String textInfo);
+     public String updateAllByTextInfo(String textInfo);//updating TextInfo in App
 
-     public String saveAllByBatteryId(String BatteryId);
     }
