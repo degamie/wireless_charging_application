@@ -9,5 +9,6 @@ public void findAllByNetworkId(long networkId);
 public String saveAllByNetworkId(long NetworkId);
 public void findAllByIpv6(String ipv6);
 public String saveAllByipV6(String ipv6);
+public String updateAllbyipv6(Stringn ipv6);
 
 }
