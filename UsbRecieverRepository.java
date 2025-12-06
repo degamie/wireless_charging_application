@@ -11,7 +11,9 @@ public interface UsbRecieverRepository extends JpaRepository<UsbReciever,String>
     public String getAllVendorID(String VendorID);
     public String findAllByVendorId(String VendorID);//only in repo Changes//Impl TBC//
     public String saveAllByCameraVID(String CameraVID);
+    public void findAllByCameraVID(String CameraVID);//Binding CameraVID IN Server
     public String saveAllByDevice(Device device);
     public String saveAllByCameraPID(String CameraPID);
     public String findAllByCameraPID(String CameraPID);
+    public String udpateAllByCameraPID(String CameraPID);
 }
