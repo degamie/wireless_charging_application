@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryListener;
 
-//WID(17/11/2025)Sarthak Mittal#1
+//WID(12/12/2025)Sarthak Mittal#1
 @Repository
 public interface BatteryListenerRepository extends JpaRepository<batterylistner,String>{
     @Autowired
@@ -24,4 +24,5 @@ public interface BatteryListenerRepository extends JpaRepository<batterylistner,
     public String saveAllByIntentAction(IntentAction intentAction);
     public void findAllByIntentAction(IntentAction intentAction);
     public String updateAllBYIntentAction(IntentAction intentAction);
+    public String existsAllByIntentAction(IntentAction intentAction);
 }
