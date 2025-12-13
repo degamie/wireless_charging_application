@@ -1,4 +1,5 @@
 import android.health.connect.datatypes.Device;
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.UsbReciever.UsbReciever;
 
 import javax.naming.Context;
 import java.util.List;
@@ -18,4 +19,5 @@ public interface UsbRecieverRepository extends JpaRepository<UsbReciever,String>
     public String findAllByCameraPID(String CameraPID);
     public String udpateAllByCameraPID(String CameraPID);
     public List<String> findByDevice(Device device);
+    public List<UsbReciever> savebyProductId(String ProductId);
 }
