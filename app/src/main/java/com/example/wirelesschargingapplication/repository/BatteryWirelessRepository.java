@@ -24,7 +24,7 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 import java.io.File;
 import java.io.FileOutputStream;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryWireless;
-
+//WID(29/11/2025)
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 @Repository
 public interface BatteryWirelessRepository extends JpaRepository  <BatteryWireless,String>{
@@ -42,5 +42,6 @@ public interface BatteryWirelessRepository extends JpaRepository  <BatteryWirele
     public String saveAllBymAcOnUsb(Integer mAcOnUsb);
     public String findAllBymAcOnUsb(Integer mAcOnUsb);
     public String saveAllByScale(Integer scale);
-
+    public void findAllByScale(Integer scale);
+    public String updateByScale(Integer scale);
 }
