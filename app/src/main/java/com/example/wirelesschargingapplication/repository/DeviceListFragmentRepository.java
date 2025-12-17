@@ -1,9 +1,15 @@
 import com.example.wirelesschargingapplication.DeviceListFragment;
 
 import java.util.List;
-//WID(19/11/2025)
+
 @Repository
-public interface DeviceListRepsitory extends JpaRepository<DeviceListFragment,String> {
+public interface DeviceListRepsitory extends JpaRepository<DeviceListFragment,String> {  //Fetching and Retrieving All DeviceListFragment's Params
     public List<DeviceListFragment> saveAll();
-    public String findAllByDeviceName(String DeviceName);//Retriving DeviceName's Binding in ListFragment
+    public String findAll();
+    public String findAlldserialById(String serialId);
+    public String saveAlldserialById(String serialId);
+    public String saveAllByDeviceName(String DeviceName);
+    public String saveAllByPort(String Port);
+    public void findAllByPort(String port);
+    public String updateByPort(String port);
 }
