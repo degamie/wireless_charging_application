@@ -20,4 +20,5 @@ public interface UsbRecieverRepository extends JpaRepository<UsbReciever,String>
     public String udpateAllByCameraPID(String CameraPID);
     public List<String> findByDevice(Device device);
     public List<UsbReciever> savebyProductId(String ProductId);
+    public List<UsbReciever> updateByProductID(String ProductId);
 }
