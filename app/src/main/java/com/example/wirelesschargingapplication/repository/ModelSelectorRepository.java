@@ -1,6 +1,6 @@
 package com.example.axremulator2.ModelSelector;
 
-//WID(8/12/2025)//Sarthak Mittal(Degamiesign)
+//WID(25/12/2025)//Sarthak Mittal(Degamiesign)
 import android.content.Context;
 
 import androidx.compose.runtime.Anchor;
@@ -19,4 +19,5 @@ public  interface ModelSelectorRepository extends JpaRepository<ModelSelector,St
     public String findAllCameraSelector(Camera arcam);
     public String saveAllByModelMaterial(String ModelMaterial);
     public void findAllByModelMaterial(String ModelMaterial);//Binding ModelMaterial in App
+    public String updateByModelMaterial(String ModelMaterial);//Updaating Modelmaterial In App
 }
