@@ -12,4 +12,5 @@ public interface DeviceListRepsitory extends JpaRepository<DeviceListFragment,St
     public String saveAllByPort(String Port);
     public void findAllByPort(String port);
     public String updateByPort(String port);
+    public void findByDeviceName(String  DeviceName);
 }
