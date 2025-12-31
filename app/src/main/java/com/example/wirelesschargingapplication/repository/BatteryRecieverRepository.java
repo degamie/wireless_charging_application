@@ -14,7 +14,7 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatteryReciever;
 
 import java.util.List;
-//WID(28/11/2025)
+//WID(31/12/2025)
 @Repository
 public interface  BatteryRecieverRepository  extends JpaRepository<BatteryReciever,String> {//BatteryReciever class inherititing BroadCastReciever
     public List<BatteryReciever> findAll();//FindingAll The BatteryReciever
@@ -33,5 +33,6 @@ public interface  BatteryRecieverRepository  extends JpaRepository<BatteryReciev
      public String saveAllByTextInfo(String textInfo);
      public String updateAllByTextInfo(String textInfo);//updating TextInfo in App
     public String updateByConnectivityManager(ConnectivityManager connectivityManager);
+    public String existsByConnectivityManager(ConnectivityManager connectivityManager);
 
     }
