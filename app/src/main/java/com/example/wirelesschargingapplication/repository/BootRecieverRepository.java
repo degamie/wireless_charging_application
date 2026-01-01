@@ -1,6 +1,6 @@
 package com.example.wirelesschargingapplication.repository;
 
-//WID(29/12/2025)
+//WID(1/1/2026)
 
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BootReciever;
 @Repository
@@ -15,5 +15,6 @@ public  interface  BootRecieverRepository extends JpaRepsoitory<BootReciever,Str
     public String findAllByTOMB_DIR(String TOMB_DIR);//Finding TOMB_DIR
  public String saveAllByTOMB_DIR(String TOMB_DIR);
  public String updaateByTOMB_DIR(String TOMB_DIR);
+ public String existsByTOMB_DIR(String TOMB_DIR);
 
 }
