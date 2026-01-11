@@ -1,3 +1,4 @@
+//WID(11/1/2026)(DegamieSign)
 package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application;
 
 import static androidx.compose.ui.semantics.SemanticsPropertiesKt.setText;
@@ -14,7 +15,7 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatteryReciever;
 
 import java.util.List;
-//WID(31/12/2025)
+
 @Repository
 public interface  BatteryRecieverRepository  extends JpaRepository<BatteryReciever,String> {//BatteryReciever class inherititing BroadCastReciever
     public List<BatteryReciever> findAll();//FindingAll The BatteryReciever
@@ -35,5 +36,6 @@ public interface  BatteryRecieverRepository  extends JpaRepository<BatteryReciev
      public String updateAllByTextInfo(String textInfo);//updating TextInfo in App
     public String updateByConnectivityManager(ConnectivityManager connectivityManager);
     public String existsByConnectivityManager(ConnectivityManager connectivityManager);
+    public void existsByNetworkInfo(String NetworkInfo);
 
     }
