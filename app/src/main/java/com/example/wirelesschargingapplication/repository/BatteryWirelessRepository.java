@@ -1,3 +1,4 @@
+//WID(18/1/2026)(DegamieSign)
 package com.example.wirelesschargingapplication.repository;
 
 import static android.content.Context.USB_SERVICE;
@@ -24,7 +25,7 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 import java.io.File;
 import java.io.FileOutputStream;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryWireless;
-//WID(7/1/2026)(DegamieSign)
+
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 @Repository
 public interface BatteryWirelessRepository extends JpaRepository  <BatteryWireless,String>{
@@ -46,4 +47,6 @@ public interface BatteryWirelessRepository extends JpaRepository  <BatteryWirele
     public void findAllByScale(Integer scale);
     public String updateByScale(Integer scale);
     public void existsByScale(Integer scale);
+    public void updateBymAcOnUsb(Integer mAcOnUsb);
+    public void existsBymAconUsb(Integer mAcOnUsb);//Checking mAcOnUsb's Existence in App
 }
