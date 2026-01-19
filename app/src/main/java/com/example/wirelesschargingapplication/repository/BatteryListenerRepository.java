@@ -22,6 +22,7 @@ public interface BatteryListenerRepository extends JpaRepository<batterylistner,
     public String findAllByContext(Context context);
     public  List<BatteryListener> saveAllByContext(Context context);
     public List<BatteryListener> updateByContext(Context context);//Updating Context In App
+    public List<BatteryListener> existsByContext(Context context);//Checking Context's existence in App
     public List<BatteryListener> saveAll(String BatteryId);
     public  List<BatteryListener> saveAllById(String BatteryId);
     public Long findAllById(Long BatteryId);
