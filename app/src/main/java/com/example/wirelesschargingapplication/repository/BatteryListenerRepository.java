@@ -1,10 +1,12 @@
-//WID(17/1/2026)Sarthak Mittal(Degamiesign)#1
+//WID(19/1/2026)Sarthak Mittal(Degamiesign)#1
 import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
 import com.android.aapt.Resources;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryListener;
+
+import jdk.internal.loader.Resource;
 
 @Repository
 public interface BatteryListenerRepository extends JpaRepository<batterylistner,String>{
@@ -35,4 +37,5 @@ public interface BatteryListenerRepository extends JpaRepository<batterylistner,
     public Long updateById(Long BatteryId);
     public void existsById(Long BatteryId);
     public void updateByStatus(Resources.String Status);
+    public void existsByStatus(Resource.String Status);
 }
