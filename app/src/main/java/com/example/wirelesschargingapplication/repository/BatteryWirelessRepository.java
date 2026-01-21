@@ -1,4 +1,4 @@
-//WID(18/1/2026)(DegamieSign)
+//WID(21/1/2026)(DegamieSign)
 package com.example.wirelesschargingapplication.repository;
 
 import static android.content.Context.USB_SERVICE;
@@ -41,6 +41,7 @@ public interface BatteryWirelessRepository extends JpaRepository  <BatteryWirele
     public String existsByMpPlugType(Integer mPlugType);//Checking mPlugType's existence in App
     public String findAllByUsbReciever(UsbReciever usbReciever);
     public String saveAllBYUsbReciever(UsbReciever usbReciever);
+    public void  updateByUsbReciever(UsbReciever usbReciever);//updating usbReciever in App
     public String saveAllBymAcOnUsb(Integer mAcOnUsb);
     public String findAllBymAcOnUsb(Integer mAcOnUsb);
     public String saveAllByScale(Integer scale);
