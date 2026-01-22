@@ -1,4 +1,4 @@
-//WID(10/1/2026)(DegamieSign)
+//WID(23/1/2026)(DegamieSign)
 package com.example.wirelesschargingapplication.repository;
 
 import static android.content.Context.USB_SERVICE;
@@ -31,6 +31,7 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 public interface BatteryWirelessRepository extends JpaRepository  <BatteryWireless,String>{
     @Autowwired
     public BatteryWireless batterywireless;
+    public BatteryWireless getBatterywireless(BatteryWireless batterywireless){return batterywireless;}//Fetching batteryWireless in App
     public String findAllByMplugType(Integer mPLugType);
     public String saveAllByMplugType(Integer mPLugType);
     public String updateAllByMpPlugType(Integer mPlugType);
@@ -41,6 +42,7 @@ public interface BatteryWirelessRepository extends JpaRepository  <BatteryWirele
     public String existsByMpPlugType(Integer mPlugType);//Checking mPlugType's existence in App
     public String findAllByUsbReciever(UsbReciever usbReciever);
     public String saveAllBYUsbReciever(UsbReciever usbReciever);
+    public void  updateByUsbReciever(UsbReciever usbReciever);//updating usbReciever in App
     public String saveAllBymAcOnUsb(Integer mAcOnUsb);
     public String findAllBymAcOnUsb(Integer mAcOnUsb);
     public String saveAllByScale(Integer scale);
@@ -48,4 +50,5 @@ public interface BatteryWirelessRepository extends JpaRepository  <BatteryWirele
     public String updateByScale(Integer scale);
     public void existsByScale(Integer scale);
     public void updateBymAcOnUsb(Integer mAcOnUsb);
+    public void existsBymAconUsb(Integer mAcOnUsb);//Checking mAcOnUsb's Existence in App
 }
