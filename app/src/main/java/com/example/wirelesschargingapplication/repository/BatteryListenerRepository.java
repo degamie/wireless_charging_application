@@ -1,4 +1,4 @@
-//WID(20/1/2026)Sarthak Mittal(Degamiesign)#1
+//WID(23/1/2026)Sarthak Mittal(Degamiesign)#1
 import java.util.List;
 
 import android.content.Context;
@@ -27,6 +27,7 @@ public interface BatteryListenerRepository extends JpaRepository<batterylistner,
     public List<BatteryListener> saveAll(String BatteryId);
     public  List<BatteryListener> saveAllById(String BatteryId);
     public Long findAllById(Long BatteryId);
+    public void updateById(Long BatteryId);
     public Long existsById(Long BatteryId);
     public String saveAllByBatteryStatus(String BatteryId);
     public String findAllByBatteryStatus(String Status);
