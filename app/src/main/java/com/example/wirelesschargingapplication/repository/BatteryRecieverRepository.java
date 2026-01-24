@@ -1,4 +1,4 @@
-//WID(11/1/2026)(DegamieSign)
+//WID(24/1/2026)(DegamieSign)#1
 package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application;
 
 import static androidx.compose.ui.semantics.SemanticsPropertiesKt.setText;
@@ -28,6 +28,7 @@ public interface  BatteryRecieverRepository  extends JpaRepository<BatteryReciev
      public String saveAllByBatteryLevel(Integer mBatteryLevel);
      public String findAllByBatteryLevel(Integer mBatteryLevel);
      public String updateAllbyBatteryLevel(Integer mBatteryLevel);//Updating BatteryLevel in App
+    public void existsBybatterylevel(Integer mBatteryLevel);//Checking batteryLevel's Existence in App
      public String saveAllByNetworkInfo(String networkInfo);
      public String findAllByNetworkInfo(String networkInfo);
      public void updateByNetworkInfo(String networkInfo);
