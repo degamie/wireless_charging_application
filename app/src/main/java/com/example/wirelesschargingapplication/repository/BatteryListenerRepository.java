@@ -1,4 +1,4 @@
-//WID(23/1/2026)Sarthak Mittal(Degamiesign)#1
+//WID(24/1/2026)Sarthak Mittal(Degamiesign)#1.1.1C
 import java.util.List;
 
 import android.content.Context;
@@ -12,6 +12,7 @@ import jdk.internal.loader.Resource;
 public interface BatteryListenerRepository extends JpaRepository<batterylistner,String>{
     @Autowired
     public BatteryListener batterylistner;
+    public void setBatterylistner(BatteryListener batterylistner){this.batterylistener=batterylistner;}//binding batteryListener in App
     public BatteryListener getBatterylistner(BatteryListener batterylistner){return batterylistner;}//Fetching BatteryListener in App
     public String saveAllByIntent(Intent intent);
     public String findAllByIntent(Intent intent);
