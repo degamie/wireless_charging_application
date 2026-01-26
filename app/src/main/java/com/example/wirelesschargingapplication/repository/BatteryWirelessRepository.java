@@ -1,4 +1,4 @@
-//WID(21/1/2026)(DegamieSign)
+//WID(26/1/2026)(sarthak Mittal)(DegamieSign)#1
 package com.example.wirelesschargingapplication.repository;
 
 import static android.content.Context.USB_SERVICE;
@@ -31,6 +31,8 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 public interface BatteryWirelessRepository extends JpaRepository  <BatteryWireless,String>{
     @Autowwired
     public BatteryWireless batterywireless;
+    public void setBatterywireless(BatteryWirelessRepository batterywireless){this.batterywireless=batterywireless;}}//binding batteryWireless in App#1
+    public BatteryWireless getBatterywireless(BatteryWireless batterywireless){return batterywireless;}//Fetching batteryWireless in App
     public String findAllByMplugType(Integer mPLugType);
     public String saveAllByMplugType(Integer mPLugType);
     public String updateAllByMpPlugType(Integer mPlugType);
