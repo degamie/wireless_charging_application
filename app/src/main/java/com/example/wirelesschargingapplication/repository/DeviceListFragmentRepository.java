@@ -1,4 +1,4 @@
-//WID(14/01/2026)(DegamieSign)(Sarthak Mittal)
+//WID(26/01/2026)(DegamieSign)(Sarthak Mittal)
 import com.example.wirelesschargingapplication.DeviceListFragment;
 
 import java.util.List;
@@ -10,6 +10,7 @@ public interface DeviceListRepsitory extends JpaRepository<DeviceListFragment,St
     public String findAlldserialById(String serialId);
     public String saveAlldserialById(String serialId);
     public String saveAllByDeviceName(String DeviceName);
+    public void updateByDeviceName(String DeviceName);//Updating DeviceName in App
     public String saveAllByPort(String Port);
     public void findAllByPort(String port);
     public String updateByPort(String port);
