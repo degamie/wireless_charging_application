@@ -1,4 +1,4 @@
-//WID(16/01/2026)(Degamiesign)(Sarthak Mittal)
+//WID(27/01/2026)(Degamiesign)(Sarthak Mittal)#1
 import android.health.connect.datatypes.Device;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.UsbReciever.UsbReciever;
 
@@ -8,6 +8,7 @@ import java.util.List;
 
 @Repository
 public interface UsbRecieverRepository extends JpaRepository<UsbReciever,String> {
+    public UsbRecieverRepository usbRecieverRepository;
     public List<UsbReciever> saveAll();
     public String saveAllByContext(Context context);//Fetching Context In UsbReciever
     public  String getProudctId(String ProductId);
