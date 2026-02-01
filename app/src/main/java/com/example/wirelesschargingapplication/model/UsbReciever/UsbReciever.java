@@ -1,3 +1,4 @@
+//WID(2/1/2026)(Sarthak Mittal)(DegamieSign)
 package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.UsbReciever;
 
 import static android.hardware.usb.UsbManager.ACTION_USB_DEVICE_ATTACHED;
@@ -24,6 +25,7 @@ public class UsbReciever extends BroadCastReciever {//UsbReciever Class Declare
     public UsbDevice device=new UsbDevice();
     public String CAMERA_VID=null;
     public String CAMERA_PID=null;
+    public String getCAMERA_VID(String CAMERA_VID){return CAMERA_VID;}//Fetching CameraVID in App
     //UsbManager Obect Declare
     public UsbManager usbManager;
     public UsbDeviceConnection usbDeviceConnection;
