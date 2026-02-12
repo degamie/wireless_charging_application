@@ -1,4 +1,4 @@
-//WID(02/02/2026)//Sarthak Mittal(Degamiesign)#1.1.1.1
+//WID(12/02/2026)//Sarthak Mittal(Degamiesign)#1.1.1.1
 
 
 package com.example.axremulator2.ModelSelector;
@@ -17,6 +17,7 @@ import com.example.axremulator2.ModelSelector.XRSession;
 public  interface ModelSelectorRepository extends JpaRepository<ModelSelector,String> {
     @Autowired
     public ModelSelector modelSelector;
+    public void setModelSelector(ModelSelector modelSelector){this.modelSelector-modelSelector;}
     public List<ModelSelector> updateByModelSelector(ModelSelector modelSelector);
     public void setModelSelector(ModelSelector modelSelector){this.modelSelector=modelSelector;)//Binding ModelSelector in App
     public ModelSelector getModelSelector(ModelSelector modelSelector){return modelSelector;}//Fethcing MdlSelector in App
