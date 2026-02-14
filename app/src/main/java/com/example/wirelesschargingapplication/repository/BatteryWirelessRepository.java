@@ -1,4 +1,4 @@
-//WID(26/1/2026)(sarthak Mittal)(DegamieSign)#1
+//WID(13/2/2026)(sarthak Mittal)(DegamieSign)#1.1
 package com.example.wirelesschargingapplication.repository;
 
 import static android.content.Context.USB_SERVICE;
@@ -24,6 +24,8 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.List;
+
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryWireless;
 
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
@@ -31,6 +33,7 @@ import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.
 public interface BatteryWirelessRepository extends JpaRepository  <BatteryWireless,String>{
     @Autowwired
     public BatteryWireless batterywireless;
+    public List<BatteryWireless> updateByBatteryWireless(BatteryWirelessRepository batteryWirelessRepository);
     public void setBatterywireless(BatteryWirelessRepository batterywireless){this.batterywireless=batterywireless;}}//binding batteryWireless in App#1
     public BatteryWireless getBatterywireless(BatteryWireless batterywireless){return batterywireless;}//Fetching batteryWireless in App
     public String findAllByMplugType(Integer mPLugType);
