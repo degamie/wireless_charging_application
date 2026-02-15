@@ -1,3 +1,4 @@
+/// WID(15/02/2026)(Sarthak Mittal)(Degamiesign)
 package com.example.wirelesschargingapplication.service;
 
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryWireless;
@@ -10,6 +11,7 @@ public class BatteryWirelessService {
      public UsbReciever usbReciever;
     @Autowwired
     public BatteryWirelessRepository batterywirelessRepository;
+    public void setBymPlugType(Integer mPlugType){this.mPlugType=mPlugType;}
     public String getAllByMplugType(Integer mPLugType){
             return batterywirelessRepository.saveAllByMplugType(mPLugType);
     }
