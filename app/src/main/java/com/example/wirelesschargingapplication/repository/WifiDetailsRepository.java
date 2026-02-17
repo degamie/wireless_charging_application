@@ -1,8 +1,9 @@
-//WID(8/2/2025)//Sarthak Mittal aka Degamiesign #1.1    
+//WID(17/2/2025)//Sarthak Mittal aka Degamiesign #1.1.1
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.WifiDetails;
 
 @Repository
 public interface WifiDetailsRepository extends JpaRepository<WifiDetails,String>{
+    public WifiDetailsRepository wifidetailsrepository;
     public void findBynetwoekId(Integer networkId);
     public void findAllByNetworkSpeed(double networkSpeed);
 public double saveAllByNetworkSpeed(double networkSpeed);
