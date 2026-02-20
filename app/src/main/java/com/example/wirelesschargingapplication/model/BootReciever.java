@@ -1,3 +1,4 @@
+//WIP(20/2/2026)Sarthak Mittal
 package com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application;
 
 import android.annotation.SuppressLint;
@@ -6,23 +7,26 @@ import android.os.StrictMode;
 import java.io.File;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BroadCastReciever;
 //public class BootReciever extends BroadCastReciever{//BootReciever  Declare Inheriting Broadpublic class BootReciever extends BroadCastReciever{//BootReciever  Declare Inheriting BroadCastReciever  ClassCastReciever  Class
+@Component
 
 @Getter
+
 @Setter
 @AllParamsContructor
 @NoParamsContructor
 public class BootReciever extends BroadCastReciever  {
     @Id
     @GeneraatedValue(strategy=GENERATIONTYPE.IDENTITY)
-    @Column(unique=true,nullable=false);
+    @Column(unique=true,nullable=false)
     public int LOG_SIZE=0;//Log Size Declare
-    @Column(unique=falsee,nullable=true);
+    @Column(unique=false,nullable=true)
     public BroadCastReciever broadCastReciever;
-    @Column(unique=falsee,nullable=true);
+    @Column(unique=false,nullable=true)
     public BootReciever bootReciever;//Obj Declare
-    @Column(unique=falsee,nullable=true)
+    @Column(unique=false,nullable=true)
     public String TAG=null;//Tag Declare
-    @Column(unique=falsee,nullable=true)
+    @Column(unique=false,nullable=true)
+    public File getTombstoneDir(File TOMBSTONE_DIR){return TOMBSTONE_DIR;}//Fethcing TOMBSTONE_DIR in App
 
     public static final File TOMBSTONE_DIR=new File("/data/tombStones");//TOMBSTONE_DIR declare;
     @SuppressLint("NewApi")
