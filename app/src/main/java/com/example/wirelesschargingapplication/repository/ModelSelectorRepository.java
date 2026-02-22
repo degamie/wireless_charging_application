@@ -1,4 +1,4 @@
-//WID(19/02/2026)//Sarthak Mittal(Degamiesign)#1.1.1.1.1
+//WID(21/02/2026)//Sarthak Mittal(Degamiesign)#1.1.1.1.1.1
 
 
 package com.example.axremulator2.ModelSelector;
@@ -15,6 +15,7 @@ import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.example.axremulator2.ModelSelector.XRSession;
 @Repository
 public  interface ModelSelectorRepository extends JpaRepository<ModelSelector,String> {
+    public ModelSelectorRepository modelselectorrepository;
     @Autowired
     public ModelSelector modelSelector;
     public void existsByModelSelector(ModelSelector modelSelector );
