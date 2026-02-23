@@ -1,4 +1,4 @@
-//WID(22/2/2026 )(Sarthak Mittal)(DegamieSign)#1.1.1.1.1
+//WID(23/2/2026 )(Sarthak Mittal)(DegamieSign)#1.1.1.1.1.1
 package com.example.wirelesschargingapplication.repository;
 import com.android.aapt.Resources;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatteryRecieverRepository;
@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public  interface  BootRecieverRepository extends JpaRepsoitory<BootReciever, Resources.String>  {
  public BootRecieverRepository bootrecieverrepository;
+ public List<BootReciever> saveByBootReciever(BootReciever bootReciever);
  public List<BootReciever> findByBootReciever(BootReciever bootReciever);
  public BootReciever existsByBootReciever(BootReciever bootReciever);
  public void updateByBootRecieverRepository(BootRecieverRepository bootrecieverrepository);
