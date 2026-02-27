@@ -1,4 +1,4 @@
-//WID(14/2/2026)Sarthak Mittal(Degamiesign)#1.1.1.1.1.1.1.1
+//WID(27/2/2026)Sarthak Mittal(Degamiesign)#1.1.1.1.1.1.1.1.1
 import java.util.List;
 
 import android.content.Context;
@@ -11,6 +11,7 @@ import jdk.internal.loader.Resource;
 @Repository
 public interface BatteryListenerRepository extends JpaRepository<batterylistner,String>{
     public BatteryListenerRepository batteryListenerRepository = null;
+    public List<BatteryListener> getBatteryStatus(String BatteryStatus);
     public List<BatteryListener> updateByBatteryListener(BatteryListener batteryListener);
     public List<BatteryListenerRepository> existsByBatteryListenerRepository(BatteryListenerRepository batteryListenerRepository);
     public void setBatteryListenerRepository(BatteryListenerRepository batteryListenerRepository){this.batteryListenerRepository=batteryListenerRepository;}
