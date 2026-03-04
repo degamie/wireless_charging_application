@@ -1,6 +1,4 @@
-//WID(27/02/2026)//Sarthak Mittal(Degamiesign)#1.1.1.1.1.1.1
-
-
+//WID(04/03/2026)//Sarthak Mittal(Degamiesign)#1.1.1.1.1.1.1.1.1
 package com.example.axremulator2.ModelSelector;
 import android.content.Context;
 
@@ -16,6 +14,8 @@ import com.example.axremulator2.ModelSelector.XRSession;
 @Repository
 public  interface ModelSelectorRepository extends JpaRepository<ModelSelector,String> {
     public ModelSelectorRepository modelselectorrepository;
+    public void setModelselectorrepository(ModelSelectorRepository modelselectorrepository);
+    public List<ModelSelector> saveByModelId(String mdlId);
     public List<ModelSelector> findByModelID(String mdlId);
     @Autowired
     public ModelSelector modelSelector;
