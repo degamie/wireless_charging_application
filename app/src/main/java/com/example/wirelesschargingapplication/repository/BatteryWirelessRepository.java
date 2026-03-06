@@ -28,12 +28,14 @@ import java.util.List;
 
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryWireless;
 
+import org.gradle.internal.impldep.com.amazonaws.handlers.HandlerBeforeAttemptContext;
+
 //public class BatteryWireless extends AppCompatActivity implements WifiBroadCastReciever.wifiChangeBroadCastLister{
 @Repository
 public interface BatteryWirelessRepository extends JpaRepository  <BatteryWireless,String>{
     @Autowwired
     public BatteryWireless batterywireless;
-    public List<BatteryWireless> findByBatteryWireless(BatteryWireless batterywireless);
+    public List<HandlerBeforeAttemptContext> findByBatteryWireless(BatteryWireless batterywireless);
     public List<BatteryWireless> existsByBatteryWireless(BatteryWirelessRepository batteryWirelessRepository);
     public List<BatteryWireless> updateByBatteryWireless(BatteryWirelessRepository batteryWirelessRepository);
     public void setBatterywireless(BatteryWirelessRepository batterywireless){this.batterywireless=batterywireless;}}//binding batteryWireless in App#1
