@@ -1,4 +1,4 @@
-//WID(05/03/2026)//Sarthak Mittal(Degamiesign)#1.1.1.1.1.1.1.1.1.1
+//WID(11/03/2026)//Sarthak Mittal(Degamiesign)#1.1.1.1.1.1.1.1.1.1
 package com.example.axremulator2.ModelSelector;
 import android.content.Context;
 
@@ -13,6 +13,7 @@ import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.example.axremulator2.ModelSelector.XRSession;
 @Repository
 public  interface ModelSelectorRepository extends JpaRepository<ModelSelector,String> {
+    public List<ModelSelector>updateByModelId(String mdlId);//updating ModelId in Appp
     public ModelSelectorRepository modelselectorrepository;
     public ModelSelectorRepository getModelselectorrepository(ModelSelectorRepository modelselectorrepository);
     public void setModelselectorrepository(ModelSelectorRepository modelselectorrepository);
