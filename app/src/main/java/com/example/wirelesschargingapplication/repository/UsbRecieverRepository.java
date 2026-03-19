@@ -1,6 +1,7 @@
-//WID(16/03/2026)(Degamiesign)(Sarthak Mittal)#1.1.1.1.1.1.1.1.1.1.1.1C
+//WID(19/03/2026)(Degamiesign)(Sarthak Mittal)#1.1.1.1.1.1.1.1.1.1.1.1C.1
 //import android.health.connect.datatypes.Device;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.UsbReciever.UsbReciever;
+import com.google.wireless.android.sdk.stats.LiveEditEvent;
 
 import javax.naming.Context;
 import java.util.List;
@@ -8,6 +9,8 @@ import java.util.List;
 
 @Repository
 public interface UsbRecieverRepository extends JpaRepository<UsbReciever,String> {
+public List<LiveEditEvent.Device>setDevice(ListEditevent.Device device);
+    public List<LiveEditEvent.Device>getDevice(LiveEditEvent.Device device);
     public List<UsbReciever>existsByProductId(String ProductId);
     public List<UsbReciever> updateByProductId(String ProductID);
     public List<UsbReciever> findByUsbReciever(UsbReciever usbReciever);
