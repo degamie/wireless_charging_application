@@ -1,4 +1,5 @@
-//WID(28/2/2026)Sarthak Mittal(Degamiesign)#1.1.1.1.1.1.1.1.1.1
+//WID(24/03/2026)(Sarthak Mittal)#1.1
+package com.example.wirelesschargingapplication.repository;//WID(28/2/2026)Sarthak Mittal(Degamiesign)#1.1.1.1.1.1.1.1.1.1
 import java.util.List;
 
 import android.content.Context;
@@ -10,6 +11,8 @@ import jdk.internal.loader.Resource;
 
 @Repository
 public interface BatteryListenerRepository extends JpaRepository<batterylistner,String>{
+    public List<BatteryListener>saveByBatteryListenerRepository(BatteryListenerRepository batteryListenerRepository);//Reteriving BatteryListernerRepository in App
+    public List<BatteryListener> findByBatteryListenerRepository(BatteryListenerRepository batteryListenerRepository);
     public BatteryListenerRepository batteryListenerRepository = null;
     public void existsByIntent(Intent intent);
     public List<BatteryListener> getBatteryStatus(String BatteryStatus);
