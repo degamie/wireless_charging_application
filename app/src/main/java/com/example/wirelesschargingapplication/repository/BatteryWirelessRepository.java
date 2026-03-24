@@ -1,4 +1,4 @@
-//WID(04/03/2026)(sarthak Mittal)(DegamieSign)#1.1.1.1.1
+//WID(24/03/2026)(sarthak Mittal)(DegamieSign)#1.1.1.1.1.1
 package com.example.wirelesschargingapplication.repository;
 
 import static android.content.Context.USB_SERVICE;
@@ -35,6 +35,7 @@ import org.gradle.internal.impldep.com.amazonaws.handlers.HandlerBeforeAttemptCo
 public interface BatteryWirelessRepository extends JpaRepository  <BatteryWireless,String>{
     @Autowwired
     public BatteryWireless batterywireless;
+    public List<BatteryWireless> saveByBatteryWireless(BatteryWireless batterywireless);
     public List<HandlerBeforeAttemptContext> findByBatteryWireless(BatteryWireless batterywireless);
     public List<BatteryWireless> existsByBatteryWireless(BatteryWirelessRepository batteryWirelessRepository);
     public List<BatteryWireless> updateByBatteryWireless(BatteryWirelessRepository batteryWirelessRepository);
