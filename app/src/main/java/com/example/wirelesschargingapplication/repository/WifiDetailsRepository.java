@@ -1,10 +1,11 @@
-//WID(27/7/2026)//Sarthak Mittal aka Degamiesign #1.1.1.1.1.1.1.1.1.1
+//WID(29/2026)//Sarthak Mittal aka Degamiesign #1.1.1.1.1.1.1.1.1.1.1
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.WifiDetails;
 
 import java.util.List;
 
 @Repository
 public interface WifiDetailsRepository extends JpaRepository<WifiDetails,String>{
+    public  List<WifiDetails> existsBynetworkSpeed(String networkSpeed);//Checking NetworkSpeed in App
     public List<WifiDetails> updateBynetworkSpeed(String networkSpeed);
     public List<WifiDetails> findBynetworkSpeed(String networkSpeed);
     public List<WifiDetails> saveBynetworkSpeed(String networkSpeed);
