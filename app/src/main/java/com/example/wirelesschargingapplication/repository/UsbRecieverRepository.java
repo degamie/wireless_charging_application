@@ -1,4 +1,4 @@
-//WID(26/03/2026)(Degamiesign)(Sarthak Mittal)#1.1.1.1.1.1.1.1.1.1.1.1C.1.1.1.1.1
+//WID(31/03/2026)(Degamiesign)(Sarthak Mittal)#1.1.1.1.1.1.1.1.1.1.1.1C.1.1.1.1.1.1
 //import android.health.connect.datatypes.Device;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.UsbReciever.UsbReciever;
 import com.google.wireless.android.sdk.stats.LiveEditEvent;
@@ -27,6 +27,7 @@ public List<LiveEditEvent.Device>setDevice(ListEditevent.Device device);
     public void updateusbRecieverRepository(UsbRecieverRepository usbRecieverRepository){getUsbRecieverRepository(usbRecieverRepository)+setUsbRecieverRepository(usbRecieverRepository)+1;}//Updating UsbReciever in App
     public void setUsbRecieverRepository(UsbRecieverRepository usbRecieverRepository){this.usbRecieverRepository=usbRecieverRepository;}//Binding usbRecieverRepository in App
     public UsbRecieverRepository getUsbRecieverRepository(UsbRecieverRepository usbRecieverRepository){return usbRecieverRepository;}//Fetching UsbRecieverRepo in App
+    public List<UsbReciever> findByContext(Context context);
     public List<UsbReciever> saveAll();
     public String saveAllByContext(Context context);//Fetching Context In UsbReciever
     public  String getProudctId(String ProductId);
