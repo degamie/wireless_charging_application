@@ -1,6 +1,7 @@
-//WID(10/3/2026 )(Sarthak Mittal)(DegamieSign)#1.1.1.1.1.1.1,1
+//WID(18/3/2026 )(Sarthak Mittal)(DegamieSign)#1.1.1.1.1.1.1,1.1.1
 package com.example.wirelesschargingapplication.repository;
 import com.android.aapt.Resources;
+import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BootReciever;
 //import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatteryRecieverRepository;
 //import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BootReciever;
 
@@ -9,6 +10,8 @@ import java.util.List;
 
 @Repository
 public  interface  BootRecieverRepository extends JpaRepsoitory<BootReciever, Resources.String>  {
+    public List<BootReciever> finndByfileName(String fileName);
+ public List<BootReciever> updateByBootReciever();
     public List<BootReciever> saveByBootRecieverRepository;
  public BootRecieverRepository bootrecieverrepository;
  public List<BootReciever> findByBootRecieverRepository(BootRecieverRepository bootrecieverrepository);
