@@ -1,5 +1,6 @@
-//WID(08/04/2026)(Degamiesign)(Sarthak Mittal)#1.1.1.1.1.1.1.1.1.1.1.1C.1.1.1.1.1.1.1.1C
+//WID(11/04/2026)(Degamiesign)(Sarthak Mittal)#1.1.1.1.1.1.1.1.1.1.1.1C.1.1.1.1.1.1.1.1C.1  
 //import android.health.connect.datatypes.Device;
+import android.bluetooth.BluetoothClass;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.UsbReciever.UsbReciever;
 import com.google.wireless.android.sdk.stats.LiveEditEvent;
 
@@ -9,8 +10,9 @@ import java.util.List;
 
 @Repository
 public interface UsbRecieverRepository extends JpaRepository<UsbReciever,String> {
+    public void updateByUsbDriver(BluetoothClass.Device UsbDriver);
      public List<UsbReciever> saveByUsbDriver(Device UsbDriver);
-    public List<UsbReciever> findByUsbDriver(Device UsbDriver);
+    public List<UsbReciever> findByUsbDriver(BluetoothClass.Device UsbDriver);
     public void existsByProdName(String ProdName);
     public void updateByProdName(String ProdName);
     public List<Device> findByProdName(String ProductName);
