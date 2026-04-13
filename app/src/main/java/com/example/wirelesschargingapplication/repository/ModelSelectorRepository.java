@@ -1,4 +1,4 @@
-//WID(12/04/2026)//Sarthak Mittal(Degamiesign)#1.1.1.1.1.1.1.1.1.1.1.1.1/1.1.1.1c
+//WID(13/04/2026)//Sarthak Mittal(Degamiesign)#1.1.1.1.1.1.1.1.1.1.1.1.1/1.1.1.1c.1
 package com.example.wirelesschargingapplication.repository;
 import android.content.Context;
 
@@ -17,6 +17,7 @@ import java.util.List;
 
 @Repository
 public  interface ModelSelectorRepository extends JpaRepository<ModelSelector,String> {
+    public void updateByModelSelectorRepository(ModelSelectorRepository modelselectorrepository);
     public List<ModelSelector>updatebymodelSelector(ModelSelector modelSelector);
 //    public List<ModelSelector> findByModelSelector()
     public List<ModelSelector> existsByModelSelector(ModelSelector modelSelector);
