@@ -1,49 +1,28 @@
-//WID(13/04/2026)//Sarthak Mittal(Degamiesign)#1.1.1.1.1.1.1.1.1.1.1.1.1/1.1.1.1c.1
-package com.example.wirelesschargingapplication.repository;
+//WID(23/04/2026)(Sarthak Mittal)(Degamiesign)#1.1
+package com.example.axremulator2.ModelSelector;
+
 import android.content.Context;
 
 import androidx.compose.runtime.Anchor;
 
-import com.android.aapt.Resources;
 import com.example.wirelesschargingapplication.model.UsbReciever.ModelSelector;
 import com.google.ar.core.ArCoreApk;
 import com.google.ar.core.Camera;
 import com.google.ar.sceneform.AnchorNode;
-import com.google.ar.sceneform.Camera;
 import com.google.ar.sceneform.rendering.ModelRenderable;
-import com.example.axremulator2.ModelSelector.XRSession;
+//import com.example.axremulator2.ModelSelector.XRSession;
 
 import java.util.List;
 
+import static com.example.wirelesschargingapplication.repository.ModelSelectorRepository.modelSelector;
+
 @Repository
 public  interface ModelSelectorRepository extends JpaRepository<ModelSelector,String> {
-    public void updateByModelSelectorRepository(ModelSelectorRepository modelselectorrepository);
-    public List<ModelSelector>updatebymodelSelector(ModelSelector modelSelector);
-//    public List<ModelSelector> findByModelSelector()
-    public List<ModelSelector> existsByModelSelector(ModelSelector modelSelector);
-    public List<ModelSelector> updateByModelSelector(ModelSelector modelSelector);//Updaitng ModelSelector in APpp
-    public List<ModelSelector> existsByModelSelector(ModelSelector modelSelector);//Chekcing ModelSelector's Existence in App
-    public List<ModelSelector> saveByModelSelector(ModelSelector modelSelector);
-    public List<ModelSelector> findBymodelSelector(ModelSelector modelSelector);
-public List<ModelSelector> existsBymodelId(String modelId);
-    public List<ModelSelector>updateByModelId(String mdlId);//updating ModelId in Appp
-    public ModelSelectorRepository modelselectorrepository;
-    public ModelSelectorRepository getModelselectorrepository(ModelSelectorRepository modelselectorrepository);
-    public void setModelselectorrepository(ModelSelectorRepository modelselectorrepository);
-    public List<ModelSelector> saveByModelId(String mdlId);
-    public List<ModelSelector> findByModelID(String mdlId);
+    public List<ModelSelector>saveByCamId(String CamId);
+    public List<ModelSelector> findByCamId(String CamId);
+    public List<ModelSelector> findByCameraSelector(Camera cam);
     @Autowired
     public ModelSelector modelSelector;
-    public void existsByModelSelector(ModelSelector modelSelector );
-    public ModelSelector getModelSelector(ModelSelector modelSelector){return modelSelector;}
-    public void setModelSelector(ModelSelector modelSelector){this.modelSelector-modelSelector;}
-    public List<ModelSelector> updateByModelSelector(ModelSelector modelSelector);
-    public void setModelSelector(ModelSelector modelSelector){this.modelSelector=modelSelector;)//Binding ModelSelector in App
-    public ModelSelector getModelSelector(ModelSelector modelSelector){return modelSelector;}//Fethcing MdlSelector in App
-    public Resources.String saveAllCameraSelector(Camera arcam);
-    public Resources.String findAllCameraSelector(Camera arcam);
-    public String saveAllByModelMaterial(String ModelMaterial);
-    public void findAllByModelMaterial(String ModelMaterial);//Binding ModelMaterial in App
-    public String updateByModelMaterial(String ModelMaterial);//Updaating Modelmaterial In App
-    public void existsByModelMaterial(String ModelMaterial);//Checking ModelMaterial in App
+
+    public String saveAllCameraSelector(Camera arcam);
 }
