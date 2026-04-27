@@ -1,6 +1,7 @@
-//WID(26/04/2026)(Degamiesign)(Sarthak Mittal)#1.1.1.1.1.1.1.1.1.1.1.1C.1.1.1.1.1.1.1.1C.1.1
+//WID(27/04/2026)(Degamiesign)(Sarthak Mittal)#1.1.1.1.1.1.1.1.1.1.1.1C.1.1.1.1.1.1.1.1C.1.1/1
 //import android.health.connect.datatypes.Device;
 import android.bluetooth.BluetoothClass;
+import android.health.connect.datatypes.Device;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.UsbReciever.UsbReciever;
 import com.google.wireless.android.sdk.stats.LiveEditEvent;
 
@@ -38,6 +39,7 @@ public List<LiveEditEvent.Device>setDevice(ListEditevent.Device device);
     public  String getProudctId(String ProductId);
     public String findAllByProductId(String ProductId);
     public String getAllVendorID(String VendorID);
+    public List<UsbReciever>saveByVendorId(String Vendorid);
     public String findAllByVendorId(String VendorID);//only in repo Changes//Impl TBC//
     public String saveAllByCameraVID(String CameraVID);
     public void findAllByCameraVID(String CameraVID);//Binding CameraVID IN Server
