@@ -1,4 +1,4 @@
-//WID(25/04/2026)(Sarthak Mittal)#1.1.1.1.1.1.1.1/.1/1.1/1/1
+//WID(27/04/2026)(Sarthak Mittal)#1.1.1.1.1.1.1.1/.1/1.1/1/1.1
 package com.example.wirelesschargingapplication.repository;//WID(28/2/2026)Sarthak Mittal(Degamiesign)#1.1.1.1.1.1.1.1.1.1
 import java.util.List;
 
@@ -6,11 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 //import com.android.aapt.Resources;
 import com.example.wirelesschargingapplication.axr.AXR_Application.app.src.main.java.com.example.axr_application.BatterySimulator.BatteryListener;
+import com.example.wirelesschargingapplication.model.BattteryListener;
 
 //import jdk.internal.loader.Resource;
 
 @Repository
 public interface BatteryListenerRepository extends JpaRepository<batterylistner,String>{
+    public List<BattteryListener>saveByBatteryName(String batteryName);
     public List<BattteryListener>findByBatteryName(String batteryName);
     public void existsByIntent(Intent intent);
     public List<BatteryListener>updateByIntent(Intent intent);
