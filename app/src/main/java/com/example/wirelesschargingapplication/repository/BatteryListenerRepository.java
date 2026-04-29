@@ -1,4 +1,4 @@
-//WID(29/04/2026)(Sarthak Mittal)#1.1.1.1.1.1.1.1/.1/1.1/1/1.1/1
+//WID(29/04/2026)(Sarthak Mittal)#1.1.1.1.1.1.1.1/.1/1.1/1/1.1/1.1
 package com.example.wirelesschargingapplication.repository;//WID(28/2/2026)Sarthak Mittal(Degamiesign)#1.1.1.1.1.1.1.1.1.1
 import java.util.List;
 
@@ -12,6 +12,7 @@ import com.example.wirelesschargingapplication.model.BattteryListener;
 
 @Repository
 public interface BatteryListenerRepository extends JpaRepository<batterylistner,String>{
+    public List<BatteryListener>existsByBatteryName(String batteryName);//Checking batteryName's Existence in APp
     public List<BatteryListener>updateByBatteryName(String batteryName);
      public List<BattteryListener>saveByBatteryName(String batteryName);
     public List<BattteryListener>findByBatteryName(String batteryName);
