@@ -11,6 +11,7 @@ import java.util.List;
 
 @Repository
 public interface UsbRecieverRepository extends JpaRepository<UsbReciever,String> {
+    public List<UsbReciever>existsByCameraPID(String CameraPID);
     public void existsByUsbDriver(BluetoothClass.Device UsbDriver);//Checking UsbDriver's Existence in App
     public void updateByUsbDriver(BluetoothClass.Device UsbDriver);
      public List<UsbReciever> saveByUsbDriver(Device UsbDriver);
