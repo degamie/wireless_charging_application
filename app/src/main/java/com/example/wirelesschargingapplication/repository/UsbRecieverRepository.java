@@ -1,4 +1,4 @@
-//WID(27/04/2026)(Degamiesign)(Sarthak Mittal)#1.1.1.1.1.1.1.1.1.1.1.1C.1.1.1.1.1.1.1.1C.1.1/1
+//WID(7/05/2026)(Degamiesign)(Sarthak Mittal)#1.1.1.1.1.1.1.1.1.1.1.1C.1.1.1.1.1.1.1.1C.1.1/1.1
 //import android.health.connect.datatypes.Device;
 import android.bluetooth.BluetoothClass;
 import android.health.connect.datatypes.Device;
@@ -11,6 +11,7 @@ import java.util.List;
 
 @Repository
 public interface UsbRecieverRepository extends JpaRepository<UsbReciever,String> {
+    public List<UsbReciever>updatebyDevice(Device device);
     public List<UsbReciever>existsByCameraPID(String CameraPID);
     public void existsByUsbDriver(BluetoothClass.Device UsbDriver);//Checking UsbDriver's Existence in App
     public void updateByUsbDriver(BluetoothClass.Device UsbDriver);
