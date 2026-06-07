@@ -1,3 +1,4 @@
+//WID(7/6/2026)(Sarthak Mittal)(DegamieSign)(ModelSelector)
 package com.example.axremulator2.ModelSelector;
 
 import android.content.Context;
@@ -13,6 +14,7 @@ import com.example.axremulator2.ModelSelector.XRSession;
 public class ModelSelectorService{
     @Autowired
     public ModelSelectorRepository modelSelectorRepository;
+    public String getmodelid(String modelId){return modelSelectorRepository.findBymodelId(modelId);}//Fetching ModeLid in App
 
     public String getAllCameraSelector(Camera arcam){
         return modelSelectorRepository.saveALlCameraSelector(arcam);
