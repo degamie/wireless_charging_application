@@ -1,3 +1,4 @@
+//WID(23/7/2026)(Sarthak Mittal(DegamieSign)(WifiDetailsService)    
 package com.example.wirelesschargingapplication.service;
 
 import android.net.wifi.WifiInfo;
@@ -7,6 +8,10 @@ import com.example.wirelesschargingapplication.repository.WifiDetailsRepository;
 
 @Service
 public class WifiDetailsService {
+    public void setAllBywifiName(String wifiName){
+        return wifiDetailsRepository.saveAllBywifiName(wifiName);
+
+    }
     @AutoWired
     public WifiDetailsRepository wifiDetailsRepository;
     public String getAllByWifiId(String WifiId){
